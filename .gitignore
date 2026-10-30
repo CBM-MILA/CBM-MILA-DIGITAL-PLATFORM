@@ -1,0 +1,10 @@
+# Python bytecode and test artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local HTTP cache used by scraper.py (do not publish cached response bodies)
+.cache/
+
+# Atomic temporary files created during JSON persistence
+*.tmp
