@@ -2,7 +2,7 @@
 
 Official open-source Progressive Web App (PWA) for supporters of **Chabab Baladiat Mila (CBM 1936 — Club ID `733`)**, competing in the Algerian **Ligue Inter-Régions — Group East (`شرق`, `seasonId: 6`, `competitionId: 4275`)**.
 
-- **Live App:** [https://cbm-mila.github.io/CBM-MILA/](https://cbm-mila.github.io/CBM-MILA/)
+- **Live App:** [https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/](https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/)
 - **Source Data:** [Ligue Inter-Régions de Football (lirf.dz)](https://www.lirf.dz/ar/ranking)
 
 ## Architecture & Data Flow
@@ -99,7 +99,7 @@ For the non-programmer installation procedure, see [AUTOMATION-SETUP-AR.md](AUTO
 - Commits use no `[skip ci]`, and because a push made with `GITHUB_TOKEN` does not automatically trigger a Pages build, the workflow explicitly requests a Pages rebuild after `data/data.json` changes. If that request fails, the update and notification steps are allowed to finish; check GitHub → **Actions** → **pages-build-deployment** (or **Deployments → github-pages**) for the deployment status.
 - To verify the published data without a browser cache, open a terminal and run:
   ```bash
-  curl -s "https://cbm-mila.github.io/CBM-MILA/data/data.json?ts=$(date +%s)" | head -n 5
+  curl -s "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/data/data.json?ts=$(date +%s)" | head -n 5
   ```
 - The workflow refreshes `lastUpdated` on a successful no-change check (default: after about 6 hours), so the repository receives a small heartbeat commit periodically. It requests `contents: write` to publish validated files and `pages: write` to request the public-site rebuild.
 
