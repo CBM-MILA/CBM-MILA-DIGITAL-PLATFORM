@@ -116,7 +116,7 @@ def test_telegram_message_carries_inline_buttons(monkeypatch):
     monkeypatch.setattr(scraper.FETCHER.session, "post", lambda url, json=None, timeout=0: sent.update(json) or R())
     assert scraper.send_telegram_alert("hi", buttons=scraper.TELEGRAM_BUTTONS)
     kb = sent["reply_markup"]["inline_keyboard"]
-    assert kb[0][0]["url"].startswith("https://cbm-mila.github.io/CBM-MILA/") and kb[0][1]["url"].endswith("#/table")
+    assert kb[0][0]["url"].startswith("https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/") and kb[0][1]["url"].endswith("#/table")
 
 
 def test_digest_mode_sends_one_message_events_mode_sends_more(monkeypatch):

@@ -1,13 +1,16 @@
-/* CBM Mila 1936 — Official PWA Service Worker (v4) */
+/* CBM Mila 1936 — Official PWA Service Worker (v5) */
 'use strict';
 
 try {
   importScripts('./config.js');
 } catch (e) {}
 
-const CACHE_VERSION = self.CBM_BUILD_VERSION || '2026.10.23.v4';
-const STATIC_CACHE = `cbm-static-${CACHE_VERSION}`;
-const DATA_CACHE = `cbm-data-${CACHE_VERSION}`;
+const CACHE_VERSION = self.CBM_BUILD_VERSION || '2026.10.30.v5';
+// Cache Storage is shared by all GitHub Pages projects on this origin.
+// Keep this app's cache namespace isolated and never delete another app's caches.
+const CACHE_PREFIX = 'cbm-mila-digital-platform';
+const STATIC_CACHE = `${CACHE_PREFIX}-static-${CACHE_VERSION}`;
+const DATA_CACHE = `${CACHE_PREFIX}-data-${CACHE_VERSION}`;
 const EXPECTED_CACHES = new Set([STATIC_CACHE, DATA_CACHE]);
 
 const STATIC_ASSETS = [
@@ -18,6 +21,8 @@ const STATIC_ASSETS = [
   './qrcode.min.js',
   './app.js',
   './manifest.webmanifest',
+  './card-template.jpg',
+  './hero-bg.jpg',
   './cairo-bold.woff2',
   './cairo-regular.woff2',
   './logo.png',
@@ -53,10 +58,11 @@ self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys()
       .then(keys => {
-        const hadOldCaches = keys.some(key => !EXPECTED_CACHES.has(key));
-        return Promise.all(
-          keys.map(key => EXPECTED_CACHES.has(key) ? Promise.resolve() : caches.delete(key))
-        ).then(() => hadOldCaches);
+        const oldAppCaches = keys.filter(key =>
+          key.startsWith(`${CACHE_PREFIX}-`) && !EXPECTED_CACHES.has(key)
+        );
+        return Promise.all(oldAppCaches.map(key => caches.delete(key)))
+          .then(() => oldAppCaches.length > 0);
       })
       .then(async hadOldCaches => {
         await self.clients.claim();

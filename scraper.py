@@ -88,7 +88,7 @@ VENUE_NORMALIZATION: dict[str, str] = {
 
 USER_AGENT = (
     "CBM-Mila-Fan-PWA/3.1 "
-    "(+https://github.com/CBM-MILA/CBM-MILA; https://cbm-mila.github.io/CBM-MILA/)"
+    "(+https://github.com/CBM-MILA/CBM-MILA-DIGITAL-PLATFORM; https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/)"
 )
 
 HEADERS: dict[str, str] = {
@@ -3144,7 +3144,7 @@ def send_web_push_notifications(
 
 # ════════════════════════ 12. CLI Entrypoint ════════════════════════
 # ════════════════════════ 11a. Rich Telegram Digest ════════════════════════
-SITE_URL = "https://cbm-mila.github.io/CBM-MILA/"
+SITE_URL = "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
 TELEGRAM_BUTTONS: list[list[dict[str, str]]] = [
     [{"text": "🌐 افتح المنصة", "url": SITE_URL}, {"text": "📊 الترتيب", "url": SITE_URL + "#/table"}],
     [{"text": "⚽ المباريات", "url": SITE_URL + "#/matches"}, {"text": "👕 التشكيلة", "url": SITE_URL + "#/squad"}],
