@@ -1375,7 +1375,7 @@ function getOfficialSiteUrl() {
   if (/^https?:$/i.test(location.protocol) && !/^(localhost|127\.|0\.0\.0\.0)/.test(location.hostname)) {
     return location.origin + location.pathname.replace(/\/index\.html$/i, '').replace(/\/+$/, '') + '/';
   }
-  return 'https://cbm-mila.github.io/CBM-MILA/';
+  return 'https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/';
 }
 
 
