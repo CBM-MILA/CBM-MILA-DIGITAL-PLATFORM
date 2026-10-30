@@ -5,36 +5,15 @@
   "lastError": null,
   "alertedHashes": [],
   "sentEvents": [],
-  "notificationEvents": {},
+  "notificationEvents": {
+    "90a1a5ae1a817e8a": {
+      "telegram": "pending",
+      "updatedAt": "2026-10-30T14:48:46+01:00"
+    }
+  },
   "lastNoNewsAt": "2026-10-30T14:48:40+01:00",
   "queuedNotifications": {
     "events": [],
-    "telegram": [
-      {
-        "message": "😴 <b>لا جديد حالياً</b> 🙌\n✅ فحصتُ موقع الرابطة الساعة 14:48 ولا توجد أي تغييرات 🔍\n📊 ترتيب شباب ميلة: <b>#8</b> · 6 نقاط 🎯\n⏳ المباراة القادمة: إتحاد سدراتة ⚔️ شباب ميلة\n   🗓 السبت 31 أكتوبر 2026 · ⏰ 15:00 — بعد يوم\n🔔 سأخبرك فور حدوث أي تحديث! 🚀",
-        "buttons": [
-          [
-            {
-              "text": "🌐 افتح المنصة",
-              "url": "https://cbm-mila.github.io/CBM-MILA/"
-            },
-            {
-              "text": "📊 الترتيب",
-              "url": "https://cbm-mila.github.io/CBM-MILA/#/table"
-            }
-          ],
-          [
-            {
-              "text": "⚽ المباريات",
-              "url": "https://cbm-mila.github.io/CBM-MILA/#/matches"
-            },
-            {
-              "text": "👕 التشكيلة",
-              "url": "https://cbm-mila.github.io/CBM-MILA/#/squad"
-            }
-          ]
-        ]
-      }
-    ]
+    "telegram": []
   }
 }
