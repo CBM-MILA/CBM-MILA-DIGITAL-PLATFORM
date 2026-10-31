@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-31T17:13:05+01:00",
+  "lastUpdated": "2026-10-31T17:45:43+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -115,7 +115,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/43091",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 4,
+        "appearances": 5,
         "goals": 0,
         "yellowCards": 0,
         "redCards": 0
@@ -137,7 +137,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/62230",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 4,
+        "appearances": 5,
         "goals": 0,
         "yellowCards": 0,
         "redCards": 0
@@ -181,7 +181,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/72760",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 3,
+        "appearances": 4,
         "goals": 0,
         "yellowCards": 1,
         "redCards": 0
@@ -203,7 +203,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/42007",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 4,
+        "appearances": 5,
         "goals": 0,
         "yellowCards": 1,
         "redCards": 0
@@ -225,7 +225,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/36975",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 4,
+        "appearances": 5,
         "goals": 0,
         "yellowCards": 0,
         "redCards": 0
@@ -247,7 +247,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/46519",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 3,
+        "appearances": 4,
         "goals": 0,
         "yellowCards": 1,
         "redCards": 0
@@ -269,7 +269,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/58378",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 4,
+        "appearances": 5,
         "goals": 0,
         "yellowCards": 1,
         "redCards": 0
@@ -291,7 +291,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/44171",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 4,
+        "appearances": 5,
         "goals": 0,
         "yellowCards": 0,
         "redCards": 0
@@ -313,7 +313,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/47553",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 4,
+        "appearances": 5,
         "goals": 0,
         "yellowCards": 1,
         "redCards": 0
@@ -335,7 +335,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/42302",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 2,
+        "appearances": 3,
         "goals": 0,
         "yellowCards": 0,
         "redCards": 0
@@ -357,7 +357,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/40940",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 4,
+        "appearances": 5,
         "goals": 0,
         "yellowCards": 0,
         "redCards": 0
@@ -379,7 +379,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/377274",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 4,
+        "appearances": 5,
         "goals": 0,
         "yellowCards": 0,
         "redCards": 0
@@ -401,7 +401,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/52968",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 0,
+        "appearances": 1,
         "goals": 0,
         "yellowCards": 0,
         "redCards": 0
@@ -467,7 +467,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/48886",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 3,
+        "appearances": 4,
         "goals": 0,
         "yellowCards": 0,
         "redCards": 0
@@ -511,7 +511,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/51430",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 4,
+        "appearances": 5,
         "goals": 0,
         "yellowCards": 1,
         "redCards": 0
@@ -577,7 +577,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/40725",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 4,
+        "appearances": 5,
         "goals": 1,
         "yellowCards": 0,
         "redCards": 0
@@ -599,7 +599,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/51990",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 3,
+        "appearances": 4,
         "goals": 1,
         "yellowCards": 0,
         "redCards": 0
@@ -621,7 +621,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/49698",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 4,
+        "appearances": 5,
         "goals": 2,
         "yellowCards": 1,
         "redCards": 0
@@ -665,7 +665,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/58346",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 2,
+        "appearances": 3,
         "goals": 0,
         "yellowCards": 0,
         "redCards": 0
@@ -687,7 +687,7 @@
       "sourceUrl": "https://www.lirf.dz/ar/player/51164",
       "lastFetchedAt": "2026-10-23T22:30:00+01:00",
       "stats": {
-        "appearances": 3,
+        "appearances": 4,
         "goals": 0,
         "yellowCards": 0,
         "redCards": 0
@@ -2125,17 +2125,141 @@
       "events": [],
       "lineups": {
         "home": {
-          "starters": [],
-          "bench": [],
-          "coach": null
+          "starters": [
+            {
+              "playerName": "عاشور بدرو"
+            },
+            {
+              "playerName": "بوبقة رياض"
+            },
+            {
+              "playerName": "بلهوشات مروان"
+            },
+            {
+              "playerName": "لحمر فرحان"
+            },
+            {
+              "playerName": "مانع يوسف"
+            },
+            {
+              "playerName": "CHEMS EDDINE OUDIRA"
+            },
+            {
+              "playerName": "حمودي شمس الدين"
+            },
+            {
+              "playerName": "AKRAM ANES OUADDAH"
+            },
+            {
+              "playerName": "بورقعة مصطفى"
+            },
+            {
+              "playerName": "بن معمر وائل"
+            },
+            {
+              "playerName": "زفيزف عبدالمعز"
+            }
+          ],
+          "bench": [
+            {
+              "playerName": "لعور راسم"
+            },
+            {
+              "playerName": "بن معنصر انور"
+            },
+            {
+              "playerName": "لفحل عبد السلام"
+            },
+            {
+              "playerName": "بن مختار بلال"
+            },
+            {
+              "playerName": "OUASSIM GHOULEM LACHETAR"
+            },
+            {
+              "playerName": "حميداني محمد الصالح"
+            },
+            {
+              "playerName": "بن جبار مروان"
+            },
+            {
+              "playerName": "عريان ايمن"
+            },
+            {
+              "playerName": "بوترعة عامر"
+            }
+          ],
+          "coach": "بن صالح حسين"
         },
         "away": {
-          "starters": [],
-          "bench": [],
-          "coach": null
+          "starters": [
+            {
+              "playerId": "43091"
+            },
+            {
+              "playerId": "42007"
+            },
+            {
+              "playerId": "36975"
+            },
+            {
+              "playerId": "58378"
+            },
+            {
+              "playerId": "44171"
+            },
+            {
+              "playerId": "47553"
+            },
+            {
+              "playerId": "40940"
+            },
+            {
+              "playerId": "377274"
+            },
+            {
+              "playerId": "51430"
+            },
+            {
+              "playerId": "40725"
+            },
+            {
+              "playerId": "49698"
+            }
+          ],
+          "bench": [
+            {
+              "playerId": "72760"
+            },
+            {
+              "playerId": "46519"
+            },
+            {
+              "playerId": "42302"
+            },
+            {
+              "playerId": "51990"
+            },
+            {
+              "playerId": "52968"
+            },
+            {
+              "playerId": "58346"
+            },
+            {
+              "playerId": "51164"
+            },
+            {
+              "playerId": "48886"
+            },
+            {
+              "playerId": "62230"
+            }
+          ],
+          "coach": "بلعريبي سعيد"
         }
       },
-      "detailFetchedAt": null,
+      "detailFetchedAt": "2026-10-31T17:45:11+01:00",
       "lastDetailCheck": null,
       "closedDoors": false
     },
@@ -2850,16 +2974,16 @@
     },
     {
       "position": 3,
-      "clubId": "891",
+      "clubId": "732",
       "played": 5,
-      "wins": 2,
-      "draws": 3,
-      "losses": 0,
-      "goalsFor": 6,
-      "goalsAgainst": 1,
-      "goalDifference": 5,
-      "points": 9,
-      "adjustedPoints": 9,
+      "wins": 3,
+      "draws": 1,
+      "losses": 1,
+      "goalsFor": 5,
+      "goalsAgainst": 2,
+      "goalDifference": 3,
+      "points": 10,
+      "adjustedPoints": 10,
       "pointsPenalty": 0,
       "official": true,
       "officialDeduction": false
@@ -2882,14 +3006,14 @@
     },
     {
       "position": 5,
-      "clubId": "732",
-      "played": 4,
-      "wins": 3,
-      "draws": 0,
-      "losses": 1,
-      "goalsFor": 4,
+      "clubId": "891",
+      "played": 5,
+      "wins": 2,
+      "draws": 3,
+      "losses": 0,
+      "goalsFor": 6,
       "goalsAgainst": 1,
-      "goalDifference": 3,
+      "goalDifference": 5,
       "points": 9,
       "adjustedPoints": 9,
       "pointsPenalty": 0,
@@ -2899,15 +3023,15 @@
     {
       "position": 6,
       "clubId": "736",
-      "played": 4,
+      "played": 5,
       "wins": 2,
-      "draws": 2,
+      "draws": 3,
       "losses": 0,
-      "goalsFor": 4,
-      "goalsAgainst": 2,
+      "goalsFor": 5,
+      "goalsAgainst": 3,
       "goalDifference": 2,
-      "points": 8,
-      "adjustedPoints": 8,
+      "points": 9,
+      "adjustedPoints": 9,
       "pointsPenalty": 0,
       "official": true,
       "officialDeduction": false
@@ -2915,13 +3039,13 @@
     {
       "position": 7,
       "clubId": "997",
-      "played": 4,
+      "played": 5,
       "wins": 2,
       "draws": 1,
-      "losses": 1,
+      "losses": 2,
       "goalsFor": 6,
-      "goalsAgainst": 3,
-      "goalDifference": 3,
+      "goalsAgainst": 5,
+      "goalDifference": 1,
       "points": 7,
       "adjustedPoints": 7,
       "pointsPenalty": 0,
@@ -2930,6 +3054,22 @@
     },
     {
       "position": 8,
+      "clubId": "727",
+      "played": 5,
+      "wins": 2,
+      "draws": 1,
+      "losses": 2,
+      "goalsFor": 6,
+      "goalsAgainst": 5,
+      "goalDifference": 1,
+      "points": 7,
+      "adjustedPoints": 7,
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
+    },
+    {
+      "position": 9,
       "clubId": "733",
       "played": 5,
       "wins": 2,
@@ -2945,7 +3085,23 @@
       "officialDeduction": false
     },
     {
-      "position": 9,
+      "position": 10,
+      "clubId": "849",
+      "played": 5,
+      "wins": 1,
+      "draws": 3,
+      "losses": 1,
+      "goalsFor": 4,
+      "goalsAgainst": 3,
+      "goalDifference": 1,
+      "points": 6,
+      "adjustedPoints": 6,
+      "pointsPenalty": 0,
+      "official": true,
+      "officialDeduction": false
+    },
+    {
+      "position": 11,
       "clubId": "729",
       "played": 5,
       "wins": 2,
@@ -2961,7 +3117,7 @@
       "officialDeduction": false
     },
     {
-      "position": 10,
+      "position": 12,
       "clubId": "823",
       "played": 5,
       "wins": 1,
@@ -2977,23 +3133,7 @@
       "officialDeduction": false
     },
     {
-      "position": 11,
-      "clubId": "727",
-      "played": 4,
-      "wins": 1,
-      "draws": 1,
-      "losses": 2,
-      "goalsFor": 4,
-      "goalsAgainst": 5,
-      "goalDifference": -1,
-      "points": 4,
-      "adjustedPoints": 4,
-      "pointsPenalty": 0,
-      "official": true,
-      "officialDeduction": false
-    },
-    {
-      "position": 12,
+      "position": 13,
       "clubId": "728",
       "played": 5,
       "wins": 1,
@@ -3009,31 +3149,15 @@
       "officialDeduction": false
     },
     {
-      "position": 13,
-      "clubId": "849",
-      "played": 4,
-      "wins": 0,
-      "draws": 3,
-      "losses": 1,
-      "goalsFor": 2,
-      "goalsAgainst": 3,
-      "goalDifference": -1,
-      "points": 3,
-      "adjustedPoints": 3,
-      "pointsPenalty": 0,
-      "official": true,
-      "officialDeduction": false
-    },
-    {
       "position": 14,
       "clubId": "734",
-      "played": 4,
+      "played": 5,
       "wins": 1,
       "draws": 0,
-      "losses": 3,
+      "losses": 4,
       "goalsFor": 2,
-      "goalsAgainst": 6,
-      "goalDifference": -4,
+      "goalsAgainst": 8,
+      "goalDifference": -6,
       "points": 3,
       "adjustedPoints": 3,
       "pointsPenalty": 0,
@@ -3078,7 +3202,7 @@
       "playerId": null,
       "clubId": "1036",
       "shirt": null,
-      "goals": 7,
+      "goals": 11,
       "matches": null,
       "name": {
         "ar": "ضربات الجزاء",
@@ -3102,7 +3226,7 @@
     },
     {
       "playerId": null,
-      "clubId": "884",
+      "clubId": "727",
       "shirt": null,
       "goals": 6,
       "matches": null,
@@ -3120,11 +3244,24 @@
       "goals": 6,
       "matches": null,
       "name": {
+        "ar": "ضربات الجزاء",
+        "latin": "ضربات الجزاء",
+        "en": "ضربات الجزاء"
+      },
+      "rank": 4
+    },
+    {
+      "playerId": null,
+      "clubId": "884",
+      "shirt": null,
+      "goals": 6,
+      "matches": null,
+      "name": {
         "ar": "عرض الكل",
         "latin": "عرض الكل",
         "en": "عرض الكل"
       },
-      "rank": 4
+      "rank": 5
     },
     {
       "playerId": null,
@@ -3137,24 +3274,11 @@
         "latin": "ضربات الجزاء",
         "en": "ضربات الجزاء"
       },
-      "rank": 5
-    },
-    {
-      "playerId": null,
-      "clubId": "891",
-      "shirt": null,
-      "goals": 6,
-      "matches": null,
-      "name": {
-        "ar": "عرض الكل",
-        "latin": "عرض الكل",
-        "en": "عرض الكل"
-      },
       "rank": 6
     },
     {
       "playerId": null,
-      "clubId": "997",
+      "clubId": "891",
       "shirt": null,
       "goals": 6,
       "matches": null,
@@ -3172,11 +3296,24 @@
       "goals": 6,
       "matches": null,
       "name": {
+        "ar": "عرض الكل",
+        "latin": "عرض الكل",
+        "en": "عرض الكل"
+      },
+      "rank": 8
+    },
+    {
+      "playerId": null,
+      "clubId": "997",
+      "shirt": null,
+      "goals": 6,
+      "matches": null,
+      "name": {
         "ar": "ضربات الجزاء",
         "latin": "ضربات الجزاء",
         "en": "ضربات الجزاء"
       },
-      "rank": 8
+      "rank": 9
     },
     {
       "playerId": null,
@@ -3189,7 +3326,7 @@
         "latin": "ضربات الجزاء",
         "en": "ضربات الجزاء"
       },
-      "rank": 9
+      "rank": 10
     },
     {
       "playerId": null,
@@ -3202,26 +3339,13 @@
         "latin": "عرض الكل",
         "en": "عرض الكل"
       },
-      "rank": 10
+      "rank": 11
     },
     {
       "playerId": null,
       "clubId": "733",
       "shirt": null,
       "goals": 5,
-      "matches": null,
-      "name": {
-        "ar": "ضربات الجزاء",
-        "latin": "ضربات الجزاء",
-        "en": "ضربات الجزاء"
-      },
-      "rank": 11
-    },
-    {
-      "playerId": null,
-      "clubId": "727",
-      "shirt": null,
-      "goals": 4,
       "matches": null,
       "name": {
         "ar": "ضربات الجزاء",
@@ -3232,9 +3356,9 @@
     },
     {
       "playerId": null,
-      "clubId": "727",
+      "clubId": "736",
       "shirt": null,
-      "goals": 4,
+      "goals": 5,
       "matches": null,
       "name": {
         "ar": "عرض الكل",
@@ -3245,7 +3369,7 @@
     },
     {
       "playerId": null,
-      "clubId": "732",
+      "clubId": "727",
       "shirt": null,
       "goals": 4,
       "matches": null,
@@ -3263,15 +3387,15 @@
       "goals": 4,
       "matches": null,
       "name": {
-        "ar": "ضربات الجزاء",
-        "latin": "ضربات الجزاء",
-        "en": "ضربات الجزاء"
+        "ar": "عرض الكل",
+        "latin": "عرض الكل",
+        "en": "عرض الكل"
       },
       "rank": 15
     },
     {
       "playerId": null,
-      "clubId": "736",
+      "clubId": "732",
       "shirt": null,
       "goals": 4,
       "matches": null,
@@ -3289,9 +3413,9 @@
       "goals": 4,
       "matches": null,
       "name": {
-        "ar": "عرض الكل",
-        "latin": "عرض الكل",
-        "en": "عرض الكل"
+        "ar": "ضربات الجزاء",
+        "latin": "ضربات الجزاء",
+        "en": "ضربات الجزاء"
       },
       "rank": 17
     },
@@ -3804,6 +3928,32 @@
     },
     {
       "playerId": null,
+      "clubId": "727",
+      "shirt": 11,
+      "goals": 1,
+      "matches": null,
+      "name": {
+        "ar": "ABDERRAOUF GHEDIRI",
+        "latin": "Abderraouf Ghediri",
+        "en": "Abderraouf Ghediri"
+      },
+      "rank": 57
+    },
+    {
+      "playerId": null,
+      "clubId": "727",
+      "shirt": 8,
+      "goals": 1,
+      "matches": null,
+      "name": {
+        "ar": "CHOUAIB GUETTALA",
+        "latin": "Chouaib Guettala",
+        "en": "Chouaib Guettala"
+      },
+      "rank": 58
+    },
+    {
+      "playerId": null,
       "clubId": "728",
       "shirt": 10,
       "goals": 1,
@@ -3813,7 +3963,7 @@
         "latin": "Oussama Riah",
         "en": "Oussama Riah"
       },
-      "rank": 57
+      "rank": 59
     },
     {
       "playerId": null,
@@ -3826,7 +3976,7 @@
         "latin": "Mohammed Bouleghalegh",
         "en": "Mohammed Bouleghalegh"
       },
-      "rank": 58
+      "rank": 60
     },
     {
       "playerId": null,
@@ -3839,7 +3989,7 @@
         "latin": "Amine Atchoum",
         "en": "Amine Atchoum"
       },
-      "rank": 59
+      "rank": 61
     },
     {
       "playerId": "51990",
@@ -3852,7 +4002,7 @@
         "latin": "Salah Eddine Khabia",
         "en": "Salah Eddine Khabia"
       },
-      "rank": 60
+      "rank": 62
     },
     {
       "playerId": null,
@@ -3865,7 +4015,7 @@
         "latin": "Foued Bouaita",
         "en": "Foued Bouaita"
       },
-      "rank": 61
+      "rank": 63
     },
     {
       "playerId": null,
@@ -3878,7 +4028,7 @@
         "latin": "Mohammed Boutebiba",
         "en": "Mohammed Boutebiba"
       },
-      "rank": 62
+      "rank": 64
     }
   ],
   "roundResults": [
