@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-31T19:53:17+01:00",
+  "lastUpdated": "2026-10-31T20:52:50+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -3612,7 +3612,7 @@
     },
     {
       "playerId": null,
-      "clubId": "732",
+      "clubId": "731",
       "shirt": null,
       "goals": 4,
       "matches": null,
@@ -3625,6 +3625,19 @@
     },
     {
       "playerId": null,
+      "clubId": "732",
+      "shirt": null,
+      "goals": 4,
+      "matches": null,
+      "name": {
+        "ar": "عرض الكل",
+        "latin": "عرض الكل",
+        "en": "عرض الكل"
+      },
+      "rank": 19
+    },
+    {
+      "playerId": null,
       "clubId": "849",
       "shirt": null,
       "goals": 4,
@@ -3634,10 +3647,10 @@
         "latin": "ضربات الجزاء",
         "en": "ضربات الجزاء"
       },
-      "rank": 19
+      "rank": 20
     },
     {
-      "rank": 20,
+      "rank": 21,
       "playerId": null,
       "clubId": "727",
       "shirt": 18,
@@ -3650,7 +3663,7 @@
       }
     },
     {
-      "rank": 21,
+      "rank": 22,
       "playerId": null,
       "clubId": "736",
       "shirt": 17,
@@ -3673,10 +3686,10 @@
         "latin": "بن لمخربش أحمد",
         "en": "بن لمخربش أحمد"
       },
-      "rank": 22
+      "rank": 23
     },
     {
-      "rank": 23,
+      "rank": 24,
       "playerId": null,
       "clubId": "1036",
       "shirt": 21,
@@ -3689,7 +3702,7 @@
       }
     },
     {
-      "rank": 24,
+      "rank": 25,
       "playerId": null,
       "clubId": "1036",
       "shirt": 24,
@@ -3702,7 +3715,7 @@
       }
     },
     {
-      "rank": 25,
+      "rank": 26,
       "playerId": null,
       "clubId": "731",
       "shirt": 6,
@@ -3715,7 +3728,7 @@
       }
     },
     {
-      "rank": 26,
+      "rank": 27,
       "playerId": null,
       "clubId": "891",
       "shirt": 9,
@@ -3728,7 +3741,7 @@
       }
     },
     {
-      "rank": 27,
+      "rank": 28,
       "playerId": null,
       "clubId": "732",
       "shirt": 10,
@@ -3741,7 +3754,7 @@
       }
     },
     {
-      "rank": 28,
+      "rank": 29,
       "playerId": "49698",
       "clubId": "733",
       "shirt": 17,
@@ -3754,7 +3767,7 @@
       }
     },
     {
-      "rank": 29,
+      "rank": 30,
       "playerId": null,
       "clubId": "736",
       "shirt": 15,
@@ -3767,7 +3780,7 @@
       }
     },
     {
-      "rank": 30,
+      "rank": 31,
       "playerId": null,
       "clubId": "891",
       "shirt": 14,
@@ -3789,19 +3802,6 @@
         "ar": "MOHAMMED BOULEGHALEGH",
         "latin": "Mohammed Bouleghalegh",
         "en": "Mohammed Bouleghalegh"
-      },
-      "rank": 31
-    },
-    {
-      "playerId": null,
-      "clubId": "731",
-      "shirt": null,
-      "goals": 2,
-      "matches": null,
-      "name": {
-        "ar": "عرض الكل",
-        "latin": "عرض الكل",
-        "en": "عرض الكل"
       },
       "rank": 32
     },
