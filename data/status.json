@@ -1,6 +1,6 @@
 {
   "state": "degraded",
-  "consecutiveFailures": 3,
+  "consecutiveFailures": 4,
   "lastStateChange": "2026-10-31T15:17:36+01:00",
   "lastError": "https://www.lirf.dz/ar/club/733 ← تعذر الاتصال (RetryError); https://www.lirf.dz/ar/ranking ← تعذر الاتصال (RetryError); https://www.lirf.dz/ar/calendar ← تعذر الاتصال (RetryError)",
   "alertedHashes": [
