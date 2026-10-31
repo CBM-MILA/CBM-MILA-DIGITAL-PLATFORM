@@ -58,6 +58,32 @@
   "lastNoNewsAt": "2026-10-31T11:45:37+01:00",
   "queuedNotifications": {
     "events": [],
-    "telegram": []
+    "telegram": [
+      {
+        "message": "📣 <b>جديد على موقع الرابطة!</b> 🔔\n🕒 2026-10-31 18:26 (توقيت الجزائر)\n\n━━━━━━━━━━━━━━\n\n🟨 بطاقات في المباراة: 4\n\n━━━━━━━━━━━━━━\n\n🥇 <b>الهدّافون</b>\n⚽ عرض الكل (إتحاد بوخضرة) — <b>9</b> ⬆️ +3\n⚽ إليهم نزيه (شباب عين كرشة) — <b>2</b> ⬆️ +1\n⚽ FOUED BOUAITA (إتحاد بوخضرة) — <b>2</b> ⬆️ +1\n⚽ HASSENE KRITER (شباب عين كرشة) — <b>1</b> 🆕\n⚽ ILYES NEGHRA (إتحاد بوخضرة) — <b>1</b> 🆕\n⚽ MOHAMED CHAKIB SMAINE (إتحاد بوخضرة) — <b>1</b> 🆕\n\n🔥 هيا شباب ميلة! 🔴⚪ تابع التفاصيل من الأزرار 👇",
+        "buttons": [
+          [
+            {
+              "text": "🌐 افتح المنصة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
+            },
+            {
+              "text": "📊 الترتيب",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
+            }
+          ],
+          [
+            {
+              "text": "⚽ المباريات",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
+            },
+            {
+              "text": "👕 التشكيلة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
+            }
+          ]
+        ]
+      }
+    ]
   }
 }
