@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-10-31T21:44:37+01:00",
+  "lastUpdated": "2026-11-01T00:42:42+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -3547,7 +3547,7 @@
     },
     {
       "playerId": null,
-      "clubId": "733",
+      "clubId": "732",
       "shirt": null,
       "goals": 5,
       "matches": null,
@@ -3565,11 +3565,24 @@
       "goals": 5,
       "matches": null,
       "name": {
+        "ar": "عرض الكل",
+        "latin": "عرض الكل",
+        "en": "عرض الكل"
+      },
+      "rank": 14
+    },
+    {
+      "playerId": null,
+      "clubId": "733",
+      "shirt": null,
+      "goals": 5,
+      "matches": null,
+      "name": {
         "ar": "ضربات الجزاء",
         "latin": "ضربات الجزاء",
         "en": "ضربات الجزاء"
       },
-      "rank": 14
+      "rank": 15
     },
     {
       "playerId": null,
@@ -3582,26 +3595,13 @@
         "latin": "عرض الكل",
         "en": "عرض الكل"
       },
-      "rank": 15
+      "rank": 16
     },
     {
       "playerId": null,
       "clubId": "736",
       "shirt": null,
       "goals": 5,
-      "matches": null,
-      "name": {
-        "ar": "ضربات الجزاء",
-        "latin": "ضربات الجزاء",
-        "en": "ضربات الجزاء"
-      },
-      "rank": 16
-    },
-    {
-      "playerId": null,
-      "clubId": "731",
-      "shirt": null,
-      "goals": 4,
       "matches": null,
       "name": {
         "ar": "ضربات الجزاء",
@@ -3617,15 +3617,15 @@
       "goals": 4,
       "matches": null,
       "name": {
-        "ar": "عرض الكل",
-        "latin": "عرض الكل",
-        "en": "عرض الكل"
+        "ar": "ضربات الجزاء",
+        "latin": "ضربات الجزاء",
+        "en": "ضربات الجزاء"
       },
       "rank": 18
     },
     {
       "playerId": null,
-      "clubId": "732",
+      "clubId": "731",
       "shirt": null,
       "goals": 4,
       "matches": null,
