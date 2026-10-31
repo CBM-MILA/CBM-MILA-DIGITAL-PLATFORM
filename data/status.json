@@ -13,7 +13,8 @@
     "06debe76b75106b2",
     "167dc888324f4a24",
     "d9946e1857407d33",
-    "93f4555bdb63829e"
+    "93f4555bdb63829e",
+    "f90c94d2d2f7736c"
   ],
   "sentEvents": [
     "2015e70ea0de0fcb",
@@ -25,7 +26,8 @@
     "06debe76b75106b2",
     "167dc888324f4a24",
     "d9946e1857407d33",
-    "93f4555bdb63829e"
+    "93f4555bdb63829e",
+    "f90c94d2d2f7736c"
   ],
   "notificationEvents": {
     "90a1a5ae1a817e8a": {
@@ -71,37 +73,15 @@
     "93f4555bdb63829e": {
       "telegram": "sent",
       "updatedAt": "2026-10-31T19:09:09+01:00"
+    },
+    "f90c94d2d2f7736c": {
+      "telegram": "sent",
+      "updatedAt": "2026-10-31T19:53:23+01:00"
     }
   },
   "lastNoNewsAt": "2026-10-31T19:09:05+01:00",
   "queuedNotifications": {
     "events": [],
-    "telegram": [
-      {
-        "message": "📣 <b>جديد على موقع الرابطة!</b> 🔔\n🕒 2026-10-31 19:53 (توقيت الجزائر)\n\n━━━━━━━━━━━━━━\n\n🥇 <b>الهدّافون</b>\n⚽ عرض الكل (شباب قايس) — <b>6</b> ⬆️ +2\n⚽ ضربات الجزاء (ترجي قالمة) — <b>5</b> ⬆️ +1\n\n🔥 هيا شباب ميلة! 🔴⚪ تابع التفاصيل من الأزرار 👇",
-        "buttons": [
-          [
-            {
-              "text": "🌐 افتح المنصة",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
-            },
-            {
-              "text": "📊 الترتيب",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
-            }
-          ],
-          [
-            {
-              "text": "⚽ المباريات",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
-            },
-            {
-              "text": "👕 التشكيلة",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
-            }
-          ]
-        ]
-      }
-    ]
+    "telegram": []
   }
 }
