@@ -64,6 +64,32 @@
   "lastNoNewsAt": "2026-10-31T11:45:37+01:00",
   "queuedNotifications": {
     "events": [],
-    "telegram": []
+    "telegram": [
+      {
+        "message": "📣 <b>جديد على موقع الرابطة!</b> 🔔\n🕒 2026-10-31 18:41 (توقيت الجزائر)\n\n━━━━━━━━━━━━━━\n\n🥇 <b>الهدّافون</b>\n⚽ ضربات الجزاء (نصر الفجوج) — <b>5</b> ⬆️ +1\n⚽ ضربات الجزاء (النجم الرياضي فرفوس بئر العاتر) — <b>4</b> 🆕\n⚽ MOHAMMED BOULEGHALEGH (نجم تازوقاغت) — <b>2</b> ⬆️ +1\n⚽ ABDELDJALIL DJEMAL (نجم تازوقاغت) — <b>1</b> 🆕\n⚽ OUSSAMA TOUAHRI (نصر الفجوج) — <b>1</b> 🆕\n⚽ Massinissa OULD TALEB (ترجي قالمة) — <b>1</b> 🆕\n\n🔥 هيا شباب ميلة! 🔴⚪ تابع التفاصيل من الأزرار 👇",
+        "buttons": [
+          [
+            {
+              "text": "🌐 افتح المنصة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
+            },
+            {
+              "text": "📊 الترتيب",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
+            }
+          ],
+          [
+            {
+              "text": "⚽ المباريات",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
+            },
+            {
+              "text": "👕 التشكيلة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
+            }
+          ]
+        ]
+      }
+    ]
   }
 }
