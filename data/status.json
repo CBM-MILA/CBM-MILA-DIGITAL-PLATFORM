@@ -15,7 +15,8 @@
     "d9946e1857407d33",
     "93f4555bdb63829e",
     "f90c94d2d2f7736c",
-    "c7dc01adf49218dc"
+    "c7dc01adf49218dc",
+    "d8524e64ede71cd2"
   ],
   "sentEvents": [
     "2015e70ea0de0fcb",
@@ -29,7 +30,8 @@
     "d9946e1857407d33",
     "93f4555bdb63829e",
     "f90c94d2d2f7736c",
-    "c7dc01adf49218dc"
+    "c7dc01adf49218dc",
+    "d8524e64ede71cd2"
   ],
   "notificationEvents": {
     "90a1a5ae1a817e8a": {
@@ -83,37 +85,15 @@
     "c7dc01adf49218dc": {
       "telegram": "sent",
       "updatedAt": "2026-10-31T20:52:57+01:00"
+    },
+    "d8524e64ede71cd2": {
+      "telegram": "sent",
+      "updatedAt": "2026-10-31T21:44:44+01:00"
     }
   },
   "lastNoNewsAt": "2026-10-31T19:09:05+01:00",
   "queuedNotifications": {
     "events": [],
-    "telegram": [
-      {
-        "message": "📣 <b>جديد على موقع الرابطة!</b> 🔔\n🕒 2026-10-31 21:44 (توقيت الجزائر)\n\n━━━━━━━━━━━━━━\n\n🥇 <b>الهدّافون</b>\n⚽ عرض الكل (النجم الرياضي فرفوس بئر العاتر) — <b>4</b> 🆕\n\n🔥 هيا شباب ميلة! 🔴⚪ تابع التفاصيل من الأزرار 👇",
-        "buttons": [
-          [
-            {
-              "text": "🌐 افتح المنصة",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
-            },
-            {
-              "text": "📊 الترتيب",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
-            }
-          ],
-          [
-            {
-              "text": "⚽ المباريات",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
-            },
-            {
-              "text": "👕 التشكيلة",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
-            }
-          ]
-        ]
-      }
-    ]
+    "telegram": []
   }
 }
