@@ -21,7 +21,8 @@
     "f05419542752a467",
     "46d963fa9dba90c7",
     "26e87c4b86da57b5",
-    "d02304536724930c"
+    "d02304536724930c",
+    "ec3c1455dc73529e"
   ],
   "sentEvents": [
     "2015e70ea0de0fcb",
@@ -41,7 +42,8 @@
     "f05419542752a467",
     "46d963fa9dba90c7",
     "26e87c4b86da57b5",
-    "d02304536724930c"
+    "d02304536724930c",
+    "ec3c1455dc73529e"
   ],
   "notificationEvents": {
     "90a1a5ae1a817e8a": {
@@ -119,37 +121,15 @@
     "d02304536724930c": {
       "telegram": "sent",
       "updatedAt": "2026-11-01T14:53:11+01:00"
+    },
+    "ec3c1455dc73529e": {
+      "telegram": "sent",
+      "updatedAt": "2026-11-01T21:46:10+01:00"
     }
   },
   "lastNoNewsAt": "2026-11-01T21:46:06+01:00",
   "queuedNotifications": {
     "events": [],
-    "telegram": [
-      {
-        "message": "😴 <b>لا جديد حالياً</b> 🙌\n✅ فحصتُ موقع الرابطة الساعة 21:46 ولا توجد أي تغييرات 🔍\n📊 ترتيب شباب ميلة: <b>#9</b> · 7 نقاط 🎯\n⏳ المباراة القادمة: الموعد لم يُحدَّد بعد 🤞\n🔔 سأخبرك فور حدوث أي تحديث! 🚀",
-        "buttons": [
-          [
-            {
-              "text": "🌐 افتح المنصة",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
-            },
-            {
-              "text": "📊 الترتيب",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
-            }
-          ],
-          [
-            {
-              "text": "⚽ المباريات",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
-            },
-            {
-              "text": "👕 التشكيلة",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
-            }
-          ]
-        ]
-      }
-    ]
+    "telegram": []
   }
 }
