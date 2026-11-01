@@ -40,7 +40,7 @@ const L = {
     wins:'ف', dr:'ت', ls:'خ', winsLbl:'انتصارات', sp:'الترتيب', tm:'المباراة',
     md_day:'يوم المباراة 🔥', md_now:'جارية الآن ⚽', md_wait:'بانتظار النتيجة النهائية ⏳',
     recap:'ملخص آخر مواجهة', won:'فوز ثمين 🟢', drew:'تعادل 🟡', lost:'خسارة 🔴',
-    scorers:'مسجلو الأهداف', scorersRank:'ترتيب هدافي شباب ميلة', leagueScorersRank:'ترتيب هدافي البطولة · فوج الشرق', roundResultsTitle:'نتائج ومباريات الجولة الحالية · فوج الشرق', pendingScorers:'بانتظار نشر ورقة التحكيم الرسمية من الرابطة', nat:'الجنسية', born:'تاريخ الميلاد', age:'سنة', ast:'تمريرات حاسمة',
+    scorers:'مسجلو الأهداف', scorersRank:'ترتيب هدافي شباب ميلة', pendingScorers:'بانتظار نشر ورقة التحكيم الرسمية من الرابطة', nat:'الجنسية', born:'تاريخ الميلاد', age:'سنة', ast:'تمريرات حاسمة',
     plog:'سجل مشاركات اللاعب', back:'رجوع', nop:'لم يشارك في مباريات رسمية بعد',
     ccta:'استخرج بطاقة المناصر الرسمية 🔴⚪', cphd:'اكتب اسمك واللقب كما تريده على البطاقة',
     cphd2:'احصل على رقمك الخاص وبطاقتك الرقمية الرسمية', cname:'الاسم واللقب الكامل',
@@ -64,8 +64,8 @@ const L = {
     pitchTitle:'التشكيلة التكتيكية لشباب ميلة', h2h:'مواجهات الفريقين هذا الموسم',
     dedNote:'* خصم نقاط بقرار لجنة الانضباط', founded:'تأسس عام 1936',
     stadiumName:'ملعب بلقاسم بلعيد، ميلة', lastUpd:'آخر تحديث للبيانات',
-    partRate:'نسبة الدقائق', outSub:'خروج', statsTab:'إحصائيات البطولة', tblTab:'جدول الترتيب',
-    bestAtk:'أقوى هجوم', bestDef:'أقوى دفاع', totalGoals:'إجمالي أهداف المجموعة', matchDetails:'تفاصيل المواجهة',
+    partRate:'نسبة الدقائق', outSub:'خروج', tblTab:'جدول الترتيب',
+    matchDetails:'تفاصيل المواجهة',
     privTitle:'سياسة الخصوصية وحماية البيانات',
     privBtn:'🔒 سياسة الخصوصية',
     privBody:'تجمع منصة مناصري شباب ميلة (CBM 1936) البيانات الضرورية فقط لإصدار واستعادة بطاقة المناصر الرقمية الرسمية وهي: (1) الاسم واللقب الكامل، (2) معرّف تقني عشوائي للجهاز لمنع التكرار وحماية الحساب من محاولات التخمين، (3) تاريخ الإصدار ورقم البطاقة العشوائي (CBM-XXXXXX). لا تتم مشاركة بياناتك مع أي طرف ثالث، وعند مسح رمز QR للتحقق العام يظهر الاسم مقنّعاً (مثال: م*** ب***) لحماية خصوصيتك.',
@@ -89,7 +89,10 @@ const L = {
     siteUrlLbl:'🔗 الرابط المباشر للمنصة',
     copyUrlBtn:'📋 نسخ رابط الموقع',
     copyNameBtn:'📋 نسخ اسم الموقع للبحث',
-    shareNativeBtn:'↗️ إرسال الرابط للأصدقاء',
+    shareNativeBtn:'مشاركة عبر التطبيقات',
+    copyLinkHint:'اضغط على الرابط لنسخه',
+    shareUnavailable:'قائمة المشاركة غير متاحة هنا؛ تم نسخ الرابط بدلاً منها',
+    copyFailed:'تعذر النسخ. حاول مرة أخرى.',
     dlQrBtn:'⬇️ تحميل صورة QR للموقع',
     notifBtn:'🔔 إشعارات المباريات الفورية',
     notifTitle:'إشعارات مباريات شباب ميلة 🔔',
@@ -138,7 +141,7 @@ const L = {
     wins:'W', dr:'D', ls:'L', winsLbl:'Wins', sp:'Standing', tm:'Match',
     md_day:'Match Day 🔥', md_now:'Live Now ⚽', md_wait:'Awaiting Final Score ⏳',
     recap:'Latest Match Recap', won:'Victory 🟢', drew:'Draw 🟡', lost:'Defeat 🔴',
-    scorers:'Goal Scorers', scorersRank:'CBM Mila Top Scorers', leagueScorersRank:'League Top Scorers · Group East', roundResultsTitle:'Current Round Matches · Group East', pendingScorers:'Awaiting official LIRF match sheet attribution', nat:'Nationality', born:'Date of Birth', age:'yrs', ast:'Assists',
+    scorers:'Goal Scorers', scorersRank:'CBM Mila Top Scorers', pendingScorers:'Awaiting official LIRF match sheet attribution', nat:'Nationality', born:'Date of Birth', age:'yrs', ast:'Assists',
     plog:'Player Match Log', back:'Back', nop:'No official appearances yet',
     ccta:'Get Your Official Supporter Card 🔴⚪', cphd:'Enter your full name as it will appear on the card',
     cphd2:'Get your unique random ID and official digital membership card', cname:'Full Name',
@@ -162,8 +165,8 @@ const L = {
     pitchTitle:'CBM Mila Tactical Lineup', h2h:'Season Head-to-Head',
     dedNote:'* Points deducted by disciplinary committee', founded:'Founded 1936',
     stadiumName:'Stade Belkacem Belaid, Mila', lastUpd:'Last Data Sync',
-    partRate:'Minutes %', outSub:'Out', statsTab:'League Stats', tblTab:'Standings',
-    bestAtk:'Best Attack', bestDef:'Best Defense', totalGoals:'Total League Goals', matchDetails:'Match Center',
+    partRate:'Minutes %', outSub:'Out', tblTab:'Standings',
+    matchDetails:'Match Center',
     privTitle:'Privacy Policy & Data Protection',
     privBtn:'🔒 Privacy Policy',
     privBody:'The CBM Mila 1936 Fan Platform collects only the minimum information required to issue and restore your official digital supporter card: (1) Full name, (2) A random technical device identifier to prevent duplicate abuse and brute-force attempts, and (3) Issue timestamp and random supporter ID (CBM-XXXXXX). Your data is never sold or shared with third parties, and public QR verification displays only a masked name (e.g., M*** B***) to protect your privacy.',
@@ -187,7 +190,10 @@ const L = {
     siteUrlLbl:'🔗 Direct Website Link',
     copyUrlBtn:'📋 Copy Website Link',
     copyNameBtn:'📋 Copy Site Name',
-    shareNativeBtn:'↗️ Share Link with Friends',
+    shareNativeBtn:'Share with other apps',
+    copyLinkHint:'Tap the link to copy it',
+    shareUnavailable:'The share menu is unavailable here; the link was copied instead',
+    copyFailed:'Could not copy. Please try again.',
     dlQrBtn:'⬇️ Download Website QR (PNG)',
     notifBtn:'🔔 Instant Match Notifications',
     notifTitle:'CBM Mila Match Notifications 🔔',
@@ -236,7 +242,7 @@ const L = {
     wins:'G', dr:'N', ls:'P', winsLbl:'Victoires', sp:'Rang', tm:'Match',
     md_day:'Jour de Match 🔥', md_now:'En Direct ⚽', md_wait:'En attente du score ⏳',
     recap:'Résumé du Dernier Match', won:'Victoire 🟢', drew:'Match Nul 🟡', lost:'Défaite 🔴',
-    scorers:'Buteurs', scorersRank:'Buteurs du CBM Mila', leagueScorersRank:'Meilleurs Buteurs · Groupe Est', roundResultsTitle:'Résultats de la Journée · Groupe Est', pendingScorers:'En attente de la feuille de match officielle LIRF', nat:'Nationalité', born:'Date de naissance', age:'ans', ast:'Passes déc.',
+    scorers:'Buteurs', scorersRank:'Buteurs du CBM Mila', pendingScorers:'En attente de la feuille de match officielle LIRF', nat:'Nationalité', born:'Date de naissance', age:'ans', ast:'Passes déc.',
     plog:'Historique des Matchs', back:'Retour', nop:'Aucune apparition officielle',
     ccta:'Obtenez votre Carte de Supporter Officielle 🔴⚪', cphd:'Entrez votre nom complet tel qu\'il apparaîtra sur la carte',
     cphd2:'Obtenez votre identifiant unique et votre carte numérique officielle', cname:'Nom et Prénom',
@@ -260,8 +266,8 @@ const L = {
     pitchTitle:'Composition Tactique CBM Mila', h2h:'Confrontations Directes',
     dedNote:'* Déduction de points par décision disciplinaire', founded:'Fondé en 1936',
     stadiumName:'Stade Belkacem Belaid, Mila', lastUpd:'Dernière synchronisation',
-    partRate:'% Minutes', outSub:'Sortie', statsTab:'Stats & Buteurs', tblTab:'Classement',
-    bestAtk:'Meilleure Attaque', bestDef:'Meilleure Défense', totalGoals:'Total Buts du Groupe', matchDetails:'Détails du Match',
+    partRate:'% Minutes', outSub:'Sortie', tblTab:'Classement',
+    matchDetails:'Détails du Match',
     privTitle:'Politique de Confidentialité',
     privBtn:'🔒 Confidentialité',
     privBody:'La plateforme officielle CBM Mila 1936 collecte uniquement les données strictement nécessaires pour émettre et restaurer votre carte de supporter : (1) Nom et prénom, (2) Identifiant technique d\'appareil aléatoire pour prévenir les abus, et (3) Date d\'émission et numéro aléatoire (CBM-XXXXXX). Vos données ne sont jamais partagées avec des tiers, et la vérification publique par QR affiche uniquement un nom masqué (ex. M*** B***) afin de protéger votre vie privée.',
@@ -285,7 +291,10 @@ const L = {
     siteUrlLbl:'🔗 Lien Direct de la Plateforme',
     copyUrlBtn:'📋 Copier le Lien du Site',
     copyNameBtn:'📋 Copier le Nom du Site',
-    shareNativeBtn:'↗️ Envoyer le Lien aux Amis',
+    shareNativeBtn:'Partager avec les applications',
+    copyLinkHint:'Touchez le lien pour le copier',
+    shareUnavailable:'Le menu de partage est indisponible ; le lien a été copié',
+    copyFailed:'Impossible de copier. Réessayez.',
     dlQrBtn:'⬇️ Télécharger le QR du Site',
     notifBtn:'🔔 Notifications des Matchs',
     notifTitle:'Notifications CBM Mila 1936 🔔',
@@ -320,7 +329,7 @@ const L = {
 
 const S = {
   lang: 'ar', theme: 'dark', tab: 'upc', mLoc: 'all', mSearch: '',
-  pos: 'ALL', pSearch: '', pSort: 'def', tblView: 'tbl', luSide: 'cbm',
+  pos: 'ALL', pSearch: '', pSort: 'def', luSide: 'cbm',
   data: D0, C: null, open: null, openClub: null, hash: '', syncFailed: false, etag: '', lastMod: '', lastSyncOkAt: 0, liveControl: null
 };
 
@@ -690,41 +699,6 @@ function renderScorersBox() {
   }).join('')}</div>`;
 }
 
-function renderLeagueScorersBox() {
-  const list = (S.data.topScorers || []).slice(0, 15);
-  if (!list.length) return '';
-  return `<div class="h2">🏆 ${t('leagueScorersRank')}</div>
-  <div class="glass">${list.map((item, idx) => {
-    const isCbm = String(item.clubId) === CBM;
-    const p = item.playerId ? ply(item.playerId) : null;
-    const c = club(item.clubId);
-    const dispName = p ? nm(p) : nm(item);
-    const subLine = `${nm(c)}${item.shirt ? ' · #' + item.shirt : ''}${item.matches ? ' · ' + item.matches + ' ' + t('apps') : ''}`;
-    const tagAttr = p ? `href="#/player/${esc(p.id)}"` : `data-club="${esc(item.clubId)}" role="button" tabindex="0" style="cursor:pointer"`;
-    return `<a class="row${isCbm ? ' me-row' : ''}" ${tagAttr}>
-      <b class="num" style="width:24px;color:${idx < 3 ? 'var(--gold)' : 'var(--mu)'}">#${idx + 1}</b>
-      ${crest(item.clubId, 34)}
-      <div style="flex:1"><b>${esc(dispName)}</b><small>${esc(subLine)}</small></div>
-      <span class="tag ${isCbm ? 'h' : 'a'} num">${esc(item.goals)} ${t('gl')}</span>
-    </a>`;
-  }).join('')}</div>`;
-}
-
-function renderRoundResultsBox() {
-  const rr = S.data.roundResults || [];
-  if (!rr.length) return '';
-  return `<div class="h2">🏟️ ${t('roundResultsTitle')}</div>
-  <div class="glass">${rr.map(m => {
-    const isCbmMatch = String(m.home) === CBM || String(m.away) === CBM;
-    const scHtml = m.score ? `${m.score.home} - ${m.score.away}` : fT(m.kickoff);
-    return `<div class="row" ${isCbmMatch && m.id ? `data-m="${esc(m.id)}"` : `data-club="${esc(m.home)}"`} role="button" tabindex="0" style="cursor:pointer">
-      <div style="display:flex;align-items:center;gap:6px;flex:1;min-width:0">${crest(m.home, 26)}<b style="font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(nm(club(m.home)))}</b></div>
-      <span class="tag ${m.score ? 'h' : 'a'} num" style="min-width:54px;text-align:center">${esc(scHtml)}</span>
-      <div style="display:flex;align-items:center;justify-content:flex-end;gap:6px;flex:1;min-width:0"><b style="font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:end">${esc(nm(club(m.away)))}</b>${crest(m.away, 26)}</div>
-    </div>`;
-  }).join('')}</div>`;
-}
-
 /* الرئيسية */
 function vHome() {
   const {next: n, last: l} = S.C;
@@ -873,14 +847,16 @@ function trow(r, mini = false) {
   const hasDed = r.adjustedPoints != null && r.adjustedPoints !== r.points;
   const barRatio = Math.max(0, p) / mxp();
   const promoted = Number(r.position) === 1;
-  const rank = `<span class="rank-cell num">${r.position}${promoted ? `<i class="promotion-dot" title="${esc(t('promotion'))}" aria-label="${esc(t('promotion'))}">↑</i>` : ''}</span>`;
+  const rank = promoted
+    ? `<span class="rank-cell num rank-promoted" title="${esc(t('promotion'))}" aria-label="${esc(t('promotion'))}"><span>1</span></span>`
+    : `<span class="rank-cell num">${r.position}</span>`;
   if (mini) {
     return `<div class="tr mini ${me ? 'me' : ''}" data-club="${esc(r.clubId)}" role="button" tabindex="0" style="--v:${barRatio.toFixed(3)}">
       ${rank}
       <div class="cl">${crest(r.clubId, 22)}<span>${esc(nm(club(r.clubId)))}</span></div>
       <span class="num">${r.played}</span>
       <span class="num">${r.goalDifference > 0 ? '+' : ''}${r.goalDifference}</span>
-      <div class="mf5">${(S.C.fm[String(r.clubId)] || []).map(x => `<div class="f s ${x}" title="${x}"></div>`).join('')}</div>
+      <div class="mf5" aria-label="${esc(t('form'))}">${(S.C.fm[String(r.clubId)] || []).slice(-5).map((x, i) => `<span class="f form-result ${x}" title="${x}" aria-label="${x}"><span>${x}</span></span>`).join('')}</div>
       <b class="num pts-cell">${p}${hasDed ? '*' : ''}</b>
     </div>`;
   }
@@ -890,7 +866,7 @@ function trow(r, mini = false) {
     <span class="num">${r.played}</span>
     <span class="num gfga-cell">${r.goalsFor}:${r.goalsAgainst}</span>
     <span class="num">${r.goalDifference > 0 ? '+' : ''}${r.goalDifference}</span>
-    <div class="mf5">${(S.C.fm[String(r.clubId)] || []).map(x => `<div class="f s ${x}" title="${x}"></div>`).join('')}</div>
+    <div class="mf5" aria-label="${esc(t('form'))}">${(S.C.fm[String(r.clubId)] || []).slice(-5).map((x, i) => `<span class="f form-result ${x}" title="${x}" aria-label="${x}"><span>${x}</span></span>`).join('')}</div>
     <b class="num pts-cell">${p}${hasDed ? '*' : ''}</b>
   </div>`;
 }
@@ -898,20 +874,8 @@ function trow(r, mini = false) {
 function vTable() {
   const rows = (S.data.standings || []).slice().sort((a, b) => (a.position || 99) - (b.position || 99));
   const hasDed = rows.some(r => r.adjustedPoints != null && r.adjustedPoints !== r.points);
-  const bestAtk = rows.slice().sort((a, b) => b.goalsFor - a.goalsFor)[0];
-  const bestDef = rows.slice().sort((a, b) => a.goalsAgainst - b.goalsAgainst)[0];
-  const totalGoals = rows.reduce((s, r) => s + (r.goalsFor || 0), 0);
 
-  return `<div class="seg">
-    <button type="button" class="${S.tblView === 'tbl' ? 'on' : ''}" data-tblv="tbl">📊 ${t('tblTab')}</button>
-    <button type="button" class="${S.tblView === 'stats' ? 'on' : ''}" data-tblv="stats">📈 ${t('statsTab')}</button>
-  </div>
-  ${S.tblView === 'stats' ? `<div class="bn" style="margin-bottom:14px">
-    ${bestAtk ? `<div class="t" data-club="${esc(bestAtk.clubId)}" role="button" tabindex="0" style="cursor:pointer"><span class="tl">🔥 ${t('bestAtk')}</span><b class="big num">${bestAtk.goalsFor}</b><span class="sub">${esc(nm(club(bestAtk.clubId)))}</span></div>` : ''}
-    ${bestDef ? `<div class="t" data-club="${esc(bestDef.clubId)}" role="button" tabindex="0" style="cursor:pointer"><span class="tl">🛡️ ${t('bestDef')}</span><b class="big num">${bestDef.goalsAgainst}</b><span class="sub">${esc(nm(club(bestDef.clubId)))}</span></div>` : ''}
-    <div class="t s2"><span class="tl">⚽ ${t('totalGoals')}</span><b class="big num">${totalGoals}</b><span class="sub">${esc(t('tl'))} · ${esc(S.data.sourceMeta?.seasonName || '')}</span></div>
-  </div>${renderLeagueScorersBox()}${renderScorersBox()}${renderRoundResultsBox()}<div style="height:14px"></div>` : ''}
-  <div class="glass tbl">
+  return `<div class="glass tbl">
     <div class="tr hd">
       <span>#</span><span style="text-align:start">${t('club')}</span><span>${t('pl')}</span>
       <span>${t('gfga')}</span><span>${t('gd')}</span><span>${t('fm')}</span><span>${t('pts')}</span>
@@ -1076,12 +1040,12 @@ function vClub() {
   }).join('')}</div>
   <div class="h2">${t('set')}</div>
   <div class="settings-list">
-    <button class="settings-row" type="button" data-notif="1"><span class="settings-ico">🔔</span><span class="settings-copy"><b>${t('settingsNotifications')}</b><small>${t('settingsNotificationsSub')}</small></span><span class="settings-chev">›</span></button>
-    <button class="settings-row" type="button" data-sharesite="1"><span class="settings-ico">▦</span><span class="settings-copy"><b>${t('settingsShare')}</b><small>${t('settingsShareSub')}</small></span><span class="settings-chev">›</span></button>
-    <button class="settings-row" type="button" data-sync="1"><span class="settings-ico">↻</span><span class="settings-copy"><b>${t('settingsRefresh')}</b><small>${t('settingsRefreshSub')}</small></span><span class="settings-chev">›</span></button>
-    <button class="settings-row" type="button" data-status="1"><span class="settings-ico">◷</span><span class="settings-copy"><b>${t('settingsStatus')}</b><small>${t('settingsStatusSub')}</small></span><span class="settings-chev">›</span></button>
-    <button class="settings-row" type="button" data-priv="1"><span class="settings-ico">🔒</span><span class="settings-copy"><b>${t('settingsPrivacy')}</b><small>${t('settingsPrivacySub')}</small></span><span class="settings-chev">›</span></button>
-    ${S.inst ? `<button class="settings-row" type="button" id="b-inst"><span class="settings-ico">📲</span><span class="settings-copy"><b>${t('install')}</b><small>${t('ibmsg')}</small></span><span class="settings-chev">›</span></button>` : ''}
+    <button class="settings-row" type="button" data-notif="1"><span class="settings-ico ico-notif" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9Z"/><path d="M10 21h4"/></svg></span><span class="settings-copy"><b>${t('settingsNotifications')}</b><small>${t('settingsNotificationsSub')}</small></span><span class="settings-chev">›</span></button>
+    <button class="settings-row" type="button" data-sharesite="1"><span class="settings-ico ico-share" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5"/><path d="M5 12v8h14v-8"/></svg></span><span class="settings-copy"><b>${t('settingsShare')}</b><small>${t('settingsShareSub')}</small></span><span class="settings-chev">›</span></button>
+    <button class="settings-row" type="button" data-sync="1"><span class="settings-ico ico-refresh" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M5.6 9A7 7 0 0 1 18 7l2 5M4 12l2 5a7 7 0 0 0 12.4-2"/></svg></span><span class="settings-copy"><b>${t('settingsRefresh')}</b><small>${t('settingsRefreshSub')}</small></span><span class="settings-chev">›</span></button>
+    <button class="settings-row" type="button" data-status="1"><span class="settings-ico ico-status" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="settings-copy"><b>${t('settingsStatus')}</b><small>${t('settingsStatusSub')}</small></span><span class="settings-chev">›</span></button>
+    <button class="settings-row" type="button" data-priv="1"><span class="settings-ico ico-privacy" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span><span class="settings-copy"><b>${t('settingsPrivacy')}</b><small>${t('settingsPrivacySub')}</small></span><span class="settings-chev">›</span></button>
+    ${S.inst ? `<button class="settings-row" type="button" id="b-inst"><span class="settings-ico ico-install" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2"/><path d="M10 18.5h4"/></svg></span><span class="settings-copy"><b>${t('install')}</b><small>${t('ibmsg')}</small></span><span class="settings-chev">›</span></button>` : ''}
   </div>`;
 }
 
@@ -1580,6 +1544,22 @@ function openNotifModal() {
 }
 
 let siteQrUrl = '';
+async function copyPlainText(value) {
+  try {
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(String(value));
+      return true;
+    }
+    const field = document.createElement('textarea');
+    field.value = String(value);
+    field.setAttribute('readonly', '');
+    field.style.position = 'fixed'; field.style.opacity = '0'; field.style.pointerEvents = 'none';
+    document.body.appendChild(field); field.select();
+    const ok = document.execCommand('copy');
+    field.remove();
+    return ok;
+  } catch (e) { return false; }
+}
 function openSiteShare() {
   const siteUrl = getOfficialSiteUrl();
   let qrData = '';
@@ -1592,7 +1572,10 @@ function openSiteShare() {
   } catch (e) {}
   cmOpen(`<h3>🔴⚪ ${esc(t('siteShareTitle'))}</h3>
     ${qrData ? `<div class="sh-qr-wrap compact"><img src="${esc(qrData)}" alt="QR Code CBM Mila" width="190" height="190"></div>` : ''}
-    <a class="sh-direct-link" href="${esc(siteUrl)}" target="_blank" rel="noopener">${esc(siteUrl)}</a>`);
+    <button class="sh-direct-link" type="button" id="sh-copy-url" aria-label="${esc(t('copyUrlBtn'))}">
+      <span>${esc(siteUrl)}</span><small>${esc(t('copyLinkHint'))}</small>
+    </button>
+    <button class="sh-native-action" type="button" id="sh-native"><span aria-hidden="true">↗</span>${esc(t('shareNativeBtn'))}</button>`);
 }
 
 function openDataStatus() {
@@ -1613,7 +1596,7 @@ async function shareMatch(id) {
   } catch (e) {}
 }
 
-document.addEventListener('click', e => {
+document.addEventListener('click', async e => {
   const g = s => e.target.closest(s);
   let x;
   const aHref = g('a[href^="#/"]');
@@ -1632,8 +1615,8 @@ document.addEventListener('click', e => {
   if (g('#nf-disable')) return disablePushNotifications();
   if (g('#b-share-site') || g('[data-sharesite]')) return openSiteShare();
   if (g('#sh-copy-url')) {
-    const u = getOfficialSiteUrl();
-    if (navigator.clipboard?.writeText) navigator.clipboard.writeText(u).then(() => toast(t('copied'))).catch(() => {});
+    const ok = await copyPlainText(getOfficialSiteUrl());
+    toast(ok ? t('copied') : t('copyFailed'));
     return;
   }
   if (g('#sh-copy-name')) {
@@ -1643,8 +1626,13 @@ document.addEventListener('click', e => {
   }
   if (g('#sh-native')) {
     const u = getOfficialSiteUrl(), n = t('siteNameVal');
-    if (navigator.share) navigator.share({title: n, text: n, url: u}).catch(() => {});
-    else if (navigator.clipboard?.writeText) navigator.clipboard.writeText(u).then(() => toast(t('copied'))).catch(() => {});
+    if (navigator.share) {
+      try { await navigator.share({title: n, text: n, url: u}); }
+      catch (err) { if (err?.name !== 'AbortError') toast(t('copyFailed')); }
+    } else {
+      const ok = await copyPlainText(u);
+      toast(ok ? t('shareUnavailable') : t('copyFailed'));
+    }
     return;
   }
   if (g('#sh-dl-qr')) {
@@ -1661,7 +1649,6 @@ document.addEventListener('click', e => {
   if (x = g('[data-club]')) return openClubSheet(x.dataset.club);
   if (x = g('[data-tab]')) { S.tab = x.dataset.tab; return render(); }
   if (x = g('[data-mloc]')) { S.mLoc = x.dataset.mloc; return render(); }
-  if (x = g('[data-tblv]')) { S.tblView = x.dataset.tblv; return render(); }
   if (x = g('[data-pos]')) { S.pos = x.dataset.pos; return render(); }
   if (g('#b-sync') || g('[data-sync]')) return sync(true, true);
   if (g('#b-theme')) return toggleTheme();
