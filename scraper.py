@@ -3873,8 +3873,39 @@ def run_scraper(
 
     unique_events = dedupe_events(push_events)
 
-    # Rich Telegram digest of every net change, or a friendly (rate-limited) "nothing new" message
+    # Private match-control prompt: only a newly-live CBM home fixture is eligible.
+    # TELEGRAM_CHAT_ID is the configured private chat, so supporters never receive admin controls.
     now_dt = datetime.now(TZ)
+    original_by_id = {str(m.get('id')): m for m in (original_data.get('matches') or [])}
+    cbm_id = str((working_data.get('club') or {}).get('id') or DEFAULT_CLUB_ID)
+    for live_match in (working_data.get('matches') or []):
+        previous_match = original_by_id.get(str(live_match.get('id'))) or {}
+        if (
+            live_match.get('status') == 'live'
+            and str(live_match.get('home')) == cbm_id
+            and previous_match.get('status') != 'live'
+        ):
+            match_id = str(live_match.get('id') or '')
+            kickoff_dt = parse_iso_kickoff(live_match.get('kickoff'))
+            kickoff_epoch = int(kickoff_dt.timestamp()) if kickoff_dt else int(now_dt.timestamp())
+            prompt_buttons = [[
+                {"text": "✅ نعم، أتحكم بالنتيجة", "callback_data": f"cbmctl|yes|{match_id}|{kickoff_epoch}"},
+                {"text": "⏳ لا، انتظر الرسمي", "callback_data": f"cbmctl|no|{match_id}|{kickoff_epoch}"},
+            ]]
+            home_name = _cname(working_data, live_match.get('home'))
+            away_name = _cname(working_data, live_match.get('away'))
+            extra_messages.append({
+                "message": (
+                    "🔴 <b>بدأت مباراة شباب ميلة على أرضه!</b>\n"
+                    f"🏟 {home_name} ⚔️ {away_name}\n"
+                    f"الجولة {live_match.get('round') or '—'} · {str(live_match.get('kickoff') or '')[:16]}\n"
+                    "هل تريد تفعيل التحكم اليدوي في النتيجة؟\n"
+                    "إذا رفضت، سننتظر ما تنشره الرابطة رسمياً."
+                ),
+                "buttons": prompt_buttons,
+            })
+
+    # Rich Telegram digest of every net change, or a friendly (rate-limited) "nothing new" message
     digest_text = build_change_digest(original_data, working_data, now=now_dt)
     if digest_text:
         extra_messages.append({"message": digest_text, "buttons": TELEGRAM_BUTTONS})

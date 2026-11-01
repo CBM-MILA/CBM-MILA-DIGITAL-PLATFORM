@@ -51,6 +51,16 @@ const WRITE_ACTIONS = {
   push_prune: true
 };
 
+// LockService supports waitLock in Apps Script; tryLock fallback keeps the VM test harness compatible.
+function waitForLock_(lock, timeoutMs) {
+  if (lock && typeof lock.waitLock === 'function') {
+    lock.waitLock(timeoutMs);
+    return true;
+  }
+  if (lock && typeof lock.tryLock === 'function' && lock.tryLock(timeoutMs)) return true;
+  throw new Error('Lock timeout');
+}
+
 // يُضبط ADMIN_KEY في Project Settings > Script Properties باسم ADMIN_KEY
 const DEFAULT_ADMIN_KEY = '';
 
@@ -60,6 +70,236 @@ function getAdminKey_() {
     if (propKey) return String(propKey).trim();
   } catch (e) {}
   return String(DEFAULT_ADMIN_KEY || '').trim();
+}
+
+// --- Telegram-protected match control (separate from supporter-card records) ---
+const LIVE_CONTROL_PROP = 'CBM_LIVE_CONTROL_STATE';
+
+function telegramProps_() {
+  return PropertiesService.getScriptProperties();
+}
+
+function telegramToken_() {
+  return String(telegramProps_().getProperty('TELEGRAM_BOT_TOKEN') || '').trim();
+}
+
+function telegramAdminId_() {
+  return String(telegramProps_().getProperty('TELEGRAM_ADMIN_ID') || '').trim();
+}
+
+function publicLiveControlState_() {
+  try {
+    const raw = telegramProps_().getProperty(LIVE_CONTROL_PROP);
+    if (!raw) return null;
+    const state = JSON.parse(raw);
+    if (!state || typeof state !== 'object' || !state.matchId) return null;
+    if (state.active && state.startedAt) {
+      const started = new Date(state.startedAt).getTime();
+      // Safety expiry prevents an abandoned manual control session from remaining live indefinitely.
+      if (!Number.isFinite(started) || Date.now() - started > 5 * 60 * 60 * 1000) {
+        state.active = false;
+        state.expired = true;
+        telegramProps_().setProperty(LIVE_CONTROL_PROP, JSON.stringify(state));
+      }
+    }
+    if (!state.active) return null;
+    return {
+      active: true,
+      matchId: String(state.matchId),
+      homeId: '733',
+      score: {
+        home: Math.max(0, parseInt(state.score && state.score.home, 10) || 0),
+        away: Math.max(0, parseInt(state.score && state.score.away, 10) || 0)
+      },
+      startedAt: String(state.startedAt || ''),
+      updatedAt: String(state.updatedAt || ''),
+      source: 'manual'
+    };
+  } catch (err) {
+    console.error('[CBM Telegram] invalid saved live state:', err);
+    return null;
+  }
+}
+
+function telegramApi_(method, payload) {
+  const token = telegramToken_();
+  if (!token) throw new Error('TELEGRAM_BOT_TOKEN is not configured in Script Properties');
+  const response = UrlFetchApp.fetch('https://api.telegram.org/bot' + token + '/' + method, {
+    method: 'post',
+    contentType: 'application/json',
+    payload: JSON.stringify(payload || {}),
+    muteHttpExceptions: true
+  });
+  const result = JSON.parse(response.getContentText() || '{}');
+  if (!result.ok) throw new Error('Telegram API rejected ' + method + ': ' + String(result.description || 'unknown error'));
+  return result;
+}
+
+function liveControlKeyboard_(matchId) {
+  return { inline_keyboard: [
+    [
+      { text: '⚽ +1 لشباب ميلة', callback_data: 'cbmctl|home|' + matchId },
+      { text: '⚽ +1 للخصم', callback_data: 'cbmctl|away|' + matchId }
+    ],
+    [
+      { text: '↩ حذف آخر هدف', callback_data: 'cbmctl|undo|' + matchId },
+      { text: '🔒 إنهاء التحكم', callback_data: 'cbmctl|stop|' + matchId }
+    ]
+  ] };
+}
+
+function answerTelegramCallback_(callbackId, message) {
+  try { telegramApi_('answerCallbackQuery', { callback_query_id: callbackId, text: message || '', show_alert: false }); } catch (err) {}
+}
+
+function editTelegramControlMessage_(state, fallbackMessage) {
+  if (!state || !state.chatId || !state.messageId) return;
+  const score = state.score || { home: 0, away: 0 };
+  const text = state.active
+    ? '🟢 التحكم اليدوي في نتيجة مباراة شباب ميلة\n\nشباب ميلة  ' + score.home + ' - ' + score.away + '  الفريق المنافس\n\nاستخدم الأزرار لتسجيل الأهداف أو حذف آخر هدف. الوقت على الموقع محسوب من موعد بداية المباراة.'
+    : (fallbackMessage || 'تم إيقاف التحكم اليدوي. ستُعرض النتيجة الرسمية عند وصولها من المصدر الرسمي.');
+  const payload = { chat_id: state.chatId, message_id: state.messageId, text: text };
+  if (state.active) payload.reply_markup = liveControlKeyboard_(state.matchId);
+  else payload.reply_markup = { inline_keyboard: [] };
+  try { telegramApi_('editMessageText', payload); } catch (err) { console.warn('[CBM Telegram] edit message failed:', err); }
+}
+
+function handleTelegramControlUpdate_(update) {
+  const callback = update && update.callback_query;
+  if (!callback || !callback.id || !callback.data) return;
+  const fromId = String(callback.from && callback.from.id || '');
+  const adminId = telegramAdminId_();
+  if (!adminId || fromId !== adminId) {
+    answerTelegramCallback_(callback.id, 'غير مصرح لك بالتحكم.');
+    return;
+  }
+
+  const parts = String(callback.data).split('|');
+  if (parts[0] !== 'cbmctl' || parts.length < 3) {
+    answerTelegramCallback_(callback.id, 'طلب غير معروف.');
+    return;
+  }
+  const action = parts[1];
+  const matchId = String(parts[2]).replace(/[^0-9]/g, '').slice(0, 16);
+  if (!matchId) {
+    answerTelegramCallback_(callback.id, 'معرّف المباراة غير صالح.');
+    return;
+  }
+
+  const lock = LockService.getScriptLock();
+  try {
+    waitForLock_(lock, 10000);
+    const props = telegramProps_();
+    const raw = props.getProperty(LIVE_CONTROL_PROP);
+    let state = raw ? JSON.parse(raw) : null;
+    const message = callback.message || {};
+    const chatId = String(message.chat && message.chat.id || '');
+    const messageId = Number(message.message_id || 0);
+
+    if (action === 'yes' || action === 'no') {
+      const kickoffEpoch = Math.max(0, parseInt(parts[3], 10) || 0);
+      const nowEpoch = Math.floor(Date.now() / 1000);
+      // Ignore stale Telegram prompts and controls clicked long after the scheduled fixture.
+      if (!kickoffEpoch || kickoffEpoch > nowEpoch + 30 * 60 || nowEpoch - kickoffEpoch > 5 * 60 * 60) {
+        answerTelegramCallback_(callback.id, 'انتهت صلاحية هذا الطلب. انتظر إشعار بداية المباراة الجديدة.');
+        return;
+      }
+    }
+
+    if (action === 'yes') {
+      const kickoffEpoch = Math.max(0, parseInt(parts[3], 10) || 0);
+      if (state && state.active && String(state.matchId) === matchId) {
+        answerTelegramCallback_(callback.id, 'التحكم مفعّل بالفعل لهذه المباراة.');
+        return;
+      }
+      const startedAt = new Date(kickoffEpoch * 1000).toISOString();
+      state = {
+        active: true,
+        matchId: matchId,
+        score: { home: 0, away: 0 },
+        events: [],
+        startedAt: startedAt,
+        updatedAt: new Date().toISOString(),
+        chatId: chatId,
+        messageId: messageId
+      };
+      props.setProperty(LIVE_CONTROL_PROP, JSON.stringify(state));
+      answerTelegramCallback_(callback.id, 'تم تفعيل التحكم اليدوي.');
+      editTelegramControlMessage_(state);
+      return;
+    }
+
+    if (action === 'no') {
+      state = {
+        active: false,
+        matchId: matchId,
+        score: { home: 0, away: 0 },
+        choice: 'official_only',
+        updatedAt: new Date().toISOString(),
+        chatId: chatId,
+        messageId: messageId
+      };
+      props.setProperty(LIVE_CONTROL_PROP, JSON.stringify(state));
+      answerTelegramCallback_(callback.id, 'حسناً، سننتظر النتيجة الرسمية.');
+      editTelegramControlMessage_(state, 'تم اختيار النتيجة الرسمية فقط. ستظهر أي نتيجة تنشرها الرابطة دون تدخل يدوي.');
+      return;
+    }
+
+    if (!state || !state.active || String(state.matchId) !== matchId) {
+      answerTelegramCallback_(callback.id, 'لا توجد مباراة نشطة للتحكم حالياً.');
+      return;
+    }
+
+    if (!Array.isArray(state.events)) state.events = [];
+    if (action === 'home' || action === 'away') {
+      state.events.push(action);
+    } else if (action === 'undo') {
+      if (state.events.length) state.events.pop();
+    } else if (action === 'stop') {
+      state.active = false;
+    } else {
+      answerTelegramCallback_(callback.id, 'إجراء غير معروف.');
+      return;
+    }
+
+    state.score = {
+      home: state.events.filter(function(x) { return x === 'home'; }).length,
+      away: state.events.filter(function(x) { return x === 'away'; }).length
+    };
+    state.updatedAt = new Date().toISOString();
+    if (chatId && messageId) { state.chatId = chatId; state.messageId = messageId; }
+    props.setProperty(LIVE_CONTROL_PROP, JSON.stringify(state));
+    answerTelegramCallback_(callback.id, action === 'stop' ? 'تم إنهاء التحكم.' : 'تم تحديث النتيجة.');
+    editTelegramControlMessage_(state);
+  } catch (err) {
+    console.error('[CBM Telegram] control callback failed:', err);
+    answerTelegramCallback_(callback.id, 'تعذّر تنفيذ العملية. حاول مرة أخرى.');
+  } finally {
+    try { lock.releaseLock(); } catch (ignore) {}
+  }
+}
+
+/**
+ * Run once from Apps Script after setting TELEGRAM_BOT_TOKEN and TELEGRAM_ADMIN_ID
+ * in Project Settings > Script Properties. It registers this web app as the Telegram webhook.
+ */
+function setupTelegramControlWebhook() {
+  const props = telegramProps_();
+  const token = telegramToken_();
+  const adminId = telegramAdminId_();
+  const url = ScriptApp.getService().getUrl();
+  if (!token) throw new Error('Add TELEGRAM_BOT_TOKEN to Script Properties first.');
+  if (!adminId) throw new Error('Add TELEGRAM_ADMIN_ID to Script Properties first.');
+  if (!url || url.indexOf('/exec') < 0) throw new Error('Deploy this Apps Script as a Web App before setting the webhook.');
+  let secret = String(props.getProperty('TELEGRAM_WEBHOOK_SECRET') || '');
+  if (!secret) {
+    secret = Utilities.getUuid().replace(/-/g, '') + Utilities.getUuid().replace(/-/g, '');
+    props.setProperty('TELEGRAM_WEBHOOK_SECRET', secret);
+  }
+  const webhookUrl = url + '?cbm_tg_hook=' + encodeURIComponent(secret);
+  const result = telegramApi_('setWebhook', { url: webhookUrl, allowed_updates: ['callback_query'], max_connections: 1 });
+  console.log('Telegram match-control webhook configured: ' + Boolean(result.ok));
+  return result.ok;
 }
 
 // --- Web App Endpoints ---
@@ -72,6 +312,22 @@ function doGet(e) {
 }
 
 function doPost(e) {
+  const params = (e && e.parameter) || {};
+  const suppliedHook = String(params.cbm_tg_hook || '');
+  if (suppliedHook) {
+    const expectedHook = String(PropertiesService.getScriptProperties().getProperty('TELEGRAM_WEBHOOK_SECRET') || '');
+    if (!expectedHook || suppliedHook !== expectedHook) {
+      return ContentService.createTextOutput('unauthorized');
+    }
+    try {
+      const update = JSON.parse((e && e.postData && e.postData.contents) || '{}');
+      handleTelegramControlUpdate_(update);
+      return ContentService.createTextOutput('ok');
+    } catch (err) {
+      console.error('[CBM Telegram] webhook processing failed:', err);
+      return ContentService.createTextOutput('ok');
+    }
+  }
   const raw = (e && e.postData && e.postData.contents) || '{}';
   return run_(raw, 'POST');
 }
@@ -94,7 +350,7 @@ function run_(raw, method) {
 
   if (lock) {
     try {
-      lock.waitLock(15000);
+      waitForLock_(lock, 15000);
     } catch (lockErr) {
       console.error('[CBM Code.gs] Lock timeout on action=' + action + ':', lockErr);
       return out_({ ok: false, code: 'lock_timeout', msg: 'Server busy, please retry' });
@@ -292,6 +548,12 @@ function handle_(q, method) {
 
   if (method === 'GET' && (action !== 'verify' || q.key)) {
     return { ok: false, code: 'method_not_allowed' };
+  }
+
+  // Public, read-only match-control state. It exposes only the live match ID and scoreboard.
+  // Telegram mutations are accepted only through the secret webhook and the allow-listed admin ID.
+  if (method === 'POST' && action === 'live_state') {
+    return { ok: true, state: publicLiveControlState_() };
   }
 
   const sheet = sheet_();

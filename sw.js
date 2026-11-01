@@ -1,11 +1,11 @@
-/* CBM Mila 1936 — Official PWA Service Worker (v5) */
+/* CBM Mila 1936 — Official PWA Service Worker (v6) */
 'use strict';
 
 try {
   importScripts('./config.js');
 } catch (e) {}
 
-const CACHE_VERSION = self.CBM_BUILD_VERSION || '2026.10.30.v5';
+const CACHE_VERSION = self.CBM_BUILD_VERSION || '2026.10.31.v6';
 // Cache Storage is shared by all GitHub Pages projects on this origin.
 // Keep this app's cache namespace isolated and never delete another app's caches.
 const CACHE_PREFIX = 'cbm-mila-digital-platform';

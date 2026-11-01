@@ -70,6 +70,16 @@ const L = {
     privBtn:'🔒 سياسة الخصوصية',
     privBody:'تجمع منصة مناصري شباب ميلة (CBM 1936) البيانات الضرورية فقط لإصدار واستعادة بطاقة المناصر الرقمية الرسمية وهي: (1) الاسم واللقب الكامل، (2) معرّف تقني عشوائي للجهاز لمنع التكرار وحماية الحساب من محاولات التخمين، (3) تاريخ الإصدار ورقم البطاقة العشوائي (CBM-XXXXXX). لا تتم مشاركة بياناتك مع أي طرف ثالث، وعند مسح رمز QR للتحقق العام يظهر الاسم مقنّعاً (مثال: م*** ب***) لحماية خصوصيتك.',
     verMaskedNote:'لحماية خصوصية المناصر، يُعرض الاسم مقنّعاً في صفحة التحقق العام.',
+    siteShareBtn:'مشاركة الموقع',
+    settingsNotifications:'إشعارات المباريات', settingsNotificationsSub:'تفعيل أو إيقاف إشعارات هذا الجهاز',
+    settingsShare:'مشاركة الموقع', settingsShareSub:'رمز QR والرابط المباشر',
+    settingsRefresh:'تحديث البيانات', settingsRefreshSub:'جلب آخر معلومات المباريات والترتيب',
+    settingsStatus:'حالة البيانات', settingsStatusSub:'معرفة وقت آخر تحديث',
+    settingsTheme:'المظهر', settingsThemeSub:'التبديل بين الوضعين الفاتح والداكن',
+    settingsPrivacy:'الخصوصية', settingsPrivacySub:'سياسة حماية بيانات المناصرين',
+    dataStatusTitle:'حالة بيانات المنصة', dataStatusFresh:'البيانات حديثة', dataStatusStale:'قد تكون البيانات قديمة أو تعذّر آخر تحديث',
+    promotion:'مؤهل للصعود', promotionShort:'صعود', liveClock:'دقيقة المباراة',
+    liveManual:'النتيجة مُحدّثة يدوياً من إدارة النادي', liveOfficial:'النتيجة حسب المصدر الرسمي',
     siteShareBtn:'📤 مشاركة الموقع ورمز QR',
     siteShareTitle:'مشاركة المنصة الرسمية لشباب ميلة',
     siteShareSub:'امسح رمز QR بكاميرا الهاتف أو انسخ الرابط أو ابحث باسم الموقع',
@@ -158,6 +168,16 @@ const L = {
     privBtn:'🔒 Privacy Policy',
     privBody:'The CBM Mila 1936 Fan Platform collects only the minimum information required to issue and restore your official digital supporter card: (1) Full name, (2) A random technical device identifier to prevent duplicate abuse and brute-force attempts, and (3) Issue timestamp and random supporter ID (CBM-XXXXXX). Your data is never sold or shared with third parties, and public QR verification displays only a masked name (e.g., M*** B***) to protect your privacy.',
     verMaskedNote:'To protect supporter privacy, the holder name is masked on public verification.',
+    siteShareBtn:'Share Website',
+    settingsNotifications:'Match notifications', settingsNotificationsSub:'Enable or disable alerts on this device',
+    settingsShare:'Share website', settingsShareSub:'QR code and direct link',
+    settingsRefresh:'Refresh data', settingsRefreshSub:'Fetch the latest match and standings data',
+    settingsStatus:'Data status', settingsStatusSub:'View the last successful update time',
+    settingsTheme:'Appearance', settingsThemeSub:'Switch between dark and light mode',
+    settingsPrivacy:'Privacy', settingsPrivacySub:'Supporter data protection policy',
+    dataStatusTitle:'Platform data status', dataStatusFresh:'Data is up to date', dataStatusStale:'Data may be stale or the last update failed',
+    promotion:'Promotion place', promotionShort:'PROMOTION', liveClock:'Match time',
+    liveManual:'Score entered manually by club admin', liveOfficial:'Score from the official source',
     siteShareBtn:'📤 Share Website & QR Code',
     siteShareTitle:'Share Official CBM Mila Platform',
     siteShareSub:'Scan the QR code, copy the link, or search by site name',
@@ -246,6 +266,16 @@ const L = {
     privBtn:'🔒 Confidentialité',
     privBody:'La plateforme officielle CBM Mila 1936 collecte uniquement les données strictement nécessaires pour émettre et restaurer votre carte de supporter : (1) Nom et prénom, (2) Identifiant technique d\'appareil aléatoire pour prévenir les abus, et (3) Date d\'émission et numéro aléatoire (CBM-XXXXXX). Vos données ne sont jamais partagées avec des tiers, et la vérification publique par QR affiche uniquement un nom masqué (ex. M*** B***) afin de protéger votre vie privée.',
     verMaskedNote:'Pour protéger la vie privée du supporter, le nom est masqué lors de la vérification publique.',
+    siteShareBtn:'Partager le site',
+    settingsNotifications:'Notifications des matchs', settingsNotificationsSub:'Activer ou désactiver les alertes sur cet appareil',
+    settingsShare:'Partager le site', settingsShareSub:'Code QR et lien direct',
+    settingsRefresh:'Actualiser les données', settingsRefreshSub:'Récupérer les dernières informations',
+    settingsStatus:'État des données', settingsStatusSub:'Voir l’heure de la dernière mise à jour',
+    settingsTheme:'Apparence', settingsThemeSub:'Basculer entre le mode sombre et clair',
+    settingsPrivacy:'Confidentialité', settingsPrivacySub:'Protection des données des supporters',
+    dataStatusTitle:'État des données', dataStatusFresh:'Données à jour', dataStatusStale:'Les données peuvent être anciennes ou la dernière mise à jour a échoué',
+    promotion:'Place qualificative', promotionShort:'MONTÉE', liveClock:'Temps de match',
+    liveManual:'Score saisi manuellement par le club', liveOfficial:'Score issu de la source officielle',
     siteShareBtn:'📤 Partager le Site & QR',
     siteShareTitle:'Partager la Plateforme CBM Mila',
     siteShareSub:'Scannez le code QR, copiez le lien ou recherchez le nom du site',
@@ -291,7 +321,7 @@ const L = {
 const S = {
   lang: 'ar', theme: 'dark', tab: 'upc', mLoc: 'all', mSearch: '',
   pos: 'ALL', pSearch: '', pSort: 'def', tblView: 'tbl', luSide: 'cbm',
-  data: D0, C: null, open: null, openClub: null, hash: '', syncFailed: false, etag: '', lastMod: '', lastSyncOkAt: 0
+  data: D0, C: null, open: null, openClub: null, hash: '', syncFailed: false, etag: '', lastMod: '', lastSyncOkAt: 0, liveControl: null
 };
 
 let lastTriggerEl = null;
@@ -381,7 +411,7 @@ function staleBannerHtml() {
 
 function matchBadgesHtml(m) {
   let b = '';
-  if (m.status === 'live') b += `<span class="tag live-b">${esc(t('st_live'))}</span>`;
+  if (m.status === 'live') b += `<span class="tag live-b">${esc(t('st_live'))}</span>` + (m.manualLive ? `<span class="tag manual-b">${esc(t('liveManual'))}</span>` : '');
   else if (m.status === 'postponed') b += `<span class="tag post-b">${esc(t('st_postponed'))}</span>`;
   else if (m.status === 'forfeit') b += `<span class="tag post-b">${esc(t('st_forfeit'))}</span>`;
   else if (m.rescheduledFrom) b += `<span class="tag resch-b">${esc(t('st_rescheduled'))}</span>`;
@@ -416,13 +446,22 @@ function res(m) {
 }
 
 /* حساب الإحصائيات الشاملة لكل دورة رسم */
+function effectiveMatch(match) {
+  const state = S.liveControl;
+  if (!match || !state || !state.active || String(state.matchId) !== String(match.id) || String(match.home) !== CBM || !['scheduled','rescheduled','live'].includes(String(match.status || '').toLowerCase())) return match;
+  const score = state.score && Number.isFinite(Number(state.score.home)) && Number.isFinite(Number(state.score.away))
+    ? {home: Math.max(0, Number(state.score.home)), away: Math.max(0, Number(state.score.away))}
+    : {home: 0, away: 0};
+  return {...match, status:'live', score, liveStartedAt:state.startedAt || match.kickoff, manualLive:true};
+}
+
 function calc() {
   const d = S.data, st = {};
   let hasA = 0;
   (d.players || []).forEach(p => {
     st[p.id] = {id: String(p.id), apps: 0, min: 0, g: 0, y: 0, r: 0, a: 0, log: []};
   });
-  const all = (d.matches || []).slice().sort((a, b) => (a.round || 99) - (b.round || 99));
+  const all = (d.matches || []).map(effectiveMatch).slice().sort((a, b) => (a.round || 99) - (b.round || 99));
   const fin = all.filter(m => m.status === 'finished' && m.score);
 
   fin.forEach(m => {
@@ -518,7 +557,7 @@ function calc() {
   });
 
   const form = byTime.slice(-5);
-  const next = all.find(m => m.status !== 'finished');
+  const next = all.find(m => m.status === 'live') || all.find(m => m.status !== 'finished');
   const last = byTime[byTime.length - 1] || null;
   let pts = 0, gf = 0, ga = 0, cs = 0;
   fin.forEach(m => {
@@ -558,7 +597,18 @@ function formHtml() {
 }
 
 const scr = s => `<span>${esc(s.home)}</span><span>-</span><span>${esc(s.away)}</span>`;
-const mid = m => m.status === 'postponed' ? `<div class="num">${esc(t('st_postponed'))}</div>` : (m.score ? `<div class="scr">${scr(m.score)}</div>` : `<div class="num">${esc(fT(m.kickoff))}</div>`);
+const mid = m => {
+  if (m.status === 'postponed') return `<div class="num">${esc(t('st_postponed'))}</div>`;
+  if (m.status === 'live') {
+    const score = m.score || {home:0, away:0};
+    const start = okD(m.liveStartedAt || m.kickoff) ? new Date(m.liveStartedAt || m.kickoff).getTime() : 0;
+    const clock = start ? `<small class="live-clock" data-live-start="${start}">--:--</small>` : `<small class="live-clock">--:--</small>`;
+    return `<div class="scr live-score">${scr(score)}</div>${clock}`;
+  }
+  if (m.score) return `<div class="scr">${scr(m.score)}</div>`;
+  if (!okD(m.kickoff)) return `<div class="tbd-mid">${esc(t('tbd'))}</div>`;
+  return `<div class="num">${esc(fT(m.kickoff))}</div>`;
+};
 const tag = m => (isH(m) ? `<span class="tag h">${esc(t('hm'))}</span>` : `<span class="tag a">${esc(t('aw'))}</span>`) + matchBadgesHtml(m);
 
 function mItem(m) {
@@ -686,7 +736,7 @@ function vHome() {
   h += '<div class="bn">';
 
   if (n) {
-    const v = venue(n.venue), ph = mdPhase(n), z = ph ? 84 : 72;
+    const v = venue(n.venue), ph = mdPhase(n), z = ph ? 76 : 68;
     h += `<div class="pw"><div class="pass${ph ? ' md' : ''}"><div class="pi">
       <i class="cn a"></i><i class="cn b"></i><i class="cn c"></i><i class="cn d"></i>
       <div class="pbar"><b>${t('next')}</b><span>${t('round')} ${n.round}</span><em>${esc(t('tl'))}</em></div>
@@ -822,27 +872,26 @@ function trow(r, mini = false) {
   const p = ptsOf(r);
   const hasDed = r.adjustedPoints != null && r.adjustedPoints !== r.points;
   const barRatio = Math.max(0, p) / mxp();
+  const promoted = Number(r.position) === 1;
+  const rank = `<span class="rank-cell num">${r.position}${promoted ? `<i class="promotion-dot" title="${esc(t('promotion'))}" aria-label="${esc(t('promotion'))}">↑</i>` : ''}</span>`;
   if (mini) {
     return `<div class="tr mini ${me ? 'me' : ''}" data-club="${esc(r.clubId)}" role="button" tabindex="0" style="--v:${barRatio.toFixed(3)}">
-      <span class="num">${r.position}</span>
-      <div class="cl">${crest(r.clubId, 24)}<span>${esc(nm(club(r.clubId)))}</span></div>
+      ${rank}
+      <div class="cl">${crest(r.clubId, 22)}<span>${esc(nm(club(r.clubId)))}</span></div>
       <span class="num">${r.played}</span>
       <span class="num">${r.goalDifference > 0 ? '+' : ''}${r.goalDifference}</span>
-      <div class="mf5">${(S.C.fm[String(r.clubId)] || []).map(x => `<div class="f s ${x}"><span>${x}</span></div>`).join('')}</div>
-      <b class="num">${p}${hasDed ? '*' : ''}</b>
+      <div class="mf5">${(S.C.fm[String(r.clubId)] || []).map(x => `<div class="f s ${x}" title="${x}"></div>`).join('')}</div>
+      <b class="num pts-cell">${p}${hasDed ? '*' : ''}</b>
     </div>`;
   }
   return `<div class="tr ${me ? 'me' : ''}" data-club="${esc(r.clubId)}" role="button" tabindex="0" style="--v:${barRatio.toFixed(3)}">
-    <span class="num">${r.position}</span>
-    <div class="cl">${crest(r.clubId, 24)}<span>${esc(nm(club(r.clubId)))}</span></div>
+    ${rank}
+    <div class="cl">${crest(r.clubId, 22)}<span>${esc(nm(club(r.clubId)))}</span></div>
     <span class="num">${r.played}</span>
-    <span class="num">${r.wins}</span>
-    <span class="num">${r.draws}</span>
-    <span class="num">${r.losses}</span>
-    <span class="num">${r.goalsFor}:${r.goalsAgainst}</span>
+    <span class="num gfga-cell">${r.goalsFor}:${r.goalsAgainst}</span>
     <span class="num">${r.goalDifference > 0 ? '+' : ''}${r.goalDifference}</span>
-    <div class="mf5">${(S.C.fm[String(r.clubId)] || []).map(x => `<div class="f s ${x}"><span>${x}</span></div>`).join('')}</div>
-    <b class="num">${p}${hasDed ? '*' : ''}</b>
+    <div class="mf5">${(S.C.fm[String(r.clubId)] || []).map(x => `<div class="f s ${x}" title="${x}"></div>`).join('')}</div>
+    <b class="num pts-cell">${p}${hasDed ? '*' : ''}</b>
   </div>`;
 }
 
@@ -865,7 +914,6 @@ function vTable() {
   <div class="glass tbl">
     <div class="tr hd">
       <span>#</span><span style="text-align:start">${t('club')}</span><span>${t('pl')}</span>
-      <span>${t('wins')}</span><span>${t('dr')}</span><span>${t('ls')}</span>
       <span>${t('gfga')}</span><span>${t('gd')}</span><span>${t('fm')}</span><span>${t('pts')}</span>
     </div>
     ${rows.map(r => trow(r, false)).join('') || `<div class="empty">—</div>`}
@@ -1027,15 +1075,14 @@ function vClub() {
     return `<div class="row">${avatar(sName, s.photoUrl, 44)}<div><b>${esc(sName)}</b><small>${esc(s.role?.[S.lang] || s.role?.en || s.role?.ar || '')}</small></div></div>`;
   }).join('')}</div>
   <div class="h2">${t('set')}</div>
-  <div class="btns" style="flex-wrap:wrap">
-    <button class="btn p" type="button" data-notif="1">${t('notifBtn')}</button>
-    <button class="btn" type="button" data-sharesite="1">${t('siteShareBtn')}</button>
-    <button class="btn" type="button" id="b-theme">🌗 ${t('theme')}</button>
-    <button class="btn" type="button" data-sync="1">🔄 ${t('refresh')}</button>
-    <button class="btn" type="button" data-priv="1">${t('privBtn')}</button>
-    <button class="btn p" type="button" id="b-inst" style="display:${S.inst ? 'inline-flex' : 'none'}">📲 ${t('install')}</button>
-  </div>
-  <p class="empty" style="font-size:11.5px;padding:18px 10px">${t('lastUpd')}: <span class="num">${esc(fDT(S.data.lastUpdated))}</span></p>`;
+  <div class="settings-list">
+    <button class="settings-row" type="button" data-notif="1"><span class="settings-ico">🔔</span><span class="settings-copy"><b>${t('settingsNotifications')}</b><small>${t('settingsNotificationsSub')}</small></span><span class="settings-chev">›</span></button>
+    <button class="settings-row" type="button" data-sharesite="1"><span class="settings-ico">▦</span><span class="settings-copy"><b>${t('settingsShare')}</b><small>${t('settingsShareSub')}</small></span><span class="settings-chev">›</span></button>
+    <button class="settings-row" type="button" data-sync="1"><span class="settings-ico">↻</span><span class="settings-copy"><b>${t('settingsRefresh')}</b><small>${t('settingsRefreshSub')}</small></span><span class="settings-chev">›</span></button>
+    <button class="settings-row" type="button" data-status="1"><span class="settings-ico">◷</span><span class="settings-copy"><b>${t('settingsStatus')}</b><small>${t('settingsStatusSub')}</small></span><span class="settings-chev">›</span></button>
+    <button class="settings-row" type="button" data-priv="1"><span class="settings-ico">🔒</span><span class="settings-copy"><b>${t('settingsPrivacy')}</b><small>${t('settingsPrivacySub')}</small></span><span class="settings-chev">›</span></button>
+    ${S.inst ? `<button class="settings-row" type="button" id="b-inst"><span class="settings-ico">📲</span><span class="settings-copy"><b>${t('install')}</b><small>${t('ibmsg')}</small></span><span class="settings-chev">›</span></button>` : ''}
+  </div>`;
 }
 
 /* الملعب التكتيكي وتفاصيل المباراة */
@@ -1222,7 +1269,7 @@ function render() {
     S.C = calc();
     const r = rt();
     const V = {home: vHome, matches: vMatches, table: vTable, squad: vSquad, club: vClub, player: vPlayer, verify: vVerify}[r] || vHome;
-    $('app').innerHTML = staleBannerHtml() + V();
+    $('app').innerHTML = V();
     $('nav').innerHTML = TABS.map(([k, i]) => {
       const label = t(k);
       const isOn = k === (V === vHome ? 'home' : r === 'player' ? 'squad' : r);
@@ -1230,7 +1277,7 @@ function render() {
     }).join('');
     tick();
     if (S.open) {
-      const m = S.data.matches.find(x => String(x.id) === S.open);
+      const m = effectiveMatch(S.data.matches.find(x => String(x.id) === S.open));
       if (m) $('sbody').innerHTML = vMatch(m);
       else closeM();
     } else if (S.openClub) {
@@ -1245,7 +1292,7 @@ function render() {
 function shell() {
   document.title = S.lang === 'ar' ? 'شباب ميلة · CBM Mila 1936' : 'CBM Mila 1936 · Official App';
   $('theme').setAttribute('aria-label', t('theme'));
-  $('b-sync').setAttribute('aria-label', t('refresh'));
+  const syncBtn = $('b-sync'); if (syncBtn) syncBtn.setAttribute('aria-label', t('refresh'));
   const shBtn = $('b-share-site'); if (shBtn) shBtn.setAttribute('aria-label', t('siteShareBtn'));
   const nfBtn = $('b-notif'); if (nfBtn) { nfBtn.setAttribute('aria-label', t('notifBtn')); nfBtn.classList.toggle('notif-on', isPushEnabled()); }
   $('lang').setAttribute('aria-label', t('langLbl'));
@@ -1278,6 +1325,14 @@ function tick() {
   upd();
 }
 function upd() {
+  document.querySelectorAll('[data-live-start]').forEach(el => {
+    const start = Number(el.getAttribute('data-live-start')) || 0;
+    if (!start) return;
+    const elapsed = Math.max(0, Math.floor((Date.now() - start) / 1000));
+    const minutes = Math.floor(elapsed / 60), seconds = elapsed % 60;
+    el.textContent = `${String(minutes).padStart(2,'0')}:${pad(seconds)}`;
+    el.setAttribute('aria-label', `${t('liveClock')} ${minutes} ${t('min')}`);
+  });
   if (S.C?.next && mdPhase(S.C.next) !== S.ph) { render(); return; }
   if (!Number.isFinite(cdT) || !cdT) return;
   const e = document.getElementById('cd-d');
@@ -1319,7 +1374,8 @@ function handleFocusTrap(e) {
 }
 
 function openM(id) {
-  const m = S.data.matches.find(x => String(x.id) === String(id));
+  const rawMatch = S.data.matches.find(x => String(x.id) === String(id));
+  const m = effectiveMatch(rawMatch);
   if (!m) return;
   lastTriggerEl = document.activeElement;
   S.openClub = null;
@@ -1512,31 +1568,20 @@ function openNotifModal() {
   const on = isPushEnabled();
   const blocked = typeof Notification !== 'undefined' && Notification.permission === 'denied';
   const needIosInstall = isIOS && !isSA && typeof Notification === 'undefined';
-
+  const status = on ? t('notifOnBadge') : t('notifOffBadge');
   cmOpen(`<h3>${esc(t('notifTitle'))}</h3>
-    <small style="color:var(--mu);font-weight:700">${esc(t('notifSub'))}</small>
-    <div style="margin-top:10px">
-      <span class="tag ${on ? 'h' : 'a'}" style="${on ? 'color:#4ade80;border-color:#22c55e;background:rgba(34,197,94,.16)' : ''}">${esc(t(on ? 'notifOnBadge' : 'notifOffBadge'))}</span>
-    </div>
-    <div class="nf-list">
-      <div>${esc(t('notifItem1'))}</div>
-      <div>${esc(t('notifItem2'))}</div>
-    </div>
-    ${needIosInstall ? `<p class="cerr" style="color:var(--gold)">${esc(t('notifIosHint'))}</p>` : ''}
+    <div class="settings-modal-status ${on ? 'on' : 'off'}">${esc(status)}</div>
+    ${needIosInstall ? `<p class="cerr">${esc(t('notifIosHint'))}</p>` : ''}
     ${blocked ? `<p class="cerr">${esc(t('notifBlocked'))}</p>` : ''}
     <p class="cerr" id="nf-err"></p>
     <div class="btns v" style="margin-top:12px">
-      ${!on ? `<button class="btn p" type="button" id="nf-enable">${esc(t('notifEnableBtn'))}</button>` : ''}
-      ${on ? `<button class="btn p" type="button" id="nf-test">${esc(t('notifTestBtn'))}</button>` : ''}
-      ${on ? `<button class="btn" type="button" id="nf-disable">${esc(t('notifDisableBtn'))}</button>` : ''}
-      <button class="btn" type="button" data-cclose aria-label="${esc(t('closeLbl'))}">✕</button>
+      ${!on ? `<button class="btn p" type="button" id="nf-enable">${esc(t('notifEnableBtn'))}</button>` : `<button class="btn" type="button" id="nf-disable">${esc(t('notifDisableBtn'))}</button>`}
     </div>`);
 }
 
 let siteQrUrl = '';
 function openSiteShare() {
   const siteUrl = getOfficialSiteUrl();
-  const siteName = t('siteNameVal');
   let qrData = '';
   try {
     if (window.CBMQR && typeof window.CBMQR.toCanvas === 'function') {
@@ -1545,26 +1590,16 @@ function openSiteShare() {
       siteQrUrl = qrData;
     }
   } catch (e) {}
-
   cmOpen(`<h3>🔴⚪ ${esc(t('siteShareTitle'))}</h3>
-    <small style="color:var(--mu);font-weight:700">${esc(t('siteShareSub'))}</small>
-    ${qrData ? `<div class="sh-qr-wrap"><img src="${esc(qrData)}" alt="QR Code CBM Mila" width="210" height="210"></div>` : ''}
-    <div class="sh-card">
-      <small>${esc(t('siteNameLbl'))}</small>
-      <b>${esc(siteName)}</b>
-      <small style="margin-top:4px;margin-bottom:0;color:var(--gold)">${esc(t('siteSearchHint'))}</small>
-    </div>
-    <div class="sh-card" style="margin-top:8px">
-      <small>${esc(t('siteUrlLbl'))}</small>
-      <code>${esc(siteUrl)}</code>
-    </div>
-    <div class="btns v" style="margin-top:12px">
-      <button class="btn p" type="button" id="sh-copy-url">${esc(t('copyUrlBtn'))}</button>
-      <button class="btn" type="button" id="sh-copy-name">${esc(t('copyNameBtn'))}</button>
-      <button class="btn" type="button" id="sh-native">${esc(t('shareNativeBtn'))}</button>
-      ${qrData ? `<button class="btn" type="button" id="sh-dl-qr">${esc(t('dlQrBtn'))}</button>` : ''}
-      <button class="btn" type="button" data-cclose aria-label="${esc(t('closeLbl'))}">✕</button>
-    </div>`);
+    ${qrData ? `<div class="sh-qr-wrap compact"><img src="${esc(qrData)}" alt="QR Code CBM Mila" width="190" height="190"></div>` : ''}
+    <a class="sh-direct-link" href="${esc(siteUrl)}" target="_blank" rel="noopener">${esc(siteUrl)}</a>`);
+}
+
+function openDataStatus() {
+  const fresh = !isDataStale();
+  cmOpen(`<h3>◷ ${esc(t('dataStatusTitle'))}</h3>
+    <div class="settings-modal-status ${fresh ? 'on' : 'off'}">${esc(t(fresh ? 'dataStatusFresh' : 'dataStatusStale'))}</div>
+    <p class="settings-last-updated">${esc(t('lastUpd'))}: <b>${esc(fDT(S.data.lastUpdated))}</b></p>`);
 }
 
 async function shareMatch(id) {
@@ -1589,6 +1624,8 @@ document.addEventListener('click', e => {
   }
   if (g('[data-close]') || e.target === $('sheet')) return closeM();
   if (g('[data-priv]')) return openPrivacy();
+  if (g('[data-status]')) return openDataStatus();
+  if (g('[data-theme-action]')) return toggleTheme();
   if (g('#b-notif') || g('[data-notif]')) return openNotifModal();
   if (g('#nf-enable')) return enablePushNotifications();
   if (g('#nf-test')) { showLocalNotification(t('notifTestTitle'), t('notifTestBody'), './#/home'); return; }
@@ -1711,6 +1748,24 @@ async function regCall(o) {
     if (e.name === 'AbortError') throw Object.assign(new Error('TIMEOUT'), {code: 'TIMEOUT'});
     throw e;
   } finally { clearTimeout(to); }
+}
+
+let liveStateBusy = false;
+async function refreshLiveControl(forceRender = false) {
+  if (!REG_ON() || liveStateBusy || document.hidden) return;
+  liveStateBusy = true;
+  try {
+    const response = await regCall({v:2, a:'live_state'});
+    const next = response && response.ok && response.state && response.state.active ? response.state : null;
+    const oldKey = JSON.stringify(S.liveControl || null);
+    const nextKey = JSON.stringify(next || null);
+    if (oldKey !== nextKey) {
+      S.liveControl = next;
+      if (forceRender || rt() !== 'verify') render();
+    }
+  } catch (e) {
+    // The live-control endpoint is optional; normal registry, cards and site data remain available.
+  } finally { liveStateBusy = false; }
 }
 
 const CK = 'CBM_MILA_CARD_V2';
@@ -2103,8 +2158,11 @@ shell();
 render();
 pwa();
 sync(false);
+refreshLiveControl(true);
+setInterval(() => refreshLiveControl(false), 15000);
 if (isIOS) setTimeout(ibShow, 3e3);
 function isMatchWindowActive() {
+  if (S.liveControl && S.liveControl.active) return true;
   const now = Date.now();
   return (S.data?.matches || []).some(m => {
     if (m.status === 'live') return true;
