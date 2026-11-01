@@ -5,7 +5,7 @@ try {
   importScripts('./config.js');
 } catch (e) {}
 
-const CACHE_VERSION = self.CBM_BUILD_VERSION || '2026.10.31.v7';
+const CACHE_VERSION = self.CBM_BUILD_VERSION || '2026.10.31.v8';
 // Cache Storage is shared by all GitHub Pages projects on this origin.
 // Keep this app's cache namespace isolated and never delete another app's caches.
 const CACHE_PREFIX = 'cbm-mila-digital-platform';

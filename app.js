@@ -78,7 +78,7 @@ const L = {
     settingsTheme:'المظهر', settingsThemeSub:'التبديل بين الوضعين الفاتح والداكن',
     settingsPrivacy:'الخصوصية', settingsPrivacySub:'سياسة حماية بيانات المناصرين',
     dataStatusTitle:'حالة بيانات المنصة', dataStatusFresh:'البيانات حديثة', dataStatusStale:'قد تكون البيانات قديمة أو تعذّر آخر تحديث',
-    promotion:'مؤهل للصعود', promotionShort:'صعود', liveClock:'دقيقة المباراة',
+    promotion:'مؤهل للصعود', promotionShort:'صعود', liveClock:'دقيقة المباراة', htLbl:'استراحة',
     liveManual:'النتيجة مُحدّثة يدوياً من إدارة النادي', liveOfficial:'النتيجة حسب المصدر الرسمي',
     siteShareBtn:'📤 مشاركة الموقع ورمز QR',
     siteShareTitle:'مشاركة المنصة الرسمية لشباب ميلة',
@@ -179,7 +179,7 @@ const L = {
     settingsTheme:'Appearance', settingsThemeSub:'Switch between dark and light mode',
     settingsPrivacy:'Privacy', settingsPrivacySub:'Supporter data protection policy',
     dataStatusTitle:'Platform data status', dataStatusFresh:'Data is up to date', dataStatusStale:'Data may be stale or the last update failed',
-    promotion:'Promotion place', promotionShort:'PROMOTION', liveClock:'Match time',
+    promotion:'Promotion place', promotionShort:'PROMOTION', liveClock:'Match time', htLbl:'HT',
     liveManual:'Score entered manually by club admin', liveOfficial:'Score from the official source',
     siteShareBtn:'📤 Share Website & QR Code',
     siteShareTitle:'Share Official CBM Mila Platform',
@@ -280,7 +280,7 @@ const L = {
     settingsTheme:'Apparence', settingsThemeSub:'Basculer entre le mode sombre et clair',
     settingsPrivacy:'Confidentialité', settingsPrivacySub:'Protection des données des supporters',
     dataStatusTitle:'État des données', dataStatusFresh:'Données à jour', dataStatusStale:'Les données peuvent être anciennes ou la dernière mise à jour a échoué',
-    promotion:'Place qualificative', promotionShort:'MONTÉE', liveClock:'Temps de match',
+    promotion:'Place qualificative', promotionShort:'MONTÉE', liveClock:'Temps de match', htLbl:'MT',
     liveManual:'Score saisi manuellement par le club', liveOfficial:'Score issu de la source officielle',
     siteShareBtn:'📤 Partager le Site & QR',
     siteShareTitle:'Partager la Plateforme CBM Mila',
@@ -457,11 +457,29 @@ function res(m) {
 /* حساب الإحصائيات الشاملة لكل دورة رسم */
 function effectiveMatch(match) {
   const state = S.liveControl;
-  if (!match || !state || !state.active || String(state.matchId) !== String(match.id) || String(match.home) !== CBM || !['scheduled','rescheduled','live'].includes(String(match.status || '').toLowerCase())) return match;
+  if (!match || !state || !state.active || String(state.matchId) !== String(match.id) || String(match.home) !== CBM || !['scheduled','rescheduled','live'].includes(String(match.status || '').toLowerCase())) return autoLiveMatch(match);
   const score = state.score && Number.isFinite(Number(state.score.home)) && Number.isFinite(Number(state.score.away))
     ? {home: Math.max(0, Number(state.score.home)), away: Math.max(0, Number(state.score.away))}
     : {home: 0, away: 0};
   return {...match, status:'live', score, liveStartedAt:state.startedAt || match.kickoff, manualLive:true};
+}
+
+// v8: أثناء نافذة المباراة تظهر 0-0 مع وقت جارٍ تلقائياً (حتى بدون تحكم يدوي) إلى أن تصل بيانات رسمية.
+function autoLiveMatch(match) {
+  if (!match || !okD(match.kickoff)) return match;
+  if (!['scheduled', 'rescheduled'].includes(String(match.status || '').toLowerCase())) return match;
+  const el = Date.now() - new Date(match.kickoff).getTime();
+  if (el < 0 || el > winMs(match)) return match;
+  const off = match.score && Number.isFinite(Number(match.score.home)) && Number.isFinite(Number(match.score.away)) ? match.score : {home: 0, away: 0};
+  return {...match, status: 'live', score: off, liveStartedAt: match.kickoff, autoLive: true};
+}
+function liveClockText(start) {
+  const e = (Date.now() - start) / 6e4;
+  if (!(e >= 0)) return "1'";
+  if (e < 45) return (Math.floor(e) + 1) + "'";
+  if (e < 60) return t('htLbl');
+  const m = Math.floor(e - 15) + 1;
+  return m <= 90 ? m + "'" : "90+'";
 }
 
 function calc() {
@@ -611,7 +629,7 @@ const mid = m => {
   if (m.status === 'live') {
     const score = m.score || {home:0, away:0};
     const start = okD(m.liveStartedAt || m.kickoff) ? new Date(m.liveStartedAt || m.kickoff).getTime() : 0;
-    const clock = start ? `<small class="live-clock" data-live-start="${start}">--:--</small>` : `<small class="live-clock">--:--</small>`;
+    const clock = start ? `<small class="live-clock" data-live-start="${start}">${esc(liveClockText(start))}</small>` : `<small class="live-clock">--:--</small>`;
     return `<div class="scr live-score">${scr(score)}</div>${clock}`;
   }
   if (m.score) return `<div class="scr">${scr(m.score)}</div>`;
@@ -626,7 +644,7 @@ function mItem(m) {
   return `<a class="mi ${cls}" data-m="${esc(m.id)}" role="button" tabindex="0" aria-label="${esc(nm(club(m.home)) + ' vs ' + nm(club(m.away)))}">
     <div class="mr">
       <div class="tm">${crest(m.home, 34)}<span>${esc(nm(club(m.home)))}</span></div>
-      <div class="sc ${cls}">${m.score ? scr(m.score) : `<span class="num">${fT(m.kickoff)}</span>`}</div>
+      <div class="sc ${cls}">${m.status === 'live' ? mid(m) : m.score ? scr(m.score) : `<span class="num">${fT(m.kickoff)}</span>`}</div>
       <div class="tm">${crest(m.away, 34)}<span>${esc(nm(club(m.away)))}</span></div>
     </div>
     <div class="mf">
@@ -1292,10 +1310,9 @@ function upd() {
   document.querySelectorAll('[data-live-start]').forEach(el => {
     const start = Number(el.getAttribute('data-live-start')) || 0;
     if (!start) return;
-    const elapsed = Math.max(0, Math.floor((Date.now() - start) / 1000));
-    const minutes = Math.floor(elapsed / 60), seconds = elapsed % 60;
-    el.textContent = `${String(minutes).padStart(2,'0')}:${pad(seconds)}`;
-    el.setAttribute('aria-label', `${t('liveClock')} ${minutes} ${t('min')}`);
+    const txt = liveClockText(start);
+    if (el.textContent !== txt) el.textContent = txt;
+    el.setAttribute('aria-label', `${t('liveClock')} ${txt}`);
   });
   if (S.C?.next && mdPhase(S.C.next) !== S.ph) { render(); return; }
   if (!Number.isFinite(cdT) || !cdT) return;
