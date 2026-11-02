@@ -141,7 +141,54 @@
   },
   "lastNoNewsAt": "2026-11-02T11:15:44+01:00",
   "queuedNotifications": {
-    "events": [],
-    "telegram": []
+    "events": [
+      {
+        "kind": "kickoff",
+        "matchId": "226438",
+        "kickoff": "2026-11-06T15:00:00+01:00",
+        "tag": "cbm-ko-226438",
+        "url": "./#/home",
+        "ar": {
+          "title": "📅 موعد مباراة شباب ميلة — الجولة 6",
+          "body": "شباب ميلة ضد شباب عين كرشة · الموعد: 2026-11-06 15:00"
+        },
+        "fr": {
+          "title": "📅 Horaire du Match — Journée 6",
+          "body": "CBM Mila · Coup d'envoi : 2026-11-06 15:00"
+        },
+        "en": {
+          "title": "📅 Match Schedule — Round 6",
+          "body": "CBM Mila · Kickoff: 2026-11-06 15:00"
+        },
+        "eventKey": "226438:kickoff:2026-11-06T15:00:00+01:00"
+      }
+    ],
+    "telegram": [
+      {
+        "message": "📣 <b>جديد على موقع الرابطة!</b> 🔔\n🕒 2026-11-02 13:00 (توقيت الجزائر)\n\n━━━━━━━━━━━━━━\n\n🆕 <b>تحدّد موعد مباراة الجولة 6!</b> 📅\n⚽ شباب ميلة ⚔️ شباب عين كرشة\n🗓 الجمعة 6 نوفمبر 2026\n⏰ 15:00 (توقيت الجزائر)\n⏳ بعد 4 أيام وساعة\n📍 Stade Belkacem Belaid, Mila\n\n🔥 هيا شباب ميلة! 🔴⚪ تابع التفاصيل من الأزرار 👇",
+        "buttons": [
+          [
+            {
+              "text": "🌐 افتح المنصة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
+            },
+            {
+              "text": "📊 الترتيب",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
+            }
+          ],
+          [
+            {
+              "text": "⚽ المباريات",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
+            },
+            {
+              "text": "👕 التشكيلة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
+            }
+          ]
+        ]
+      }
+    ]
   }
 }
