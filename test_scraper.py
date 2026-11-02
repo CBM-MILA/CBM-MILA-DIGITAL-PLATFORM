@@ -32,7 +32,7 @@ def _read_fixture_soup(name: str) -> BeautifulSoup:
 
 
 def _load_sample_data() -> dict:
-    with open(os.path.join(REPO_ROOT, "data", "data.json"), "r", encoding="utf-8") as f:
+    with open(os.path.join(FIXTURE_DIR, "sample_data.json"), "r", encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -40,23 +40,44 @@ class TestCBMScraper(unittest.TestCase):
     """Comprehensive test suite compatible with both `pytest` and `unittest`."""
 
     def test_workflow_yaml_files_are_valid_and_skip_ci_removed(self) -> None:
+        """Keep one scheduled updater plus one non-scraping quality-check workflow."""
         workflow_files = sorted(
             glob.glob(os.path.join(REPO_ROOT, ".github", "workflows", "*.yml"))
             + glob.glob(os.path.join(REPO_ROOT, ".github", "workflows", "*.yaml"))
         )
-        self.assertTrue(len(workflow_files) >= 2)
-        for wf_path in workflow_files:
-            with open(wf_path, "r", encoding="utf-8") as f:
+        self.assertEqual(
+            [os.path.basename(path) for path in workflow_files],
+            ["quality-check.yml", "update-data.yml"],
+        )
+        parsed_workflows = {}
+        for workflow_path in workflow_files:
+            with open(workflow_path, "r", encoding="utf-8") as f:
                 raw = f.read()
                 parsed = yaml.safe_load(raw)
-            self.assertIsInstance(parsed, dict, f"Invalid YAML in {wf_path}")
-            self.assertIn("jobs", parsed, f"Missing jobs key in {wf_path}")
-            if os.path.basename(wf_path) == "update-data.yml":
-                self.assertNotIn("[skip ci]", raw)
-            if os.path.basename(wf_path) == "ci.yml":
-                on_block = parsed.get("on") or parsed.get(True) or {}
-                push_cfg = on_block.get("push") or {}
-                self.assertIn("data/**", push_cfg.get("paths-ignore", []))
+            self.assertIsInstance(parsed, dict, f"Invalid YAML in {workflow_path}")
+            self.assertIn("jobs", parsed, f"Missing jobs key in {workflow_path}")
+            parsed_workflows[os.path.basename(workflow_path)] = (raw, parsed)
+            for job in parsed["jobs"].values():
+                self.assertGreaterEqual(job.get("timeout-minutes", 0), 1)
+        update_raw, update = parsed_workflows["update-data.yml"]
+        self.assertNotIn("[skip ci]", update_raw)
+        update_triggers = update.get("on", update.get(True, {}))
+        self.assertIn("schedule", update_triggers)
+        job = update["jobs"].get("scrape-and-publish", {})
+        self.assertGreaterEqual(job.get("timeout-minutes", 0), 10)
+        self.assertIn("actions/cache/restore@v4", update_raw)
+        self.assertIn("actions/cache/save@v4", update_raw)
+        self.assertIn("scripts/validate_data.py", update_raw)
+        self.assertIn("--defer-notifications", update_raw)
+        self.assertIn("--notify-queued", update_raw)
+        self.assertIn("pages: write", update_raw)
+        self.assertIn("/pages/builds", update_raw)
+        quality_raw, quality = parsed_workflows["quality-check.yml"]
+        quality_triggers = quality.get("on", {})
+        self.assertIn("push", quality_triggers)
+        self.assertIn("pull_request", quality_triggers)
+        self.assertNotIn("schedule", quality_triggers)
+        self.assertNotIn("python scraper.py", quality_raw)
 
     def test_standings_parsing_and_deduction_model(self) -> None:
         soup = _read_fixture_soup("ranking.html")
@@ -190,6 +211,30 @@ class TestCBMScraper(unittest.TestCase):
         st_f, sc_f, _ = scraper.detect_match_status(soup_forfeit, "733", "734", ko)
         self.assertEqual(st_f, "forfeit")
         self.assertEqual(sc_f, (3, 0))
+
+    def test_postponed_match_becomes_rescheduled_when_new_kickoff_arrives(self) -> None:
+        data = {
+            "club": {"id": "733"},
+            "matches": [{
+                "id": "991234", "round": 8, "home": "733", "away": "729",
+                "kickoff": "2026-10-24T15:00:00+01:00", "status": "postponed",
+                "venue": "Stade Belkacem Belaid, Mila", "score": None,
+            }],
+            "opponents": [{"id": "729", "name": {"ar": "الفريق المنافس"}}],
+            "roundResults": [],
+        }
+        hint = scraper.FixtureHint(
+            match_id="991234", round_num=8, home_id="733", away_id="729",
+            kickoff="2026-11-07T15:00:00+01:00", status="scheduled",
+        )
+        notes, events = [], []
+        changed = scraper.apply_fixture_hints(data, [hint], notes, events)
+        match = data["matches"][0]
+        self.assertTrue(changed)
+        self.assertEqual(match["status"], "rescheduled")
+        self.assertEqual(match["rescheduledFrom"], "2026-10-24T15:00:00+01:00")
+        self.assertEqual(match["kickoff"], "2026-11-07T15:00:00+01:00")
+        self.assertEqual(len(events), 1)
 
     def test_accept_regression_override_flag(self) -> None:
         """Item 6: Verify played decrease blocks by default and succeeds with accept_regression=True."""
@@ -494,6 +539,7 @@ class TestCBMScraper(unittest.TestCase):
 
         soup_stats = _read_fixture_soup("statistics.html")
         soup_home = _read_fixture_soup("calendar.html")
+        data["topScorers"] = []
         problems: list[str] = []
         notes: list[str] = []
         scraper.update_statistics(
@@ -515,7 +561,8 @@ class TestCBMScraper(unittest.TestCase):
 
         hamza = next(p for p in data["players"] if str(p["id"]) == "40725")
         self.assertEqual(hamza["stats"]["goals"], 1)
-        self.assertEqual(hamza["stats"]["appearances"], 3)
+        # The fixture's saved player record already has four appearances; sync must never reduce it.
+        self.assertEqual(hamza["stats"]["appearances"], 4)
 
         soup_club = _read_fixture_soup("club_733.html")
         scraper.update_squad_and_staff(
@@ -587,14 +634,33 @@ class TestCBMScraper(unittest.TestCase):
 
 
 
-    def test_code_gs_v8_behaviour_in_node_vm(self) -> None:
-        """Runs tests/code_gs.test.js: old sheet layout compatibility, verify/register/restore limits, push allow-list."""
+    def test_code_gs_security_and_family_registration_group5(self) -> None:
+        """Run the standalone Google Apps Script registry regression suite."""
         proc = subprocess.run(
             ["node", os.path.join("tests", "code_gs.test.js")],
             cwd=REPO_ROOT, capture_output=True, text=True,
         )
         self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
         self.assertIn("CHECKS PASSED", proc.stdout)
+
+    def test_frontend_live_match_priority(self) -> None:
+        """Manual score is kickoff-bound and yields to official live/full-time scores."""
+        proc = subprocess.run(
+            ["node", os.path.join("tests", "app_live_match.test.js")],
+            cwd=REPO_ROOT, capture_output=True, text=True,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        self.assertIn("APP LIVE MATCH PRIORITY CHECKS PASSED", proc.stdout)
+
+    def test_telegram_live_control_kickoff_generation(self) -> None:
+        """Old prompts and button callbacks must not control a rescheduled fixture."""
+        proc = subprocess.run(
+            ["node", os.path.join("tests", "live_control.test.js")],
+            cwd=REPO_ROOT, capture_output=True, text=True,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        self.assertIn("LIVE CONTROL CHECKS PASSED", proc.stdout)
+        self.assertIn("TELEGRAM CALLBACK HANDLER CHECKS PASSED", proc.stdout)
 
 
 if __name__ == "__main__":
