@@ -18,10 +18,10 @@ def send_failure_alert() -> int:
         print("Telegram credentials not configured; skipping workflow failure alert.")
         return 0
 
-    repo = html.escape(os.getenv("GITHUB_REPOSITORY", "CBM-MILA/CBM-MILA"))
+    repo = html.escape(os.getenv("GITHUB_REPOSITORY", "CBM-MILA/CBM-MILA-DIGITAL-PLATFORM"))
     run_id = html.escape(os.getenv("GITHUB_RUN_ID", ""))
     server_url = os.getenv("GITHUB_SERVER_URL", "https://github.com").rstrip("/")
-    run_url = html.escape(f"{server_url}/{os.getenv('GITHUB_REPOSITORY', 'CBM-MILA/CBM-MILA')}/actions/runs/{os.getenv('GITHUB_RUN_ID', '')}")
+    run_url = html.escape(f"{server_url}/{os.getenv('GITHUB_REPOSITORY', 'CBM-MILA/CBM-MILA-DIGITAL-PLATFORM')}/actions/runs/{os.getenv('GITHUB_RUN_ID', '')}")
 
     msg = (
         f"⚠️ <b>فشل تشغيل سير عمل التحديث التلقائي (GitHub Actions)</b>\n"
