@@ -1668,9 +1668,15 @@ def apply_fixture_hints(
         is_cbm_home = str(target.get("home")) == cbm_id
         if hint_ko and target.get("kickoff") != hint_ko:
             old_ko = target.get("kickoff")
+            old_status = str(target.get("status") or "scheduled").lower()
             if old_ko:
                 target["rescheduledFrom"] = old_ko
             target["kickoff"] = hint_ko
+            # A concrete new date is the official sign that a postponed fixture has been rescheduled.
+            # Do not keep it in "postponed", otherwise the live clock and Telegram watcher skip it forever.
+            if old_status == "postponed" and hint.status != "postponed":
+                target["status"] = "rescheduled"
+                notes.append(f"الجولة {target.get('round')}: أُعيدت جدولة المباراة بعد التأجيل")
             ko_dt = parse_iso_kickoff(hint_ko)
             if ko_dt:
                 notes.append(f"الجولة {target.get('round')}: موعد جديد {ko_dt:%Y-%m-%d %H:%M}")
@@ -1898,10 +1904,13 @@ def update_matches(
             continue
 
         is_cbm_home = str(m.get("home")) == cfg.club_id
+        previous_kickoff = m.get("kickoff")
+        previous_status = str(m.get("status") or "scheduled").lower()
         ko = parse_kickoff(soup, m.get("home"), m.get("away"))
-        if ko and m.get("kickoff") != ko.isoformat():
-            if m.get("kickoff"):
-                m["rescheduledFrom"] = m["kickoff"]
+        kickoff_changed = bool(ko and previous_kickoff != ko.isoformat())
+        if kickoff_changed:
+            if previous_kickoff:
+                m["rescheduledFrom"] = previous_kickoff
             m["kickoff"] = ko.isoformat()
             notes.append(f"الجولة {m.get('round')}: موعد جديد {ko:%Y-%m-%d %H:%M}")
             updated = True
@@ -1919,6 +1928,11 @@ def update_matches(
         detected_status, sc, closed_doors = detect_match_status(
             soup, m.get("home"), m.get("away"), kick_dt, now=now
         )
+
+        if kickoff_changed and previous_status == "postponed" and detected_status in ("scheduled", "rescheduled", "live", "finished"):
+            m["status"] = "rescheduled" if detected_status == "scheduled" else detected_status
+            notes.append(f"الجولة {m.get('round')}: عادت المباراة إلى الجدول بعد تحديد موعد جديد")
+            updated = True
 
         if closed_doors and not m.get("closedDoors"):
             m["closedDoors"] = True

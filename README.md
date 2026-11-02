@@ -1,3 +1,4 @@
+<!-- Release: CBM Mila v8.1 · 2026-11-02 -->
 # CBM Mila 1936 · شباب بلدية ميلة 🔴⚪
 
 Official open-source Progressive Web App (PWA) for supporters of **Chabab Baladiat Mila (CBM 1936 — Club ID `733`)**, competing in the Algerian **Ligue Inter-Régions — Group East (`شرق`, `seasonId: 6`, `competitionId: 4275`)**.
@@ -69,11 +70,12 @@ Official open-source Progressive Web App (PWA) for supporters of **Chabab Baladi
 
 5. **Run the automated test suite & schema/syntax checks:**
    ```bash
-   pytest -v
-   python -m py_compile scraper.py scripts/notify_failure.py
+   python -m pytest -q
+   python -m py_compile scraper.py scripts/notify_failure.py scripts/validate_data.py
    node --check app.js
    node --check sw.js
    node --check config.js
+   node --check < Code.gs
    ```
 
 ## Refreshing HTML Test Fixtures (`tests/fixtures/`)
@@ -92,9 +94,9 @@ pytest -v
 
 ## Automated Data Updates and GitHub Pages Deployment
 
-For the non-programmer installation procedure, see [AUTOMATION-SETUP-AR.md](AUTOMATION-SETUP-AR.md).
+For the Arabic release installation procedure, see [RELEASE-V8.1-INSTALL-AR.md](RELEASE-V8.1-INSTALL-AR.md). For the automation reference, see [AUTOMATION-SETUP-AR.md](AUTOMATION-SETUP-AR.md).
 
-- The **single active data-update workflow** is `.github/workflows/update-data.yml`. Keep automated workflows inside `.github/workflows/`; files with similar names elsewhere in the repository are not GitHub Actions workflows.
+- The **single scheduled data-update workflow** is `.github/workflows/update-data.yml`. A separate `quality-check.yml` runs regression and syntax checks on pushes and pull requests; it does not scrape or publish league data. Keep automated workflows inside `.github/workflows/`; files with similar names elsewhere in the repository are not GitHub Actions workflows.
 - The workflow validates `data/data.json` against `data/schema.json` and the last published dataset before pushing. It commits `data/data.json` together with `data/status.json`, then delivers queued notifications, and finally saves notification-delivery state.
 - Commits use no `[skip ci]`, and because a push made with `GITHUB_TOKEN` does not automatically trigger a Pages build, the workflow explicitly requests a Pages rebuild after `data/data.json` changes. If that request fails, the update and notification steps are allowed to finish; check GitHub → **Actions** → **pages-build-deployment** (or **Deployments → github-pages**) for the deployment status.
 - To verify the published data without a browser cache, open a terminal and run:
@@ -118,11 +120,11 @@ Season parameters are read dynamically from `data/data.json` under `sourceMeta` 
 ## Manual Owner Checklist (Required One-Time Setup)
 
 ### 1. Confirm the Active Workflow and Repository Permissions
-This cleaned project package already keeps the active workflow at `.github/workflows/update-data.yml` and removes the inactive duplicate workflow copies. Do not add a second scheduled update workflow, or the scraper may run more than once per schedule window.
+This project keeps one scheduled data updater at `.github/workflows/update-data.yml`. The separate `quality-check.yml` only runs tests on pushes and pull requests; it does not update data. Do not add a second scheduled data updater, or the scraper may run more than once per schedule window.
 
 If GitHub Actions reports that it cannot push a commit, open the repository's **Settings → Actions → General → Workflow permissions**. Allow workflow-specific permissions or select **Read and write permissions**, then save. The workflow requests `contents: write` and `pages: write`—the latter is used only to request a Pages rebuild after the published data changes.
 
-### 2. Google Apps Script Deployment (`Code.gs` v8 — compatible with the existing sheet layout, no data migration)
+### 2. Google Apps Script Deployment (`Code.gs` v8.1 — keeps the v8 registry contract and existing sheet layout; no data migration)
 1. Open your Google Sheet → **Extensions → Apps Script**.
 2. Replace the contents of `Code.gs` with the updated `Code.gs` file from this repository and click **Save (💾)**.
 3. Click **Project Settings (⚙️)** on the left sidebar → scroll to **Script Properties** → ensure property `ADMIN_KEY` is set to a strong secret string.
@@ -180,7 +182,7 @@ If step 2 fails, nothing was sent and the next run simply re-detects the change.
 
 ## Styling
 
-`style-additions.css` contains only the new rules (sync bar, status badges, noscript banner; dark + light). Append it to the end of your existing `style.css`; do not replace the file.
+`style.css` is the active stylesheet loaded by `index.html`. The relevant sync/status/noscript rules are already present in it. `style-additions.css` is kept as a reference copy of the additions; do not append it repeatedly or load it as a second stylesheet.
 
 ## Telegram Messages
 

@@ -1,7 +1,7 @@
 """Heartbeat: refresh lastUpdated on quiet runs so the site never looks stale (no network / fixtures needed)."""
 import os, sys
 from datetime import datetime, timedelta
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ROOT)
 import scraper
 

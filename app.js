@@ -458,13 +458,23 @@ function res(m) {
 function effectiveMatch(match) {
   const state = S.liveControl;
   if (!match || !state || !state.active || String(state.matchId) !== String(match.id) || String(match.home) !== CBM || !['scheduled','rescheduled','live'].includes(String(match.status || '').toLowerCase())) return autoLiveMatch(match);
+  const matchKickoffEpoch = Math.floor(new Date(match.kickoff || '').getTime() / 1000);
+  const stateKickoffEpoch = Number(state.kickoffEpoch) || Math.floor(new Date(state.startedAt || '').getTime() / 1000);
+  // A manual scoreboard is valid only for the exact scheduled kickoff generation.
+  // If the federation reschedules the fixture, fall back to the normal official/automatic state.
+  if (!Number.isFinite(matchKickoffEpoch) || !Number.isFinite(stateKickoffEpoch) || matchKickoffEpoch !== stateKickoffEpoch) return autoLiveMatch(match);
+  // Once the official feed publishes any valid live score (including 0-0), it takes priority.
+  // A confirmed finished result always bypasses this function's manual branch above.
+  const officialScore = match.score;
+  if (String(match.status || '').toLowerCase() === 'live' && officialScore &&
+      Number.isFinite(Number(officialScore.home)) && Number.isFinite(Number(officialScore.away))) return match;
   const score = state.score && Number.isFinite(Number(state.score.home)) && Number.isFinite(Number(state.score.away))
     ? {home: Math.max(0, Number(state.score.home)), away: Math.max(0, Number(state.score.away))}
     : {home: 0, away: 0};
   return {...match, status:'live', score, liveStartedAt:state.startedAt || match.kickoff, manualLive:true};
 }
 
-// v8: أثناء نافذة المباراة تظهر 0-0 مع وقت جارٍ تلقائياً (حتى بدون تحكم يدوي) إلى أن تصل بيانات رسمية.
+// v8.1: أثناء نافذة المباراة تظهر 0-0 مع وقت جارٍ تلقائياً (حتى بدون تحكم يدوي) إلى أن تصل بيانات رسمية.
 function autoLiveMatch(match) {
   if (!match || !okD(match.kickoff)) return match;
   if (!['scheduled', 'rescheduled'].includes(String(match.status || '').toLowerCase())) return match;

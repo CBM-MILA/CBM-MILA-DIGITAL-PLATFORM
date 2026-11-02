@@ -1,10 +1,10 @@
 """Tests for the deferred notification queue (no network, no HTML fixtures needed)."""
 import json, os, shutil, sys, tempfile
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ROOT)
 import scraper
 
-DATA = os.path.join(ROOT, "data", "data.json")
+DATA = os.path.join(ROOT, "tests", "fixtures", "sample_data.json")
 EVENT = {"matchId": "226424", "kind": "result", "score": (2, 1), "tag": "cbm-res-226424",
          "ar": {"title": "t", "body": "b"}}
 

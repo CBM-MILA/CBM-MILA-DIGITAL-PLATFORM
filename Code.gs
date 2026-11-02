@@ -1,11 +1,12 @@
 /**
- * السجل الرسمي لبطاقات مناصري نادي شباب بلدية ميلة (CBM Mila 1936) — Google Apps Script (v8)
+ * السجل الرسمي لبطاقات مناصري نادي شباب بلدية ميلة (CBM Mila 1936) — Google Apps Script (v8.1)
  * ===========================================================================================
  * متوافق مع التخطيط الحالي للشيتين (لا حاجة لترحيل أي بيانات):
  *   Supporters: Timestamp | SupporterId | Name | RequestId | DeviceId | Status | Lang
  *   PushSubs  : Timestamp | DeviceId | Endpoint | P256dh | Auth | Lang | Status
  *
- * ما الجديد في v8:
+ * توافق السجل والبطاقات في v8.1 مع مخطط v8 (لا ترحيل أو حذف بيانات)، مع تحسين أمان جلسات التحكم بالمباراة.
+ * أساسيات حماية التسجيل والاستعادة والإشعارات كما في v8:
  *   1) verify: حد خفيف لكل جهاز (60 / 15 د) وحد عام مرتفع (1500 / 15 د). الطلبات التي لا ترسل dev
  *      تخضع للحد العام فقط، حتى لا يتشارك الجميع سلة واحدة صغيرة يوم المباراة.
  *   2) عدّادات المعدّل بنافذة ثابتة (Fixed Window): لا يُمدَّد وقت الانتهاء مع كل طلب، فيتصفّر العدّاد فعلاً بعد 15 دقيقة.
@@ -19,7 +20,7 @@
 
 const SHEET_NAME = 'Supporters';
 const PUSH_SHEET_NAME = 'PushSubs';
-const VERSION = 8;
+const VERSION = 8; // Registry API/schema contract: intentionally unchanged for backward compatibility.
 
 const RATE_LIMIT_WINDOW_SEC = 900; // 15 دقيقة (نافذة ثابتة)
 const RESTORE_MAX_FAILS_PER_DEV = 5;
@@ -113,6 +114,7 @@ function publicLiveControlState_() {
       },
       startedAt: String(state.startedAt || ''),
       updatedAt: String(state.updatedAt || ''),
+      kickoffEpoch: Math.max(0, Number(state.kickoffEpoch) || Math.floor(started / 1000)),
       source: 'manual'
     };
   } catch (err) {
@@ -135,15 +137,16 @@ function telegramApi_(method, payload) {
   return result;
 }
 
-function liveControlKeyboard_(matchId) {
+function liveControlKeyboard_(matchId, kickoffEpoch) {
+  const generation = String(Math.max(0, Number(kickoffEpoch) || 0));
   return { inline_keyboard: [
     [
-      { text: '⚽ +1 لشباب ميلة', callback_data: 'cbmctl|home|' + matchId },
-      { text: '⚽ +1 للخصم', callback_data: 'cbmctl|away|' + matchId }
+      { text: '⚽ +1 لشباب ميلة', callback_data: 'cbmctl|home|' + matchId + '|' + generation },
+      { text: '⚽ +1 للخصم', callback_data: 'cbmctl|away|' + matchId + '|' + generation }
     ],
     [
-      { text: '↩ حذف آخر هدف', callback_data: 'cbmctl|undo|' + matchId },
-      { text: '🔒 إنهاء التحكم', callback_data: 'cbmctl|stop|' + matchId }
+      { text: '↩ حذف آخر هدف', callback_data: 'cbmctl|undo|' + matchId + '|' + generation },
+      { text: '🔒 إنهاء التحكم', callback_data: 'cbmctl|stop|' + matchId + '|' + generation }
     ]
   ] };
 }
@@ -159,7 +162,7 @@ function editTelegramControlMessage_(state, fallbackMessage) {
     ? '🟢 التحكم اليدوي في نتيجة مباراة شباب ميلة\n\nشباب ميلة  ' + score.home + ' - ' + score.away + '  الفريق المنافس\n\nاستخدم الأزرار لتسجيل الأهداف أو حذف آخر هدف. الوقت على الموقع محسوب من موعد بداية المباراة.'
     : (fallbackMessage || 'تم إيقاف التحكم اليدوي. ستُعرض النتيجة الرسمية عند وصولها من المصدر الرسمي.');
   const payload = { chat_id: state.chatId, message_id: state.messageId, text: text };
-  if (state.active) payload.reply_markup = liveControlKeyboard_(state.matchId);
+  if (state.active) payload.reply_markup = liveControlKeyboard_(state.matchId, state.kickoffEpoch || Math.floor(new Date(state.startedAt).getTime() / 1000));
   else payload.reply_markup = { inline_keyboard: [] };
   try { telegramApi_('editMessageText', payload); } catch (err) { console.warn('[CBM Telegram] edit message failed:', err); }
 }
@@ -168,9 +171,11 @@ function handleTelegramControlUpdate_(update) {
   const callback = update && update.callback_query;
   if (!callback || !callback.id || !callback.data) return;
   const fromId = String(callback.from && callback.from.id || '');
+  const callbackChat = callback.message && callback.message.chat || {};
+  const callbackChatId = String(callbackChat.id || '');
   const adminId = telegramAdminId_();
-  if (!adminId || fromId !== adminId) {
-    answerTelegramCallback_(callback.id, 'غير مصرح لك بالتحكم.');
+  if (!adminId || fromId !== adminId || callbackChatId !== adminId || String(callbackChat.type || '') !== 'private') {
+    answerTelegramCallback_(callback.id, 'غير مصرح لك بالتحكم. استخدم المحادثة الخاصة مع البوت.');
     return;
   }
 
@@ -181,8 +186,9 @@ function handleTelegramControlUpdate_(update) {
   }
   const action = parts[1];
   const matchId = String(parts[2]).replace(/[^0-9]/g, '').slice(0, 16);
-  if (!matchId) {
-    answerTelegramCallback_(callback.id, 'معرّف المباراة غير صالح.');
+  const kickoffEpoch = Math.max(0, parseInt(parts[3], 10) || 0);
+  if (!matchId || !kickoffEpoch) {
+    answerTelegramCallback_(callback.id, 'معرّف المباراة أو موعدها غير صالح.');
     return;
   }
 
@@ -190,25 +196,31 @@ function handleTelegramControlUpdate_(update) {
   try {
     waitForLock_(lock, 10000);
     const props = telegramProps_();
+    // The prompt marker is the authoritative generation for Yes/No actions.
+    // It prevents an old kickoff message from starting or cancelling a new session.
+    if (action === 'yes' || action === 'no') {
+      const promptedEpoch = Number(props.getProperty('CBM_PROMPTED_' + matchId)) || 0;
+      if (promptedEpoch !== kickoffEpoch) {
+        answerTelegramCallback_(callback.id, 'هذا إشعار قديم لموعد سابق. استخدم أحدث رسالة وصلتك من البوت.');
+        return;
+      }
+    }
     const raw = props.getProperty(LIVE_CONTROL_PROP);
     let state = raw ? JSON.parse(raw) : null;
     const message = callback.message || {};
     const chatId = String(message.chat && message.chat.id || '');
     const messageId = Number(message.message_id || 0);
 
-    if (action === 'yes' || action === 'no') {
-      const kickoffEpoch = Math.max(0, parseInt(parts[3], 10) || 0);
-      const nowEpoch = Math.floor(Date.now() / 1000);
-      // Ignore stale Telegram prompts and controls clicked long after the scheduled fixture.
-      if (!kickoffEpoch || kickoffEpoch > nowEpoch + 30 * 60 || nowEpoch - kickoffEpoch > 5 * 60 * 60) {
-        answerTelegramCallback_(callback.id, 'انتهت صلاحية هذا الطلب. انتظر إشعار بداية المباراة الجديدة.');
-        return;
-      }
+    const nowEpoch = Math.floor(Date.now() / 1000);
+    // Ignore stale prompts and controls clicked long after this exact kickoff.
+    if (kickoffEpoch > nowEpoch + 30 * 60 || nowEpoch - kickoffEpoch > 5 * 60 * 60) {
+      answerTelegramCallback_(callback.id, 'انتهت صلاحية هذا الطلب. انتظر إشعار بداية المباراة الجديدة.');
+      return;
     }
 
     if (action === 'yes') {
-      const kickoffEpoch = Math.max(0, parseInt(parts[3], 10) || 0);
-      if (state && state.active && String(state.matchId) === matchId) {
+      const previousEpoch = state ? (Number(state.kickoffEpoch) || Math.floor(new Date(state.startedAt || 0).getTime() / 1000)) : 0;
+      if (state && state.active && String(state.matchId) === matchId && previousEpoch === kickoffEpoch) {
         answerTelegramCallback_(callback.id, 'التحكم مفعّل بالفعل لهذه المباراة.');
         return;
       }
@@ -216,6 +228,7 @@ function handleTelegramControlUpdate_(update) {
       state = {
         active: true,
         matchId: matchId,
+        kickoffEpoch: kickoffEpoch,
         score: { home: 0, away: 0 },
         events: [],
         startedAt: startedAt,
@@ -233,6 +246,7 @@ function handleTelegramControlUpdate_(update) {
       state = {
         active: false,
         matchId: matchId,
+        kickoffEpoch: kickoffEpoch,
         score: { home: 0, away: 0 },
         choice: 'official_only',
         updatedAt: new Date().toISOString(),
@@ -249,9 +263,27 @@ function handleTelegramControlUpdate_(update) {
       answerTelegramCallback_(callback.id, 'لا توجد مباراة نشطة للتحكم حالياً.');
       return;
     }
+    const activeEpoch = Number(state.kickoffEpoch) || Math.floor(new Date(state.startedAt || 0).getTime() / 1000);
+    if (activeEpoch !== kickoffEpoch) {
+      answerTelegramCallback_(callback.id, 'هذا الزر يخص موعداً قديماً للمباراة. استخدم رسالة التحكم الأحدث.');
+      return;
+    }
+    if (!Number.isFinite(activeEpoch) || nowEpoch - activeEpoch > 5 * 60 * 60) {
+      state.active = false;
+      state.expired = true;
+      state.updatedAt = new Date().toISOString();
+      props.setProperty(LIVE_CONTROL_PROP, JSON.stringify(state));
+      answerTelegramCallback_(callback.id, 'انتهت جلسة التحكم حفاظاً على صحة النتيجة.');
+      return;
+    }
 
     if (!Array.isArray(state.events)) state.events = [];
     if (action === 'home' || action === 'away') {
+      const goalsForSide = state.events.filter(function(x) { return x === action; }).length;
+      if (goalsForSide >= 20 || state.events.length >= 40) {
+        answerTelegramCallback_(callback.id, 'تم بلوغ الحد الآمن للأهداف المسجلة.');
+        return;
+      }
       state.events.push(action);
     } else if (action === 'undo') {
       if (state.events.length) state.events.pop();
@@ -299,7 +331,102 @@ function setupTelegramControlWebhook() {
   const webhookUrl = url + '?cbm_tg_hook=' + encodeURIComponent(secret);
   const result = telegramApi_('setWebhook', { url: webhookUrl, allowed_updates: ['callback_query'], max_connections: 1 });
   console.log('Telegram match-control webhook configured: ' + Boolean(result.ok));
+  installLiveWatchTrigger_();
   return result.ok;
+}
+
+// ---- v8.1: سؤال التحكم مرتبط بجيل موعد الانطلاق، مع إبطال الجلسات والأزرار القديمة ----
+const LIVE_WATCH_DATA_URL_DEFAULT = 'https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/data/data.json';
+const LIVE_WATCH_WINDOW_MIN = 120;
+
+function installLiveWatchTrigger_() {
+  ScriptApp.getProjectTriggers().forEach(function (t) {
+    if (t.getHandlerFunction() === 'liveWatch') ScriptApp.deleteTrigger(t);
+  });
+  ScriptApp.newTrigger('liveWatch').timeBased().everyMinutes(1).create();
+}
+
+// مباراة لنا في ملعبنا بدأت ولم تنتهِ ضمن نافذة 120 دقيقة (أو null)
+function findStartedHomeMatch_(data, nowMs) {
+  const cbm = String((data && data.club && data.club.id) || '733');
+  const list = (data && data.matches) || [];
+  for (let i = 0; i < list.length; i++) {
+    const m = list[i];
+    if (!m || String(m.home) !== cbm || !m.kickoff || !m.id) continue;
+    const status = String(m.status || 'scheduled').toLowerCase();
+    if (['finished', 'postponed', 'forfeit'].indexOf(status) >= 0) continue;
+    if (['scheduled', 'rescheduled', 'live'].indexOf(status) < 0) continue;
+    const k = new Date(m.kickoff).getTime();
+    if (!Number.isFinite(k) || nowMs < k || nowMs - k > LIVE_WATCH_WINDOW_MIN * 60000) continue;
+    const id = String(m.id).replace(/[^0-9]/g, '').slice(0, 16);
+    if (!id) continue;
+    const opp = ((data.opponents) || []).filter(function (o) { return String(o.id) === String(m.away); })[0];
+    return { id: id, round: m.round, kickoffEpoch: Math.floor(k / 1000), oppName: opp && opp.name ? (opp.name.ar || opp.name.latin || '') : '' };
+  }
+  return null;
+}
+
+// Compatible with v8's old millisecond timestamp while deduplicating by fixture + kickoff generation.
+function livePromptAlreadySent_(props, cur) {
+  const key = 'CBM_PROMPTED_' + String(cur.id).replace(/[^0-9]/g, '').slice(0, 16);
+  const prior = String(props.getProperty(key) || '');
+  if (!prior) return false;
+  const kickoffMs = Number(cur.kickoffEpoch) * 1000;
+  if (prior === String(cur.kickoffEpoch)) return true;
+  if (/^\d{13}$/.test(prior)) {
+    const sentAt = Number(prior);
+    // Legacy v8 stored Date.now(). Treat it as this same kickoff only if the old prompt
+    // was actually sent after this kickoff and inside the 120-minute watcher window.
+    return Number.isFinite(sentAt) && sentAt >= kickoffMs && sentAt - kickoffMs <= LIVE_WATCH_WINDOW_MIN * 60000;
+  }
+  return false;
+}
+
+// Trigger كل دقيقة: سؤال مستقل لكل موعد انطلاق، حتى عند إعادة جدولة المباراة نفسها.
+function liveWatch() {
+  const props = telegramProps_();
+  if (!telegramToken_() || !telegramAdminId_()) return;
+  let data;
+  try {
+    const url = String(props.getProperty('SITE_DATA_URL') || LIVE_WATCH_DATA_URL_DEFAULT);
+    data = JSON.parse(UrlFetchApp.fetch(url + '?t=' + Date.now(), { muteHttpExceptions: true }).getContentText());
+  } catch (err) { console.warn('[CBM liveWatch] fetch failed:', err); return; }
+  const cur = findStartedHomeMatch_(data, Date.now());
+  if (!cur || !cur.id) return;
+  const lock = LockService.getScriptLock();
+  try {
+    waitForLock_(lock, 10000);
+    const flag = 'CBM_PROMPTED_' + cur.id;
+    if (livePromptAlreadySent_(props, cur)) return;
+    try {
+      const st = JSON.parse(props.getProperty(LIVE_CONTROL_PROP) || 'null');
+      if (st && st.active && String(st.matchId) === cur.id) {
+        const oldEpoch = Number(st.kickoffEpoch) || Math.floor(new Date(st.startedAt || 0).getTime() / 1000);
+        if (oldEpoch === cur.kickoffEpoch) {
+          props.setProperty(flag, String(cur.kickoffEpoch));
+          return;
+        }
+        // A changed kickoff starts a new session. Retire the old scoreboard before prompting again.
+        st.active = false;
+        st.expired = true;
+        st.expiredReason = 'rescheduled';
+        st.updatedAt = new Date().toISOString();
+        props.setProperty(LIVE_CONTROL_PROP, JSON.stringify(st));
+      }
+    } catch (ignore) {}
+    props.setProperty(flag, String(cur.kickoffEpoch));
+    telegramApi_('sendMessage', {
+      chat_id: telegramAdminId_(),
+      text: '🔴 بدأت المباراة' + (cur.oppName ? ' ضد ' + cur.oppName : '') + '\nهل تريد التحكم في نتيجة المباراة على الموقع؟\nإن رفضت تبقى 0-0 مع الوقت الجاري حتى تصل النتيجة الرسمية.',
+      reply_markup: { inline_keyboard: [[
+        { text: '✅ نعم', callback_data: 'cbmctl|yes|' + cur.id + '|' + cur.kickoffEpoch },
+        { text: '❌ لا', callback_data: 'cbmctl|no|' + cur.id + '|' + cur.kickoffEpoch }
+      ]] }
+    });
+  } catch (err) {
+    console.error('[CBM liveWatch] prompt failed:', err);
+    try { props.deleteProperty('CBM_PROMPTED_' + cur.id); } catch (ignore) {}
+  } finally { try { lock.releaseLock(); } catch (ignore) {} }
 }
 
 // --- Web App Endpoints ---

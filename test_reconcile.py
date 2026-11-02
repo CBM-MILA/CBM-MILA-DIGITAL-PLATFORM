@@ -2,7 +2,7 @@
 import copy, json, os, sys
 from bs4 import BeautifulSoup
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ROOT)
 import scraper
 
@@ -12,7 +12,7 @@ K07 = "2026-11-07T15:00:00+01:00"
 
 
 def data():
-    with open(os.path.join(ROOT, "data", "data.json"), encoding="utf-8") as f:
+    with open(os.path.join(ROOT, "tests", "fixtures", "sample_data.json"), encoding="utf-8") as f:
         return json.load(f)
 
 

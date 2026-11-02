@@ -4,43 +4,23 @@
 
 ## ما الذي تغيّر؟
 
-- المسار النشط الوحيد هو `.github/workflows/update-data.yml`.
+- مسار التحديث المجدول الوحيد هو `.github/workflows/update-data.yml`. ويوجد `quality-check.yml` منفصل للاختبارات فقط، دون تشغيل Scraper أو نشر بيانات الدوري.
 - أزيل ملف التشغيل القديم `.github/workflows/auto-update.yml` والنسخ القديمة الموجودة خارج مجلد GitHub Actions.
 - قبل الدفع، يتحقق النظام من `data/data.json` باستخدام `data/schema.json` ويقارن عدد المباريات الملعوبة بالنسخة السابقة.
 - يُرفع `data/data.json` و`data/status.json` معاً؛ ثم تُرسل الإشعارات المخزّنة في الطابور بعد نجاح الدفع.
 - إذا تعارض الدفع مع تعديل جديد على GitHub، يعيد النظام المحاولة، وعند تعارض ملفات البيانات يعيد الفحص انطلاقاً من أحدث نسخة منشورة.
 - بعد تغيّر بيانات الموقع، يطلب سير العمل إعادة بناء GitHub Pages صراحةً؛ دفع الملفات باستخدام `GITHUB_TOKEN` وحده لا يطلق بناء Pages تلقائياً. فشل طلب البناء لا يمنع معالجة طابور الإشعارات. فشل حفظ كاش HTTP لا يُسقط التحديث نفسه، والملفات المؤقتة والكاش المحلي مستثناة عبر `.gitignore`.
 
-## الطريقة الموصى بها لتطبيق الملفات
+## الطريقة الموصى بها لتطبيق الملفات عبر متصفح GitHub
 
-### 1. نزّل الحزمة وفكّ ضغطها
+لتركيب إصدار v8.1 الحالي، اتبع [دليل الإصدار العربي](RELEASE-V8.1-INSTALL-AR.md). هذا المستند مرجع للأتمتة، ولا تحتاج إلى GitHub Desktop أو أوامر طرفية لتركيب الملفات.
 
-نزّل ملف `CBM-MILA-automation-fixed.zip` وفكّ ضغطه. افتح المجلد الناتج `CBM-MILA-main`؛ لا ترفع ملف ZIP نفسه إلى المستودع.
-
-### 2. افتح نسخة المستودع المحلية باستخدام GitHub Desktop
-
-إذا كانت لديك نسخة محلية من المستودع، افتح مجلدها. إذا لم تكن لديك، استخدم GitHub Desktop واختر **File → Clone repository** لاستنساخ مستودع النادي أولاً.
-
-انسخ **محتويات** مجلد `CBM-MILA-main` المستخرج إلى مجلد المستودع المحلي، ووافق على استبدال الملفات عند الطلب. تأكد من إظهار الملفات المخفية في Windows كي لا يفوتك مجلد `.github`.
-
-لمنع تشغيل نسختين من المجدول، احذف هذه الملفات القديمة من مجلد المستودع المحلي إن كانت ما زالت موجودة:
-
-- `.github/workflows/auto-update.yml`
-- `auto-update.yml`
-- `update.yml`
-- `update-data.yml`
-- `data.json`
-- مجلد `workflows/` القديم الذي يحتوي نسخاً غير نشطة من ملفات Workflow
-
-لا تحذف `data/data.json`؛ هذه هي قاعدة البيانات الأساسية التي يستخدمها الموقع.
-
-### 3. احفظ التعديلات في GitHub
-
-في GitHub Desktop، ستظهر قائمة الملفات المضافة والمعدّلة والمحذوفة. اكتب في خانة الملخص:
-
-`Fix CBM Mila automated data updates`
-
-ثم اضغط **Commit to main** (أو اسم الفرع الأساسي عندك)، وبعدها **Push origin**.
+1. افتح المستودع على موقع GitHub.
+2. نزّل نسخة احتياطية عبر **Code → Download ZIP**.
+3. فكّ ضغط حزمة الإصدار، ثم افتح المستودع واختر **Add file → Upload files**.
+4. ارفع الملفات إلى جذر المستودع مع الإبقاء على المجلدات في أماكنها، ثم اضغط **Commit changes**.
+5. لا تحذف مجلد `data/` الحالي ولا تستبدل `data/data.json` أو `data/schema.json` أو `data/status.json` ببيانات الاختبار.
+6. لا تنشئ Workflow مجدولاً ثانياً؛ احتفظ بـ`.github/workflows/update-data.yml` بوصفه Workflow التحديث الوحيد.
 
 ### 4. تحقق من صلاحية الدفع
 
@@ -72,9 +52,13 @@
 - `REGISTRY_URL`
 - `VAPID_PRIVATE_KEY`
 
-تحتاج إشعارات Telegram إلى أول متغيرين. أما Web Push للهواتف فيحتاج إعدادات `ADMIN_KEY` و`REGISTRY_URL` و`VAPID_PRIVATE_KEY` الصحيحة والمتوافقة مع تطبيق Google Apps Script ومفتاح VAPID العام في `config.js`. قد يحدّث الموقع بياناته حتى لو لم تكن الإشعارات مهيأة، لكن الإشعارات نفسها لن تعمل.
+تحتاج رسائل Telegram الآلية إلى `TELEGRAM_BOT_TOKEN` و`TELEGRAM_CHAT_ID` في GitHub Secrets. أما التحكم في نتيجة المباراة فيحتاج أيضاً إلى `TELEGRAM_BOT_TOKEN` و`TELEGRAM_ADMIN_ID` داخل Script Properties في Google Apps Script. ينشئ `setupTelegramControlWebhook` خاصية `TELEGRAM_WEBHOOK_SECRET` تلقائياً عند عدم وجودها، ويعيد استخدام الحالية إن وجدت. إشعارات Web Push للهواتف تحتاج `ADMIN_KEY` و`REGISTRY_URL` و`VAPID_PRIVATE_KEY` الصحيح المطابق للمفتاح العام في `config.js`. قد ينجح تحديث البيانات حتى لو كانت إحدى قنوات الإشعار غير مهيأة، لكن تلك القناة لن ترسل إشعارات.
 
 المتغير الاختياري `NO_NEWS_EVERY_HOURS` يمكن وضعه في **Settings → Secrets and variables → Actions → Variables**. القيمة الافتراضية `6`، والقيمة `0` تعني تقريراً في كل تشغيل، و`-1` تعني عدم إرسال تقارير «لا جديد».
+
+## إعداد تحكم المباراة في Google Apps Script
+
+بعد رفع v8.1، حدّث ملف `Code.gs` في Apps Script نفسه، وانشر **New version** من نشر Web App الحالي. تأكد من بقاء `ADMIN_KEY` وإعدادات السجل كما هي، ومن وجود `TELEGRAM_BOT_TOKEN` و`TELEGRAM_ADMIN_ID` في Script Properties. بعد النشر شغّل `setupTelegramControlWebhook` مرة واحدة لتسجيل أزرار البوت وتثبيت مشغّل المباراة كل دقيقة. خطوات ذلك بالتفصيل في دليل الإصدار العربي.
 
 ## كيف تعرف أن كل شيء يعمل؟
 

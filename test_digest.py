@@ -3,7 +3,7 @@ import copy, json, os, sys
 from datetime import datetime, timedelta
 from html.parser import HTMLParser
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ROOT)
 import scraper
 
@@ -11,7 +11,7 @@ NOW = datetime.fromisoformat("2026-10-24T09:05:00+01:00")
 
 
 def final_data():
-    with open(os.path.join(ROOT, "data", "data.json"), encoding="utf-8") as f:
+    with open(os.path.join(ROOT, "tests", "fixtures", "sample_data.json"), encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -19,6 +19,10 @@ def scenario():
     """(original, final): the state before / after one scrape run that brought many changes."""
     final = final_data()
     orig = copy.deepcopy(final)
+    scorer = {"playerId": "49698", "clubId": "733", "shirt": 17, "goals": 2, "matches": 2,
+              "name": {"ar": "رملي ناجي", "latin": "Nadji Ramli", "en": "Nadji Ramli"}, "rank": 1}
+    final["topScorers"] = [copy.deepcopy(scorer)]
+    orig["topScorers"] = [dict(copy.deepcopy(scorer), goals=1)]
     by = lambda d, i: next(m for m in d["matches"] if m["id"] == i)
     by(orig, "226424").update(status="scheduled", score=None, kickoff=None, venue=None)
     by(final, "226431").update(kickoff="2026-10-31T15:00:00+01:00", venue="سدراتة أفروخ الطاهر")
@@ -32,9 +36,6 @@ def scenario():
         if r["clubId"] == "997":
             r["position"] = 4
     orig["roundResults"] = [r for r in orig["roundResults"] if r["id"] != "226422"]
-    for t in orig["topScorers"]:
-        if t["name"]["ar"].startswith("رملي"):
-            t["goals"] = 1
     orig["players"] = orig["players"][:-1]
     return orig, final
 
