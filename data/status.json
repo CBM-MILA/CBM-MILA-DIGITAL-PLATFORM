@@ -35,7 +35,8 @@
     "ae0111d9ebd02ca3",
     "c5d8ce64b043987c",
     "6250ad22c13f9977",
-    "62bb1931001ece0a"
+    "62bb1931001ece0a",
+    "530312d6d74b2882"
   ],
   "sentEvents": [
     "2015e70ea0de0fcb",
@@ -69,7 +70,8 @@
     "ae0111d9ebd02ca3",
     "c5d8ce64b043987c",
     "6250ad22c13f9977",
-    "62bb1931001ece0a"
+    "62bb1931001ece0a",
+    "530312d6d74b2882"
   ],
   "notificationEvents": {
     "90a1a5ae1a817e8a": {
@@ -203,37 +205,15 @@
     "62bb1931001ece0a": {
       "telegram": "sent",
       "updatedAt": "2026-11-05T10:29:36+01:00"
+    },
+    "530312d6d74b2882": {
+      "telegram": "sent",
+      "updatedAt": "2026-11-05T19:01:12+01:00"
     }
   },
   "lastNoNewsAt": "2026-11-05T19:01:02+01:00",
   "queuedNotifications": {
     "events": [],
-    "telegram": [
-      {
-        "message": "😴 <b>لا جديد حالياً</b> 🙌\n✅ فحصتُ موقع الرابطة الساعة 19:01 ولا توجد أي تغييرات 🔍\n📊 ترتيب شباب ميلة: <b>#9</b> · 7 نقاط 🎯\n⏳ المباراة القادمة: شباب ميلة ⚔️ شباب عين كرشة\n   🗓 الجمعة 6 نوفمبر 2026 · ⏰ 15:00 — بعد 19 ساعة و58 دقيقة\n🔔 سأخبرك فور حدوث أي تحديث! 🚀",
-        "buttons": [
-          [
-            {
-              "text": "🌐 افتح المنصة",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
-            },
-            {
-              "text": "📊 الترتيب",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
-            }
-          ],
-          [
-            {
-              "text": "⚽ المباريات",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
-            },
-            {
-              "text": "👕 التشكيلة",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
-            }
-          ]
-        ]
-      }
-    ]
+    "telegram": []
   }
 }
