@@ -238,6 +238,32 @@
   "lastNoNewsAt": "2026-11-06T16:56:10+01:00",
   "queuedNotifications": {
     "events": [],
-    "telegram": []
+    "telegram": [
+      {
+        "message": "📣 <b>جديد على موقع الرابطة!</b> 🔔\n🕒 2026-11-06 19:27 (توقيت الجزائر)\n\n━━━━━━━━━━━━━━\n\n🟨 بطاقات في المباراة: 3\n\n━━━━━━━━━━━━━━\n\n🥇 <b>الهدّافون</b>\n⚽ بن لمخربش أحمد (ترجي قالمة) — <b>5</b> ⬆️ +2\n⚽ رملي ناجي (شباب ميلة) — <b>4</b> ⬆️ +2\n⚽ رابحي سيف الدين (شباب عين فكرون) — <b>2</b> ⬆️ +1\n⚽ ماضي رابح (شباب ميلة) — <b>2</b> ⬆️ +1\n⚽ جمدي بن يحي (نصر الفجوج) — <b>2</b> ⬆️ +1\n⚽ دغموش رابح (شباب ميلة) — <b>2</b> 🆕\n\n🔥 هيا شباب ميلة! 🔴⚪ تابع التفاصيل من الأزرار 👇",
+        "buttons": [
+          [
+            {
+              "text": "🌐 افتح المنصة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
+            },
+            {
+              "text": "📊 الترتيب",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
+            }
+          ],
+          [
+            {
+              "text": "⚽ المباريات",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
+            },
+            {
+              "text": "👕 التشكيلة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
+            }
+          ]
+        ]
+      }
+    ]
   }
 }
