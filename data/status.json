@@ -1,8 +1,8 @@
 {
-  "state": "degraded",
-  "consecutiveFailures": 3,
-  "lastStateChange": "2026-11-06T15:44:20+01:00",
-  "lastError": "https://www.lirf.dz/ar/club/733 ← تعذر الاتصال (RetryError); https://www.lirf.dz/ar/ranking ← تعذر الاتصال (RetryError); https://www.lirf.dz/ ← تعذر الاتصال (RetryError)",
+  "state": "ok",
+  "consecutiveFailures": 0,
+  "lastStateChange": "2026-11-06T17:30:39+01:00",
+  "lastError": null,
   "alertedHashes": [
     "2015e70ea0de0fcb",
     "42b7a6c46bbee227",
@@ -231,7 +231,57 @@
   },
   "lastNoNewsAt": "2026-11-06T16:56:10+01:00",
   "queuedNotifications": {
-    "events": [],
-    "telegram": []
+    "events": [
+      {
+        "kind": "result",
+        "matchId": "226438",
+        "score": [
+          5,
+          1
+        ],
+        "tag": "cbm-res-226438",
+        "url": "./#/matches",
+        "ar": {
+          "title": "⚽ نهاية المباراة — الجولة 6",
+          "body": "شباب ميلة 5 - 1 شباب عين كرشة (🟢 فوز)"
+        },
+        "fr": {
+          "title": "⚽ Fin du Match — Journée 6",
+          "body": "Score final : 5 - 1 (🟢 Victoire)"
+        },
+        "en": {
+          "title": "⚽ Full Time — Round 6",
+          "body": "Final Score: 5 - 1 (🟢 Victory)"
+        },
+        "eventKey": "226438:result:5-1"
+      }
+    ],
+    "telegram": [
+      {
+        "message": "📣 <b>جديد على موقع الرابطة!</b> 🔔\n🕒 2026-11-06 17:30 (توقيت الجزائر)\n\n━━━━━━━━━━━━━━\n\n🏁 <b>نهاية المباراة — الجولة 6</b>\n🏟 شباب ميلة  <b>5 - 1</b>  شباب عين كرشة\n🟢 فوووز لشباب ميلة! 🎉🔥💪\n📍 داخل الديار 🏠\n📋 <b>نُشرت التشكيلة الأساسية للمباراة</b>\n🧑‍⚖️ تم تعيين طاقم التحكيم\n\n━━━━━━━━━━━━━━\n\n📊 <b>تحديث جدول الترتيب</b>\n⭐ <b>شباب ميلة</b> ⬆️ #9 ← #5\n   🎯 10 نقاط (+3) · لعب 6 · ✅3 🤝1 ❌2 · الفارق +3\n👑 المتصدر: شباب الرياضي بلدية فرجيوة (13 نقطة)\n🔀 <b>تغيّرات المراكز:</b>\n⬆️ نصر الفجوج: #3 ← #2\n⬇️ إتحاد بوخضرة: #2 ← #3\n⬆️ ترجي قالمة: #6 ← #4\n⬇️ إتحاد سدراتة: #5 ← #6\n⬇️ شباب عين كرشة: #4 ← #7\n⬇️ شباب الميلية: #7 ← #8\n… و7 أندية أخرى\n🥇 شباب الرياضي بلدية فرجيوة (13)  🥈 نصر الفجوج (13)  🥉 إتحاد بوخضرة (13)\n\n━━━━━━━━━━━━━━\n\n🥇 <b>الهدّافون</b>\n⚽ ضربات الجزاء (شباب عين فكرون) — <b>8</b> 🆕\n⚽ عرض الكل (نصر الفجوج) — <b>8</b> ⬆️ +3\n⚽ ضربات الجزاء (شباب عين كرشة) — <b>5</b> ⬆️ +1\n\n🔥 هيا شباب ميلة! 🔴⚪ تابع التفاصيل من الأزرار 👇",
+        "buttons": [
+          [
+            {
+              "text": "🌐 افتح المنصة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
+            },
+            {
+              "text": "📊 الترتيب",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
+            }
+          ],
+          [
+            {
+              "text": "⚽ المباريات",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
+            },
+            {
+              "text": "👕 التشكيلة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
+            }
+          ]
+        ]
+      }
+    ]
   }
 }
