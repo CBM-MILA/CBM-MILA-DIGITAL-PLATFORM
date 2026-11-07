@@ -262,6 +262,32 @@
   "lastNoNewsAt": "2026-11-07T00:40:56+01:00",
   "queuedNotifications": {
     "events": [],
-    "telegram": []
+    "telegram": [
+      {
+        "message": "📣 <b>جديد على موقع الرابطة!</b> 🔔\n🕒 2026-11-07 01:56 (توقيت الجزائر)\n\n━━━━━━━━━━━━━━\n\n🥇 <b>الهدّافون</b>\n⚽ ضربات الجزاء (إتحاد سدراتة) — <b>7</b> ⬆️ +1\n⚽ كباري أحمد (امل عين مليلة) — <b>3</b> ⬆️ +2\n⚽ رحبة عبد الله صلاح الدين (امل عين مليلة) — <b>2</b> ⬆️ +1\n⚽ MOSSAAB RAID ELOUMA GARAH (شباب عين ياقوت) — <b>1</b> 🆕\n⚽ MOUAD ALIOUA (شباب عين ياقوت) — <b>1</b> 🆕\n\n🔥 هيا شباب ميلة! 🔴⚪ تابع التفاصيل من الأزرار 👇",
+        "buttons": [
+          [
+            {
+              "text": "🌐 افتح المنصة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
+            },
+            {
+              "text": "📊 الترتيب",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
+            }
+          ],
+          [
+            {
+              "text": "⚽ المباريات",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
+            },
+            {
+              "text": "👕 التشكيلة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
+            }
+          ]
+        ]
+      }
+    ]
   }
 }
