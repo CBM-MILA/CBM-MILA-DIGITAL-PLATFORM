@@ -286,6 +286,32 @@
   "lastNoNewsAt": "2026-11-07T15:06:41+01:00",
   "queuedNotifications": {
     "events": [],
-    "telegram": []
+    "telegram": [
+      {
+        "message": "📣 <b>جديد على موقع الرابطة!</b> 🔔\n🕒 2026-11-07 18:34 (توقيت الجزائر)\n\n━━━━━━━━━━━━━━\n\n📊 <b>تحديث جدول الترتيب</b>\n⭐ <b>شباب ميلة</b> ➡️ #5 (مركزه لم يتغير)\n   🎯 10 نقاط · لعب 6 · ✅3 🤝1 ❌2 · الفارق +3\n👑 المتصدر: شباب الرياضي بلدية فرجيوة (16 نقطة)\n🥇 شباب الرياضي بلدية فرجيوة (16)  🥈 نصر الفجوج (13)  🥉 إتحاد بوخضرة (13)\n\n🔥 هيا شباب ميلة! 🔴⚪ تابع التفاصيل من الأزرار 👇",
+        "buttons": [
+          [
+            {
+              "text": "🌐 افتح المنصة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
+            },
+            {
+              "text": "📊 الترتيب",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
+            }
+          ],
+          [
+            {
+              "text": "⚽ المباريات",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
+            },
+            {
+              "text": "👕 التشكيلة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
+            }
+          ]
+        ]
+      }
+    ]
   }
 }
