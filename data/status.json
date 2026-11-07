@@ -47,7 +47,8 @@
     "fe678dc6303969de",
     "3007349ff16bffc7",
     "72655efaaa985299",
-    "3d7fad30573d15fc"
+    "3d7fad30573d15fc",
+    "64d3353e916f4e80"
   ],
   "sentEvents": [
     "2015e70ea0de0fcb",
@@ -93,7 +94,8 @@
     "fe678dc6303969de",
     "3007349ff16bffc7",
     "72655efaaa985299",
-    "3d7fad30573d15fc"
+    "3d7fad30573d15fc",
+    "64d3353e916f4e80"
   ],
   "notificationEvents": {
     "90a1a5ae1a817e8a": {
@@ -275,78 +277,15 @@
     "3d7fad30573d15fc": {
       "telegram": "sent",
       "updatedAt": "2026-11-07T15:06:46+01:00"
+    },
+    "64d3353e916f4e80": {
+      "telegram": "sent",
+      "updatedAt": "2026-11-07T16:02:16+01:00"
     }
   },
   "lastNoNewsAt": "2026-11-07T15:06:41+01:00",
   "queuedNotifications": {
-    "events": [
-      {
-        "kind": "kickoff",
-        "matchId": "226445",
-        "kickoff": "2026-11-20T15:00:00+01:00",
-        "tag": "cbm-ko-226445",
-        "url": "./#/home",
-        "ar": {
-          "title": "📅 موعد مباراة شباب ميلة — الجولة 7",
-          "body": "اتحاد الفوبور ضد شباب ميلة · الموعد: 2026-11-20 15:00"
-        },
-        "fr": {
-          "title": "📅 Horaire du Match — Journée 7",
-          "body": "CBM Mila · Coup d'envoi : 2026-11-20 15:00"
-        },
-        "en": {
-          "title": "📅 Match Schedule — Round 7",
-          "body": "CBM Mila · Kickoff: 2026-11-20 15:00"
-        },
-        "eventKey": "226445:kickoff:2026-11-20T15:00:00+01:00"
-      },
-      {
-        "kind": "kickoff",
-        "matchId": "226452",
-        "kickoff": "2026-11-24T14:00:00+01:00",
-        "tag": "cbm-ko-226452",
-        "url": "./#/home",
-        "ar": {
-          "title": "📅 موعد مباراة شباب ميلة — الجولة 8",
-          "body": "شباب ميلة ضد إتحاد بوخضرة · الموعد: 2026-11-24 14:00"
-        },
-        "fr": {
-          "title": "📅 Horaire du Match — Journée 8",
-          "body": "CBM Mila · Coup d'envoi : 2026-11-24 14:00"
-        },
-        "en": {
-          "title": "📅 Match Schedule — Round 8",
-          "body": "CBM Mila · Kickoff: 2026-11-24 14:00"
-        },
-        "eventKey": "226452:kickoff:2026-11-24T14:00:00+01:00"
-      }
-    ],
-    "telegram": [
-      {
-        "message": "📣 <b>جديد على موقع الرابطة!</b> 🔔\n🕒 2026-11-07 16:02 (توقيت الجزائر)\n\n━━━━━━━━━━━━━━\n\n🆕 <b>تحدّد موعد مباراة الجولة 7!</b> 📅\n⚽ اتحاد الفوبور ⚔️ شباب ميلة\n🗓 الجمعة 20 نوفمبر 2026\n⏰ 15:00 (توقيت الجزائر)\n⏳ بعد 12 يوماً و22 ساعة\n📍 بن عبدالمالك قسنطينة\n\n🆕 <b>تحدّد موعد مباراة الجولة 8!</b> 📅\n⚽ شباب ميلة ⚔️ إتحاد بوخضرة\n🗓 الثلاثاء 24 نوفمبر 2026\n⏰ 14:00 (توقيت الجزائر)\n⏳ بعد 16 يوماً و21 ساعة\n📍 Stade Belkacem Belaid, Mila\n\n🔥 هيا شباب ميلة! 🔴⚪ تابع التفاصيل من الأزرار 👇",
-        "buttons": [
-          [
-            {
-              "text": "🌐 افتح المنصة",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
-            },
-            {
-              "text": "📊 الترتيب",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
-            }
-          ],
-          [
-            {
-              "text": "⚽ المباريات",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
-            },
-            {
-              "text": "👕 التشكيلة",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
-            }
-          ]
-        ]
-      }
-    ]
+    "events": [],
+    "telegram": []
   }
 }
