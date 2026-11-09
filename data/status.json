@@ -313,9 +313,35 @@
       "updatedAt": "2026-11-08T18:04:16+01:00"
     }
   },
-  "lastNoNewsAt": "2026-11-08T18:04:07+01:00",
+  "lastNoNewsAt": "2026-11-09T01:57:44+01:00",
   "queuedNotifications": {
     "events": [],
-    "telegram": []
+    "telegram": [
+      {
+        "message": "😴 <b>لا جديد حالياً</b> 🙌\n✅ فحصتُ موقع الرابطة الساعة 01:57 ولا توجد أي تغييرات 🔍\n📊 ترتيب شباب ميلة: <b>#5</b> · 10 نقاط 🎯\n⏳ المباراة القادمة: اتحاد الفوبور ⚔️ شباب ميلة\n   🗓 الجمعة 20 نوفمبر 2026 · ⏰ 15:00 — بعد 11 يوماً و13 ساعة\n🔔 سأخبرك فور حدوث أي تحديث! 🚀",
+        "buttons": [
+          [
+            {
+              "text": "🌐 افتح المنصة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
+            },
+            {
+              "text": "📊 الترتيب",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
+            }
+          ],
+          [
+            {
+              "text": "⚽ المباريات",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
+            },
+            {
+              "text": "👕 التشكيلة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
+            }
+          ]
+        ]
+      }
+    ]
   }
 }
