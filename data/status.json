@@ -333,7 +333,54 @@
   },
   "lastNoNewsAt": "2026-11-09T19:48:05+01:00",
   "queuedNotifications": {
-    "events": [],
-    "telegram": []
+    "events": [
+      {
+        "kind": "kickoff",
+        "matchId": "226452",
+        "kickoff": "2026-12-01T14:00:00+01:00",
+        "tag": "cbm-ko-226452",
+        "url": "./#/home",
+        "ar": {
+          "title": "📅 موعد مباراة شباب ميلة — الجولة 8",
+          "body": "شباب ميلة ضد إتحاد بوخضرة · الموعد: 2026-12-01 14:00"
+        },
+        "fr": {
+          "title": "📅 Horaire du Match — Journée 8",
+          "body": "CBM Mila · Coup d'envoi : 2026-12-01 14:00"
+        },
+        "en": {
+          "title": "📅 Match Schedule — Round 8",
+          "body": "CBM Mila · Kickoff: 2026-12-01 14:00"
+        },
+        "eventKey": "226452:kickoff:2026-12-01T14:00:00+01:00"
+      }
+    ],
+    "telegram": [
+      {
+        "message": "📣 <b>جديد على موقع الرابطة!</b> 🔔\n🕒 2026-11-10 03:08 (توقيت الجزائر)\n\n━━━━━━━━━━━━━━\n\n🔁 <b>تغيّر موعد مباراة الجولة 8!</b> ⚠️\n⚽ شباب ميلة ⚔️ إتحاد بوخضرة\n❌ كان: الثلاثاء 24 نوفمبر 2026 · 14:00\n✅ الآن: <b>الثلاثاء 1 ديسمبر 2026 · 14:00</b>\n⏳ بعد 21 يوماً و10 ساعات\n📍 Stade Belkacem Belaid, Mila\n\n🔥 هيا شباب ميلة! 🔴⚪ تابع التفاصيل من الأزرار 👇",
+        "buttons": [
+          [
+            {
+              "text": "🌐 افتح المنصة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
+            },
+            {
+              "text": "📊 الترتيب",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
+            }
+          ],
+          [
+            {
+              "text": "⚽ المباريات",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
+            },
+            {
+              "text": "👕 التشكيلة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
+            }
+          ]
+        ]
+      }
+    ]
   }
 }
