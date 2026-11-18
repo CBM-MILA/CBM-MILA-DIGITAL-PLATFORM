@@ -81,7 +81,8 @@
     "dc8703c5d7fddad9",
     "e2ec5519c3b6807f",
     "1d8f2ba87dc4a086",
-    "723095ae5ec84b23"
+    "723095ae5ec84b23",
+    "4c86c37bfd143739"
   ],
   "sentEvents": [
     "2015e70ea0de0fcb",
@@ -161,7 +162,8 @@
     "dc8703c5d7fddad9",
     "e2ec5519c3b6807f",
     "1d8f2ba87dc4a086",
-    "723095ae5ec84b23"
+    "723095ae5ec84b23",
+    "4c86c37bfd143739"
   ],
   "notificationEvents": {
     "90a1a5ae1a817e8a": {
@@ -479,37 +481,15 @@
     "723095ae5ec84b23": {
       "telegram": "sent",
       "updatedAt": "2026-11-18T14:58:08+01:00"
+    },
+    "4c86c37bfd143739": {
+      "telegram": "sent",
+      "updatedAt": "2026-11-18T22:22:17+01:00"
     }
   },
   "lastNoNewsAt": "2026-11-18T22:22:09+01:00",
   "queuedNotifications": {
     "events": [],
-    "telegram": [
-      {
-        "message": "😴 <b>لا جديد حالياً</b> 🙌\n✅ فحصتُ موقع الرابطة الساعة 22:22 ولا توجد أي تغييرات 🔍\n📊 ترتيب شباب ميلة: <b>#5</b> · 10 نقاط 🎯\n⏳ المباراة القادمة: اتحاد الفوبور ⚔️ شباب ميلة\n   🗓 الجمعة 20 نوفمبر 2026 · ⏰ 15:00 — بعد يوم و16 ساعة\n🔔 سأخبرك فور حدوث أي تحديث! 🚀",
-        "buttons": [
-          [
-            {
-              "text": "🌐 افتح المنصة",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
-            },
-            {
-              "text": "📊 الترتيب",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
-            }
-          ],
-          [
-            {
-              "text": "⚽ المباريات",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
-            },
-            {
-              "text": "👕 التشكيلة",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
-            }
-          ]
-        ]
-      }
-    ]
+    "telegram": []
   }
 }
