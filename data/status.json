@@ -83,7 +83,8 @@
     "1d8f2ba87dc4a086",
     "723095ae5ec84b23",
     "4c86c37bfd143739",
-    "58b161f6ce1a2227"
+    "58b161f6ce1a2227",
+    "5a3a89ee7b70050c"
   ],
   "sentEvents": [
     "2015e70ea0de0fcb",
@@ -165,7 +166,8 @@
     "1d8f2ba87dc4a086",
     "723095ae5ec84b23",
     "4c86c37bfd143739",
-    "58b161f6ce1a2227"
+    "58b161f6ce1a2227",
+    "5a3a89ee7b70050c"
   ],
   "notificationEvents": {
     "90a1a5ae1a817e8a": {
@@ -491,78 +493,15 @@
     "58b161f6ce1a2227": {
       "telegram": "sent",
       "updatedAt": "2026-11-19T04:27:08+01:00"
+    },
+    "5a3a89ee7b70050c": {
+      "telegram": "sent",
+      "updatedAt": "2026-11-19T14:04:48+01:00"
     }
   },
   "lastNoNewsAt": "2026-11-19T04:26:59+01:00",
   "queuedNotifications": {
-    "events": [
-      {
-        "kind": "kickoff",
-        "matchId": "226452",
-        "kickoff": "2026-12-01T15:00:00+01:00",
-        "tag": "cbm-ko-226452",
-        "url": "./#/home",
-        "ar": {
-          "title": "📅 موعد مباراة شباب ميلة — الجولة 8",
-          "body": "شباب ميلة ضد إتحاد بوخضرة · الموعد: 2026-12-01 15:00"
-        },
-        "fr": {
-          "title": "📅 Horaire du Match — Journée 8",
-          "body": "CBM Mila · Coup d'envoi : 2026-12-01 15:00"
-        },
-        "en": {
-          "title": "📅 Match Schedule — Round 8",
-          "body": "CBM Mila · Kickoff: 2026-12-01 15:00"
-        },
-        "eventKey": "226452:kickoff:2026-12-01T15:00:00+01:00"
-      },
-      {
-        "kind": "kickoff",
-        "matchId": "226461",
-        "kickoff": "2026-12-05T15:00:00+01:00",
-        "tag": "cbm-ko-226461",
-        "url": "./#/home",
-        "ar": {
-          "title": "📅 موعد مباراة شباب ميلة — الجولة 9",
-          "body": "شباب ميلة ضد النادي الرياضي وفاق سوق اهراس · الموعد: 2026-12-05 15:00"
-        },
-        "fr": {
-          "title": "📅 Horaire du Match — Journée 9",
-          "body": "CBM Mila · Coup d'envoi : 2026-12-05 15:00"
-        },
-        "en": {
-          "title": "📅 Match Schedule — Round 9",
-          "body": "CBM Mila · Kickoff: 2026-12-05 15:00"
-        },
-        "eventKey": "226461:kickoff:2026-12-05T15:00:00+01:00"
-      }
-    ],
-    "telegram": [
-      {
-        "message": "📣 <b>جديد على موقع الرابطة!</b> 🔔\n🕒 2026-11-19 14:04 (توقيت الجزائر)\n\n━━━━━━━━━━━━━━\n\n🔁 <b>تغيّر موعد مباراة الجولة 8!</b> ⚠️\n⚽ شباب ميلة ⚔️ إتحاد بوخضرة\n❌ كان: الثلاثاء 1 ديسمبر 2026 · 14:00\n✅ الآن: <b>الثلاثاء 1 ديسمبر 2026 · 15:00</b>\n⏳ بعد 12 يوماً\n📍 Stade Belkacem Belaid, Mila\n\n🆕 <b>تحدّد موعد مباراة الجولة 9!</b> 📅\n⚽ شباب ميلة ⚔️ النادي الرياضي وفاق سوق اهراس\n🗓 السبت 5 ديسمبر 2026\n⏰ 15:00 (توقيت الجزائر)\n⏳ بعد 16 يوماً\n📍 Stade Belkacem Belaid, Mila\n\n🔥 هيا شباب ميلة! 🔴⚪ تابع التفاصيل من الأزرار 👇",
-        "buttons": [
-          [
-            {
-              "text": "🌐 افتح المنصة",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
-            },
-            {
-              "text": "📊 الترتيب",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
-            }
-          ],
-          [
-            {
-              "text": "⚽ المباريات",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
-            },
-            {
-              "text": "👕 التشكيلة",
-              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
-            }
-          ]
-        ]
-      }
-    ]
+    "events": [],
+    "telegram": []
   }
 }
