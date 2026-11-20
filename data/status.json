@@ -1,6 +1,6 @@
 {
   "state": "degraded",
-  "consecutiveFailures": 4,
+  "consecutiveFailures": 5,
   "lastStateChange": "2026-11-20T15:31:36+01:00",
   "lastError": "https://www.lirf.dz/ar/club/733 ← تعذر الاتصال (RetryError); https://www.lirf.dz/ar/ranking ← تعذر الاتصال (RetryError); https://www.lirf.dz/ar/calendar ← تعذر الاتصال (RetryError)",
   "alertedHashes": [
@@ -537,7 +537,7 @@
       "updatedAt": "2026-11-20T16:19:08+01:00"
     }
   },
-  "lastNoNewsAt": "2026-11-20T16:19:03+01:00",
+  "lastNoNewsAt": "2026-11-20T16:36:23+01:00",
   "queuedNotifications": {
     "events": [],
     "telegram": [
@@ -592,6 +592,31 @@
           ]
         ],
         "_attempts": 1
+      },
+      {
+        "message": "😴 <b>لا جديد حالياً</b> 🙌\n✅ فحصتُ موقع الرابطة الساعة 16:36 ولا توجد أي تغييرات 🔍\n📊 ترتيب شباب ميلة: <b>#5</b> · 10 نقاط 🎯\n⏳ المباراة القادمة: شباب ميلة ⚔️ إتحاد بوخضرة\n   🗓 الثلاثاء 1 ديسمبر 2026 · ⏰ 15:00 — بعد 10 أيام و22 ساعة\n⚠️ ملاحظة: تعذّرت قراءة 5 صفحة من الموقع، وسأعيد المحاولة 🔄\n🔔 سأخبرك فور حدوث أي تحديث! 🚀",
+        "buttons": [
+          [
+            {
+              "text": "🌐 افتح المنصة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
+            },
+            {
+              "text": "📊 الترتيب",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
+            }
+          ],
+          [
+            {
+              "text": "⚽ المباريات",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
+            },
+            {
+              "text": "👕 التشكيلة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
+            }
+          ]
+        ]
       }
     ]
   }
