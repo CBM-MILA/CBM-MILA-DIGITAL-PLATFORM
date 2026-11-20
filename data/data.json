@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-11-20T20:31:37+01:00",
+  "lastUpdated": "2026-11-20T20:43:33+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -4135,14 +4135,14 @@
   "topScorers": [
     {
       "playerId": null,
-      "clubId": "1036",
+      "clubId": "884",
       "shirt": null,
-      "goals": 11,
+      "goals": 13,
       "matches": null,
       "name": {
-        "ar": "ضربات الجزاء",
-        "latin": "ضربات الجزاء",
-        "en": "ضربات الجزاء"
+        "ar": "عرض الكل",
+        "latin": "عرض الكل",
+        "en": "عرض الكل"
       },
       "rank": 1
     },
@@ -4153,17 +4153,17 @@
       "goals": 11,
       "matches": null,
       "name": {
-        "ar": "عرض الكل",
-        "latin": "عرض الكل",
-        "en": "عرض الكل"
+        "ar": "ضربات الجزاء",
+        "latin": "ضربات الجزاء",
+        "en": "ضربات الجزاء"
       },
       "rank": 2
     },
     {
       "playerId": null,
-      "clubId": "733",
+      "clubId": "1036",
       "shirt": null,
-      "goals": 10,
+      "goals": 11,
       "matches": null,
       "name": {
         "ar": "عرض الكل",
@@ -4179,15 +4179,15 @@
       "goals": 10,
       "matches": null,
       "name": {
-        "ar": "ضربات الجزاء",
-        "latin": "ضربات الجزاء",
-        "en": "ضربات الجزاء"
+        "ar": "عرض الكل",
+        "latin": "عرض الكل",
+        "en": "عرض الكل"
       },
       "rank": 4
     },
     {
       "playerId": null,
-      "clubId": "884",
+      "clubId": "733",
       "shirt": null,
       "goals": 10,
       "matches": null,
@@ -4205,9 +4205,9 @@
       "goals": 10,
       "matches": null,
       "name": {
-        "ar": "عرض الكل",
-        "latin": "عرض الكل",
-        "en": "عرض الكل"
+        "ar": "ضربات الجزاء",
+        "latin": "ضربات الجزاء",
+        "en": "ضربات الجزاء"
       },
       "rank": 6
     },
@@ -4239,7 +4239,7 @@
     },
     {
       "playerId": null,
-      "clubId": "728",
+      "clubId": "727",
       "shirt": null,
       "goals": 8,
       "matches": null,
@@ -4257,15 +4257,15 @@
       "goals": 8,
       "matches": null,
       "name": {
-        "ar": "عرض الكل",
-        "latin": "عرض الكل",
-        "en": "عرض الكل"
+        "ar": "ضربات الجزاء",
+        "latin": "ضربات الجزاء",
+        "en": "ضربات الجزاء"
       },
       "rank": 10
     },
     {
       "playerId": null,
-      "clubId": "732",
+      "clubId": "728",
       "shirt": null,
       "goals": 8,
       "matches": null,
@@ -4278,7 +4278,7 @@
     },
     {
       "playerId": null,
-      "clubId": "732",
+      "clubId": "731",
       "shirt": null,
       "goals": 8,
       "matches": null,
@@ -4291,35 +4291,35 @@
     },
     {
       "playerId": null,
-      "clubId": "891",
+      "clubId": "732",
       "shirt": null,
-      "goals": 7,
-      "matches": null,
-      "name": {
-        "ar": "ضربات الجزاء",
-        "latin": "ضربات الجزاء",
-        "en": "ضربات الجزاء"
-      },
-      "rank": 13
-    },
-    {
-      "playerId": null,
-      "clubId": "891",
-      "shirt": null,
-      "goals": 7,
+      "goals": 8,
       "matches": null,
       "name": {
         "ar": "عرض الكل",
         "latin": "عرض الكل",
         "en": "عرض الكل"
       },
+      "rank": 13
+    },
+    {
+      "playerId": null,
+      "clubId": "732",
+      "shirt": null,
+      "goals": 8,
+      "matches": null,
+      "name": {
+        "ar": "ضربات الجزاء",
+        "latin": "ضربات الجزاء",
+        "en": "ضربات الجزاء"
+      },
       "rank": 14
     },
     {
       "playerId": null,
-      "clubId": "727",
+      "clubId": "891",
       "shirt": null,
-      "goals": 6,
+      "goals": 7,
       "matches": null,
       "name": {
         "ar": "ضربات الجزاء",
@@ -4330,9 +4330,9 @@
     },
     {
       "playerId": null,
-      "clubId": "727",
+      "clubId": "891",
       "shirt": null,
-      "goals": 6,
+      "goals": 7,
       "matches": null,
       "name": {
         "ar": "عرض الكل",
@@ -4342,6 +4342,32 @@
       "rank": 16
     },
     {
+      "rank": 17,
+      "playerId": null,
+      "clubId": "736",
+      "shirt": 17,
+      "goals": 6,
+      "matches": 4,
+      "name": {
+        "ar": "بن لمخربش أحمد",
+        "latin": "Ahmed Benlemkherbeche",
+        "en": "Ahmed Benlemkherbeche"
+      }
+    },
+    {
+      "playerId": null,
+      "clubId": "727",
+      "shirt": null,
+      "goals": 6,
+      "matches": null,
+      "name": {
+        "ar": "عرض الكل",
+        "latin": "عرض الكل",
+        "en": "عرض الكل"
+      },
+      "rank": 18
+    },
+    {
       "playerId": null,
       "clubId": "997",
       "shirt": null,
@@ -4352,39 +4378,13 @@
         "latin": "عرض الكل",
         "en": "عرض الكل"
       },
-      "rank": 17
+      "rank": 19
     },
     {
       "playerId": null,
       "clubId": "997",
       "shirt": null,
       "goals": 6,
-      "matches": null,
-      "name": {
-        "ar": "ضربات الجزاء",
-        "latin": "ضربات الجزاء",
-        "en": "ضربات الجزاء"
-      },
-      "rank": 18
-    },
-    {
-      "rank": 19,
-      "playerId": null,
-      "clubId": "736",
-      "shirt": 17,
-      "goals": 5,
-      "matches": 4,
-      "name": {
-        "ar": "بن لمخربش أحمد",
-        "latin": "Ahmed Benlemkherbeche",
-        "en": "Ahmed Benlemkherbeche"
-      }
-    },
-    {
-      "playerId": null,
-      "clubId": "729",
-      "shirt": null,
-      "goals": 5,
       "matches": null,
       "name": {
         "ar": "ضربات الجزاء",
@@ -4395,7 +4395,7 @@
     },
     {
       "playerId": null,
-      "clubId": "731",
+      "clubId": "729",
       "shirt": null,
       "goals": 5,
       "matches": null,
@@ -4733,6 +4733,19 @@
     },
     {
       "playerId": null,
+      "clubId": "736",
+      "shirt": 7,
+      "goals": 2,
+      "matches": null,
+      "name": {
+        "ar": "Massinissa OULD TALEB",
+        "latin": "Massinissa Ould Taleb",
+        "en": "Massinissa Ould Taleb"
+      },
+      "rank": 47
+    },
+    {
+      "playerId": null,
       "clubId": "823",
       "shirt": null,
       "goals": 2,
@@ -4742,7 +4755,7 @@
         "latin": "ضربات الجزاء",
         "en": "ضربات الجزاء"
       },
-      "rank": 47
+      "rank": 48
     },
     {
       "playerId": null,
@@ -4755,7 +4768,7 @@
         "latin": "عرض الكل",
         "en": "عرض الكل"
       },
-      "rank": 48
+      "rank": 49
     },
     {
       "playerId": null,
@@ -4768,10 +4781,10 @@
         "latin": "Foued Bouaita",
         "en": "Foued Bouaita"
       },
-      "rank": 49
+      "rank": 50
     },
     {
-      "rank": 50,
+      "rank": 51,
       "playerId": null,
       "clubId": "728",
       "shirt": 26,
@@ -4784,7 +4797,7 @@
       }
     },
     {
-      "rank": 51,
+      "rank": 52,
       "playerId": null,
       "clubId": "728",
       "shirt": 23,
@@ -4797,7 +4810,7 @@
       }
     },
     {
-      "rank": 52,
+      "rank": 53,
       "playerId": null,
       "clubId": "729",
       "shirt": 5,
@@ -4810,7 +4823,7 @@
       }
     },
     {
-      "rank": 53,
+      "rank": 54,
       "playerId": null,
       "clubId": "891",
       "shirt": 11,
@@ -4823,7 +4836,7 @@
       }
     },
     {
-      "rank": 54,
+      "rank": 55,
       "playerId": null,
       "clubId": "937",
       "shirt": 25,
@@ -4836,7 +4849,7 @@
       }
     },
     {
-      "rank": 55,
+      "rank": 56,
       "playerId": null,
       "clubId": "997",
       "shirt": 21,
@@ -4849,7 +4862,7 @@
       }
     },
     {
-      "rank": 56,
+      "rank": 57,
       "playerId": null,
       "clubId": "997",
       "shirt": 9,
@@ -4862,7 +4875,7 @@
       }
     },
     {
-      "rank": 57,
+      "rank": 58,
       "playerId": null,
       "clubId": "1036",
       "shirt": 25,
@@ -4875,7 +4888,7 @@
       }
     },
     {
-      "rank": 58,
+      "rank": 59,
       "playerId": null,
       "clubId": "727",
       "shirt": 26,
@@ -4888,7 +4901,7 @@
       }
     },
     {
-      "rank": 59,
+      "rank": 60,
       "playerId": null,
       "clubId": "729",
       "shirt": 10,
@@ -4901,7 +4914,7 @@
       }
     },
     {
-      "rank": 60,
+      "rank": 61,
       "playerId": "40725",
       "clubId": "733",
       "shirt": 9,
@@ -4914,7 +4927,7 @@
       }
     },
     {
-      "rank": 61,
+      "rank": 62,
       "playerId": null,
       "clubId": "734",
       "shirt": 17,
@@ -4927,7 +4940,7 @@
       }
     },
     {
-      "rank": 62,
+      "rank": 63,
       "playerId": null,
       "clubId": "884",
       "shirt": 17,
@@ -4940,7 +4953,7 @@
       }
     },
     {
-      "rank": 63,
+      "rank": 64,
       "playerId": null,
       "clubId": "884",
       "shirt": 5,
@@ -4953,7 +4966,7 @@
       }
     },
     {
-      "rank": 64,
+      "rank": 65,
       "playerId": null,
       "clubId": "891",
       "shirt": 17,
@@ -4966,7 +4979,7 @@
       }
     },
     {
-      "rank": 65,
+      "rank": 66,
       "playerId": null,
       "clubId": "732",
       "shirt": 11,
@@ -4979,7 +4992,7 @@
       }
     },
     {
-      "rank": 66,
+      "rank": 67,
       "playerId": null,
       "clubId": "823",
       "shirt": 18,
@@ -4992,7 +5005,7 @@
       }
     },
     {
-      "rank": 67,
+      "rank": 68,
       "playerId": null,
       "clubId": "823",
       "shirt": 28,
@@ -5015,7 +5028,7 @@
         "latin": "Abderraouf Ghediri",
         "en": "Abderraouf Ghediri"
       },
-      "rank": 68
+      "rank": 69
     },
     {
       "playerId": null,
@@ -5028,7 +5041,7 @@
         "latin": "Chouaib Guettala",
         "en": "Chouaib Guettala"
       },
-      "rank": 69
+      "rank": 70
     },
     {
       "playerId": null,
@@ -5041,7 +5054,7 @@
         "latin": "Abdessamed Meloussi",
         "en": "Abdessamed Meloussi"
       },
-      "rank": 70
+      "rank": 71
     },
     {
       "playerId": null,
@@ -5054,7 +5067,7 @@
         "latin": "Oussama Riah",
         "en": "Oussama Riah"
       },
-      "rank": 71
+      "rank": 72
     },
     {
       "playerId": null,
@@ -5067,7 +5080,7 @@
         "latin": "Adel Tafer",
         "en": "Adel Tafer"
       },
-      "rank": 72
+      "rank": 73
     },
     {
       "playerId": null,
@@ -5080,7 +5093,7 @@
         "latin": "Moncef Benhachani",
         "en": "Moncef Benhachani"
       },
-      "rank": 73
+      "rank": 74
     },
     {
       "playerId": null,
@@ -5093,7 +5106,7 @@
         "latin": "Fatih Abdelhai",
         "en": "Fatih Abdelhai"
       },
-      "rank": 74
+      "rank": 75
     },
     {
       "playerId": null,
@@ -5106,7 +5119,7 @@
         "latin": "Mohammed Bouchekara",
         "en": "Mohammed Bouchekara"
       },
-      "rank": 75
+      "rank": 76
     },
     {
       "playerId": null,
@@ -5119,7 +5132,7 @@
         "latin": "Amine Atchoum",
         "en": "Amine Atchoum"
       },
-      "rank": 76
+      "rank": 77
     },
     {
       "playerId": null,
@@ -5132,7 +5145,7 @@
         "latin": "Oussama Gadouchi",
         "en": "Oussama Gadouchi"
       },
-      "rank": 77
+      "rank": 78
     },
     {
       "playerId": null,
@@ -5145,7 +5158,7 @@
         "latin": "Anes Abderrahim Khellaf",
         "en": "Anes Abderrahim Khellaf"
       },
-      "rank": 78
+      "rank": 79
     },
     {
       "playerId": null,
@@ -5158,7 +5171,7 @@
         "latin": "Nour El Islam Hadjoudj",
         "en": "Nour El Islam Hadjoudj"
       },
-      "rank": 79
+      "rank": 80
     },
     {
       "playerId": null,
@@ -5171,7 +5184,7 @@
         "latin": "Oussama Touahri",
         "en": "Oussama Touahri"
       },
-      "rank": 80
+      "rank": 81
     },
     {
       "playerId": null,
@@ -5184,7 +5197,7 @@
         "latin": "Khalid Boudraa",
         "en": "Khalid Boudraa"
       },
-      "rank": 81
+      "rank": 82
     },
     {
       "playerId": null,
@@ -5197,7 +5210,7 @@
         "latin": "Malik Segani",
         "en": "Malik Segani"
       },
-      "rank": 82
+      "rank": 83
     },
     {
       "playerId": "51990",
@@ -5210,7 +5223,7 @@
         "latin": "Salah Eddine Khabia",
         "en": "Salah Eddine Khabia"
       },
-      "rank": 83
+      "rank": 84
     },
     {
       "playerId": "377274",
@@ -5223,7 +5236,7 @@
         "latin": "Hassen Ogbi Benhadouche",
         "en": "Hassen Ogbi Benhadouche"
       },
-      "rank": 84
+      "rank": 85
     },
     {
       "playerId": null,
@@ -5236,7 +5249,7 @@
         "latin": "Mouad Alioua",
         "en": "Mouad Alioua"
       },
-      "rank": 85
+      "rank": 86
     },
     {
       "playerId": null,
@@ -5249,7 +5262,7 @@
         "latin": "Ayoub Aouab",
         "en": "Ayoub Aouab"
       },
-      "rank": 86
+      "rank": 87
     },
     {
       "playerId": null,
@@ -5262,20 +5275,20 @@
         "latin": "Taha Mouadh Mouffok",
         "en": "Taha Mouadh Mouffok"
       },
-      "rank": 87
+      "rank": 88
     },
     {
       "playerId": null,
       "clubId": "736",
-      "shirt": 7,
+      "shirt": 8,
       "goals": 1,
       "matches": null,
       "name": {
-        "ar": "Massinissa OULD TALEB",
-        "latin": "Massinissa Ould Taleb",
-        "en": "Massinissa Ould Taleb"
+        "ar": "ABDELKADER BENNAFLA BEKKOUCHE",
+        "latin": "Abdelkader Bennafla Bekkouche",
+        "en": "Abdelkader Bennafla Bekkouche"
       },
-      "rank": 88
+      "rank": 89
     },
     {
       "playerId": null,
@@ -5288,7 +5301,7 @@
         "latin": "Ilyes Neghra",
         "en": "Ilyes Neghra"
       },
-      "rank": 89
+      "rank": 90
     },
     {
       "playerId": null,
@@ -5301,7 +5314,7 @@
         "latin": "Mohamed Chakib Smaine",
         "en": "Mohamed Chakib Smaine"
       },
-      "rank": 90
+      "rank": 91
     },
     {
       "playerId": null,
@@ -5314,7 +5327,7 @@
         "latin": "Mousaab Bouzeghaia",
         "en": "Mousaab Bouzeghaia"
       },
-      "rank": 91
+      "rank": 92
     },
     {
       "playerId": null,
@@ -5327,7 +5340,7 @@
         "latin": "Kheireddin Boutarfa",
         "en": "Kheireddin Boutarfa"
       },
-      "rank": 92
+      "rank": 93
     },
     {
       "playerId": null,
@@ -5340,7 +5353,7 @@
         "latin": "Mohamed Aimen Akziz",
         "en": "Mohamed Aimen Akziz"
       },
-      "rank": 93
+      "rank": 94
     },
     {
       "playerId": null,
@@ -5353,7 +5366,7 @@
         "latin": "Moslah Khannoussi",
         "en": "Moslah Khannoussi"
       },
-      "rank": 94
+      "rank": 95
     },
     {
       "playerId": null,
@@ -5366,7 +5379,7 @@
         "latin": "Akram Anes Ouaddah",
         "en": "Akram Anes Ouaddah"
       },
-      "rank": 95
+      "rank": 96
     },
     {
       "playerId": null,
@@ -5379,7 +5392,7 @@
         "latin": "Mohammed Boutebiba",
         "en": "Mohammed Boutebiba"
       },
-      "rank": 96
+      "rank": 97
     }
   ],
   "roundResults": [
