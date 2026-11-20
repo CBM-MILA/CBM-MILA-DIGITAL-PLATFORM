@@ -527,6 +527,10 @@
     "5bf32feeee660eae": {
       "telegram": "sent",
       "updatedAt": "2026-11-20T15:54:13+01:00"
+    },
+    "ed10e715245b1851": {
+      "telegram": "pending",
+      "updatedAt": "2026-11-20T16:16:37+01:00"
     }
   },
   "lastNoNewsAt": "2026-11-20T16:16:32+01:00",
@@ -556,7 +560,8 @@
               "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
             }
           ]
-        ]
+        ],
+        "_attempts": 1
       }
     ]
   }
