@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-11-20T22:05:26+01:00",
+  "lastUpdated": "2026-11-21T01:57:36+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -4135,6 +4135,19 @@
   "topScorers": [
     {
       "playerId": null,
+      "clubId": "736",
+      "shirt": null,
+      "goals": 13,
+      "matches": null,
+      "name": {
+        "ar": "ضربات الجزاء",
+        "latin": "ضربات الجزاء",
+        "en": "ضربات الجزاء"
+      },
+      "rank": 1
+    },
+    {
+      "playerId": null,
       "clubId": "884",
       "shirt": null,
       "goals": 13,
@@ -4144,7 +4157,7 @@
         "latin": "عرض الكل",
         "en": "عرض الكل"
       },
-      "rank": 1
+      "rank": 2
     },
     {
       "playerId": null,
@@ -4157,26 +4170,13 @@
         "latin": "ضربات الجزاء",
         "en": "ضربات الجزاء"
       },
-      "rank": 2
+      "rank": 3
     },
     {
       "playerId": null,
       "clubId": "1036",
       "shirt": null,
       "goals": 11,
-      "matches": null,
-      "name": {
-        "ar": "عرض الكل",
-        "latin": "عرض الكل",
-        "en": "عرض الكل"
-      },
-      "rank": 3
-    },
-    {
-      "playerId": null,
-      "clubId": "733",
-      "shirt": null,
-      "goals": 10,
       "matches": null,
       "name": {
         "ar": "عرض الكل",
@@ -4192,15 +4192,15 @@
       "goals": 10,
       "matches": null,
       "name": {
-        "ar": "ضربات الجزاء",
-        "latin": "ضربات الجزاء",
-        "en": "ضربات الجزاء"
+        "ar": "عرض الكل",
+        "latin": "عرض الكل",
+        "en": "عرض الكل"
       },
       "rank": 5
     },
     {
       "playerId": null,
-      "clubId": "884",
+      "clubId": "733",
       "shirt": null,
       "goals": 10,
       "matches": null,
@@ -4213,9 +4213,9 @@
     },
     {
       "playerId": null,
-      "clubId": "736",
+      "clubId": "884",
       "shirt": null,
-      "goals": 9,
+      "goals": 10,
       "matches": null,
       "name": {
         "ar": "ضربات الجزاء",
@@ -4252,6 +4252,19 @@
     },
     {
       "playerId": null,
+      "clubId": "727",
+      "shirt": null,
+      "goals": 8,
+      "matches": null,
+      "name": {
+        "ar": "عرض الكل",
+        "latin": "عرض الكل",
+        "en": "عرض الكل"
+      },
+      "rank": 10
+    },
+    {
+      "playerId": null,
       "clubId": "728",
       "shirt": null,
       "goals": 8,
@@ -4261,7 +4274,7 @@
         "latin": "ضربات الجزاء",
         "en": "ضربات الجزاء"
       },
-      "rank": 10
+      "rank": 11
     },
     {
       "playerId": null,
@@ -4274,7 +4287,7 @@
         "latin": "عرض الكل",
         "en": "عرض الكل"
       },
-      "rank": 11
+      "rank": 12
     },
     {
       "playerId": null,
@@ -4287,7 +4300,7 @@
         "latin": "ضربات الجزاء",
         "en": "ضربات الجزاء"
       },
-      "rank": 12
+      "rank": 13
     },
     {
       "playerId": null,
@@ -4300,24 +4313,11 @@
         "latin": "عرض الكل",
         "en": "عرض الكل"
       },
-      "rank": 13
-    },
-    {
-      "playerId": null,
-      "clubId": "732",
-      "shirt": null,
-      "goals": 8,
-      "matches": null,
-      "name": {
-        "ar": "ضربات الجزاء",
-        "latin": "ضربات الجزاء",
-        "en": "ضربات الجزاء"
-      },
       "rank": 14
     },
     {
       "playerId": null,
-      "clubId": "891",
+      "clubId": "732",
       "shirt": null,
       "goals": 8,
       "matches": null,
@@ -4332,6 +4332,19 @@
       "playerId": null,
       "clubId": "891",
       "shirt": null,
+      "goals": 8,
+      "matches": null,
+      "name": {
+        "ar": "ضربات الجزاء",
+        "latin": "ضربات الجزاء",
+        "en": "ضربات الجزاء"
+      },
+      "rank": 16
+    },
+    {
+      "playerId": null,
+      "clubId": "891",
+      "shirt": null,
       "goals": 7,
       "matches": null,
       "name": {
@@ -4339,10 +4352,10 @@
         "latin": "عرض الكل",
         "en": "عرض الكل"
       },
-      "rank": 16
+      "rank": 17
     },
     {
-      "rank": 17,
+      "rank": 18,
       "playerId": null,
       "clubId": "736",
       "shirt": 17,
@@ -4353,19 +4366,6 @@
         "latin": "Ahmed Benlemkherbeche",
         "en": "Ahmed Benlemkherbeche"
       }
-    },
-    {
-      "playerId": null,
-      "clubId": "727",
-      "shirt": null,
-      "goals": 6,
-      "matches": null,
-      "name": {
-        "ar": "عرض الكل",
-        "latin": "عرض الكل",
-        "en": "عرض الكل"
-      },
-      "rank": 18
     },
     {
       "playerId": null,
