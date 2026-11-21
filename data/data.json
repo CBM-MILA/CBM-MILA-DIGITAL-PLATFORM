@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-11-21T01:57:36+01:00",
+  "lastUpdated": "2026-11-21T03:13:14+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -4148,7 +4148,7 @@
     },
     {
       "playerId": null,
-      "clubId": "884",
+      "clubId": "736",
       "shirt": null,
       "goals": 13,
       "matches": null,
@@ -4161,19 +4161,45 @@
     },
     {
       "playerId": null,
-      "clubId": "1036",
+      "clubId": "884",
       "shirt": null,
-      "goals": 11,
+      "goals": 13,
       "matches": null,
       "name": {
-        "ar": "ضربات الجزاء",
-        "latin": "ضربات الجزاء",
-        "en": "ضربات الجزاء"
+        "ar": "عرض الكل",
+        "latin": "عرض الكل",
+        "en": "عرض الكل"
       },
       "rank": 3
     },
     {
       "playerId": null,
+      "clubId": "733",
+      "shirt": null,
+      "goals": 12,
+      "matches": null,
+      "name": {
+        "ar": "ضربات الجزاء",
+        "latin": "ضربات الجزاء",
+        "en": "ضربات الجزاء"
+      },
+      "rank": 4
+    },
+    {
+      "playerId": null,
+      "clubId": "1036",
+      "shirt": null,
+      "goals": 11,
+      "matches": null,
+      "name": {
+        "ar": "ضربات الجزاء",
+        "latin": "ضربات الجزاء",
+        "en": "ضربات الجزاء"
+      },
+      "rank": 5
+    },
+    {
+      "playerId": null,
       "clubId": "1036",
       "shirt": null,
       "goals": 11,
@@ -4183,7 +4209,7 @@
         "latin": "عرض الكل",
         "en": "عرض الكل"
       },
-      "rank": 4
+      "rank": 6
     },
     {
       "playerId": null,
@@ -4196,20 +4222,7 @@
         "latin": "عرض الكل",
         "en": "عرض الكل"
       },
-      "rank": 5
-    },
-    {
-      "playerId": null,
-      "clubId": "733",
-      "shirt": null,
-      "goals": 10,
-      "matches": null,
-      "name": {
-        "ar": "ضربات الجزاء",
-        "latin": "ضربات الجزاء",
-        "en": "ضربات الجزاء"
-      },
-      "rank": 6
+      "rank": 7
     },
     {
       "playerId": null,
@@ -4221,19 +4234,6 @@
         "ar": "ضربات الجزاء",
         "latin": "ضربات الجزاء",
         "en": "ضربات الجزاء"
-      },
-      "rank": 7
-    },
-    {
-      "playerId": null,
-      "clubId": "736",
-      "shirt": null,
-      "goals": 9,
-      "matches": null,
-      "name": {
-        "ar": "عرض الكل",
-        "latin": "عرض الكل",
-        "en": "عرض الكل"
       },
       "rank": 8
     },

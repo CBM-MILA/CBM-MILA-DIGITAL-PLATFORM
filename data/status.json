@@ -612,6 +612,31 @@
           ]
         ],
         "_attempts": 1
+      },
+      {
+        "message": "📣 <b>جديد على موقع الرابطة!</b> 🔔\n🕒 2026-11-21 03:13 (توقيت الجزائر)\n\n━━━━━━━━━━━━━━\n\n🥇 <b>الهدّافون</b>\n⚽ عرض الكل (ترجي قالمة) — <b>13</b> ⬆️ +4\n⚽ ضربات الجزاء (شباب ميلة) — <b>12</b> ⬆️ +2\n\n🔥 هيا شباب ميلة! 🔴⚪ تابع التفاصيل من الأزرار 👇",
+        "buttons": [
+          [
+            {
+              "text": "🌐 افتح المنصة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
+            },
+            {
+              "text": "📊 الترتيب",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
+            }
+          ],
+          [
+            {
+              "text": "⚽ المباريات",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
+            },
+            {
+              "text": "👕 التشكيلة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
+            }
+          ]
+        ]
       }
     ]
   }
