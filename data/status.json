@@ -571,6 +571,10 @@
     "944b70cb24e1fc46": {
       "telegram": "pending",
       "updatedAt": "2026-11-22T00:43:46+01:00"
+    },
+    "4a029491cbe09dc2": {
+      "telegram": "pending",
+      "updatedAt": "2026-11-22T07:48:13+01:00"
     }
   },
   "lastNoNewsAt": "2026-11-22T07:48:05+01:00",
@@ -600,7 +604,8 @@
               "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
             }
           ]
-        ]
+        ],
+        "_attempts": 1
       }
     ]
   }
