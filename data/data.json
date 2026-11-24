@@ -1,6 +1,6 @@
 {
   "schemaVersion": 3,
-  "lastUpdated": "2026-11-24T01:50:49+01:00",
+  "lastUpdated": "2026-11-24T11:56:01+01:00",
   "sourceUrls": {
     "club": "https://www.lirf.dz/ar/club/733",
     "ranking": "https://www.lirf.dz/ar/ranking",
@@ -4304,7 +4304,7 @@
     },
     {
       "playerId": null,
-      "clubId": "732",
+      "clubId": "731",
       "shirt": null,
       "goals": 8,
       "matches": null,
@@ -4322,15 +4322,15 @@
       "goals": 8,
       "matches": null,
       "name": {
-        "ar": "ضربات الجزاء",
-        "latin": "ضربات الجزاء",
-        "en": "ضربات الجزاء"
+        "ar": "عرض الكل",
+        "latin": "عرض الكل",
+        "en": "عرض الكل"
       },
       "rank": 15
     },
     {
       "playerId": null,
-      "clubId": "891",
+      "clubId": "732",
       "shirt": null,
       "goals": 8,
       "matches": null,
@@ -4348,14 +4348,27 @@
       "goals": 8,
       "matches": null,
       "name": {
-        "ar": "عرض الكل",
-        "latin": "عرض الكل",
-        "en": "عرض الكل"
+        "ar": "ضربات الجزاء",
+        "latin": "ضربات الجزاء",
+        "en": "ضربات الجزاء"
       },
       "rank": 17
     },
     {
-      "rank": 18,
+      "playerId": null,
+      "clubId": "891",
+      "shirt": null,
+      "goals": 8,
+      "matches": null,
+      "name": {
+        "ar": "عرض الكل",
+        "latin": "عرض الكل",
+        "en": "عرض الكل"
+      },
+      "rank": 18
+    },
+    {
+      "rank": 19,
       "playerId": null,
       "clubId": "736",
       "shirt": 17,
@@ -4378,7 +4391,7 @@
         "latin": "عرض الكل",
         "en": "عرض الكل"
       },
-      "rank": 19
+      "rank": 20
     },
     {
       "playerId": null,
@@ -4391,7 +4404,7 @@
         "latin": "ضربات الجزاء",
         "en": "ضربات الجزاء"
       },
-      "rank": 20
+      "rank": 21
     },
     {
       "playerId": null,
@@ -4403,19 +4416,6 @@
         "ar": "ضربات الجزاء",
         "latin": "ضربات الجزاء",
         "en": "ضربات الجزاء"
-      },
-      "rank": 21
-    },
-    {
-      "playerId": null,
-      "clubId": "731",
-      "shirt": null,
-      "goals": 5,
-      "matches": null,
-      "name": {
-        "ar": "عرض الكل",
-        "latin": "عرض الكل",
-        "en": "عرض الكل"
       },
       "rank": 22
     },
