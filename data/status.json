@@ -637,7 +637,7 @@
       "updatedAt": "2026-11-27T22:58:27+01:00"
     }
   },
-  "lastNoNewsAt": "2026-11-27T21:48:54+01:00",
+  "lastNoNewsAt": "2026-11-28T04:54:30+01:00",
   "queuedNotifications": {
     "events": [],
     "telegram": [
@@ -666,6 +666,31 @@
           ]
         ],
         "_attempts": 2
+      },
+      {
+        "message": "😴 <b>لا جديد حالياً</b> 🙌\n✅ فحصتُ موقع الرابطة الساعة 04:54 ولا توجد أي تغييرات 🔍\n📊 ترتيب شباب ميلة: <b>#4</b> · 13 نقطة 🎯\n⏳ المباراة القادمة: شباب ميلة ⚔️ إتحاد بوخضرة\n   🗓 الثلاثاء 1 ديسمبر 2026 · ⏰ 15:00 — بعد 3 أيام و10 ساعات\n🔔 سأخبرك فور حدوث أي تحديث! 🚀",
+        "buttons": [
+          [
+            {
+              "text": "🌐 افتح المنصة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/"
+            },
+            {
+              "text": "📊 الترتيب",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/table"
+            }
+          ],
+          [
+            {
+              "text": "⚽ المباريات",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/matches"
+            },
+            {
+              "text": "👕 التشكيلة",
+              "url": "https://cbm-mila.github.io/CBM-MILA-DIGITAL-PLATFORM/#/squad"
+            }
+          ]
+        ]
       }
     ]
   }
